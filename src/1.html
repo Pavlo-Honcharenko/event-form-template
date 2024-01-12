@@ -1,0 +1,1401 @@
+<html>
+	<head>
+		<script src="//www.google.com/jsapi"></script>
+		<script>
+			window.parent.maeExportApis_();
+		</script>
+
+		<link
+			rel="stylesheet"
+			href="https://ssl.gstatic.com/docs/script/css/add-ons1.css"
+		/>
+
+		<style>
+			select {
+				text-align-last: left;
+				padding-left: 8px;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			#ec_mw {
+				padding: 5px 10px 5px 5px;
+				z-index: 1000;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 400px;
+				vertical-align: top;
+			}
+
+			#ec_status_div {
+				display: none;
+				background-color: #ffff99;
+				padding: 2px 2px 2px 0px;
+				width: 90%;
+			}
+
+			#ec_status_content {
+				border: 0px solid;
+
+				min-height: 15px;
+				padding: 8px 8px 8px 5px;
+			}
+
+			#ec_tabs {
+				width: 100%;
+			}
+
+			#ec_tab_body {
+				overflow: hidden;
+			}
+
+			.tab {
+				overflow: hidden;
+			}
+
+			.tab span {
+				background-color: inherit;
+				float: left;
+				border-width: 1px;
+				border-style: solid;
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+				cursor: pointer;
+				transition: 0.3s;
+				width: 175px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+			}
+
+			.tab span:hover {
+				background-color: #c0c0c0;
+			}
+
+			.tab span.active {
+				background-color: #d3d3d3;
+			}
+
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				min-height: 400px;
+				max-height: 400px;
+			}
+
+			#ec_field_label {
+				font-size: 10px;
+				color: grey;
+			}
+
+			#online_event_instructions_container {
+				height: 100px;
+			}
+
+			#additional_event_info_container {
+				height: 100px;
+			}
+
+			#registrations_table {
+				font-family: Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			#registrations_table td,
+			#registrations_table th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+
+			#registrations_table tr:nth-child(3n + 2) {
+				background-color: #f2f2f2;
+			}
+
+			#registrations_table tr:hover {
+				background-color: #ddd;
+			}
+
+			#registrations_table th,
+			#registrations_table a {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #04aa6d;
+				color: white;
+			}
+
+			.multi_options_btn {
+				.button: active;
+				cursor: pointer;
+			}
+
+			.multi_options_btn:hover,
+			.multi_options_btn:focus {
+				background-color: #2980b9;
+			}
+
+			.multi_options_button {
+				position: relative;
+				display: inline-block;
+			}
+
+			.multi_options_button-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+				font-size: 11px;
+				text-align: left;
+				z-index: 1;
+			}
+
+			.multi_options_button-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.multi_options_button-content a:hover {
+				background-color: #ddd;
+			}
+
+			.show {
+				display: block;
+			}
+
+			.modal {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				gap: 0.4rem;
+				width: 650px;
+				padding: 1.3rem;
+				min-height: 200px;
+				max-height: 300px;
+				position: absolute;
+				left: 13%;
+				margin: auto;
+				top: 20%;
+				background-color: white;
+				border: 1px solid #ddd;
+				border-radius: 15px;
+				z-index: 1002;
+				overflow-y: auto;
+			}
+
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				backdrop-filter: blur(3px);
+				z-index: 1001;
+			}
+
+			.editable_field {
+				position: relative;
+				display: inline-block;
+			}
+
+			.editable_field:hover {
+				border-style: dashed;
+				cursor: pointer;
+			}
+
+			.editable_field .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: black;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+				position: absolute;
+				z-index: 1;
+				bottom: 150%;
+				left: 50%;
+				margin-left: -60px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+			}
+
+			.editable_field .tooltiptext::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: black transparent transparent transparent;
+			}
+
+			.editable_field:hover .tooltiptext {
+				visibility: visible;
+			}
+
+			.overview_grid {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				padding: 20px;
+				table-layout: fixed;
+				text-align: center;
+				height: 340px;
+				text-align: center;
+			}
+
+			table.overview_grid td {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				width: 33%;
+			}
+
+			table.overview_grid tr {
+				height: 50%;
+			}
+
+			.overview_content_grid {
+				border-style: hidden;
+				table-layout: fixed;
+				text-align: center;
+				height: 100%;
+				wdith: 100%;
+			}
+
+			table.overview_content_grid td {
+				border-style: hidden;
+				text-align: center;
+			}
+
+			table.overview_content_grid tr {
+				height: 33%;
+			}
+
+			.overview_label {
+				font-weight: bold;
+				vertical-align: top;
+			}
+
+			.overview_value {
+				font-size: 20px;
+				color: DodgerBlue;
+				vertical-align: middle;
+			}
+
+			.overview_actions {
+				font-size: 14px;
+				vertical-align: bottom;
+			}
+
+			.last_refresh {
+				boarder-style: solid;
+				width: 100%;
+				font-size: 11px;
+				font-style: italic;
+			}
+		</style>
+
+		<link
+			href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="css/style.min.css"
+		/>
+
+		<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+		<script>
+			var quillOnlineEventInstr;
+
+			let sessionTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			let fieldErrorDivs = new Array();
+
+			$(function () {
+				init();
+			});
+
+			function init() {
+				call_timeout = window.setInterval(populateReprocessDataTimeout, 300000);
+
+				loadEventConsoleWindow();
+			}
+
+			function acceptTos() {
+				buttonsController(true);
+				$("#ec_welcome_stage").hide();
+				$("#ec_loading").show();
+
+				var tz = null;
+				var locale = null;
+				try {
+					tz = sessionTimezone;
+					locale = Intl.DateTimeFormat().resolvedOptions().locale;
+				} catch (e) {}
+
+				google.script.run
+					.withSuccessHandler(acceptTosCallback)
+					.uiAcceptTos(tz, locale);
+			}
+
+			function loadEventConsoleWindow() {
+				$("#ec_loading").show();
+				google.script.run
+					.withSuccessHandler(populateEventConsoleData)
+					.withFailureHandler(populateEventConsoleDataError)
+					.uiGetEventConsoleData();
+			}
+
+			function acceptTosCallback() {
+				buttonsController(false);
+				$("#ec_welcome_stage").hide();
+				loadEventConsoleWindow();
+			}
+
+			function populateEventConsoleData(ecData) {
+				window.clearInterval(call_timeout);
+
+				$("#ec_loading").hide();
+
+				if (!ecData || ecData.event_load_status == "2") {
+					showError(
+						"We are unable to access your event data. Please contact EventForm support."
+					);
+					return;
+				}
+
+				if (ecData.accepted_tos) {
+					$("#ec_welcome_stage").hide();
+
+					if (!ecData.statusText || ecData.statusText.length === 0) {
+						document.getElementById("event_date_timezone").innerHTML =
+							sessionTimezone.replace("_", " ");
+						loadCalendars(ecData.calendars);
+						$("#ec_event_info_stage").show();
+					}
+
+					loadFieldErrors(ecData.fieldErrors);
+				} else {
+					$("#ec_welcome_stage_content").html(
+						"Thank you for choosing EventForm to manage your event! EventForm leverages Google services that you are already familiar with and keeps all of your data securely within your Google Drive." +
+							"<br><br>" +
+							"Watch our quickstart video below. Once you\x27re ready, click the \x22Get Started\x22 button below to begin:\x3cbr\x3e" +
+							"<br>" +
+							"\x3cimg width=\x22200\x22 src=\x22https:\/\/scooper.gleeda.net\/eventform\/playvideo.png\x22\x3e"
+					);
+					$("#ec_welcome_stage_tos_content").html(
+						"<br>" +
+							"By clicking the button below, you agree to our \x3ca target=\x22_blank\x22 href=\x22https:\/\/www.certifyem.com\/terms-of-service\x22\x3eTerms of Service\x3c\/a\x3e."
+					);
+					$("#ec_welcome_stage").show();
+				}
+			}
+
+			function loadCalendars(calendars) {
+				if (!calendars) return;
+
+				let googleCalendarElement = document.getElementById("google_calendar");
+				for (let i = 0; i < calendars.length; i++) {
+					let calendar = calendars[i];
+					googleCalendarElement.options[googleCalendarElement.options.length] =
+						new Option(calendar.summary, calendar.calendarid);
+				}
+
+				if (calendars.length > 1) {
+					$("#ec_gcal_select").show();
+				}
+			}
+
+			function displayLocation() {
+				let locType = document.getElementById("location_type");
+				let location = document.getElementById("location_component");
+				let onlineEventInstr = document.getElementById(
+					"online_event_instructions_component"
+				);
+
+				if (locType.value === "TBD") {
+					location.style.display = "none";
+					onlineEventInstr.style.display = "none";
+				} else if (locType.value === "VENUE") {
+					location.style.display = "block";
+					onlineEventInstr.style.display = "none";
+				} else if (locType.value === "ONLINE_EVENT") {
+					location.style.display = "none";
+					onlineEventInstr.style.display = "block";
+				} else {
+					location.style.display = "block";
+					onlineEventInstr.style.display = "block";
+				}
+			}
+
+			function showError(msg) {
+				$("#accept_tos").hide();
+				$("#ec_loading").hide();
+				$("#ec_tabs").hide();
+
+				$("#ec_error_msg").html(msg);
+				$("#ec_error").show(100);
+			}
+
+			function populateEventConsoleDataError(e) {
+				window.clearInterval(call_timeout);
+
+				console.log("populateEventConsoleDataError: " + e);
+
+				showError(e);
+			}
+
+			function setStatusDisplayNone() {
+				$("#ec_status_div").css("display", "none");
+			}
+
+			function showStatus(msg) {
+				status_showing = true;
+				$("#ec_status_content").html(msg);
+				$("#ec_status_div").show(300);
+			}
+
+			function hideStatus() {
+				status_showing = false;
+				$("#ec_status_div").hide(300, setStatusDisplayNone);
+			}
+
+			function populateReprocessDataTimeout() {
+				window.clearInterval(call_timeout);
+
+				showError(
+					'Unable to reach Google services.<br><a onclick="reinit();">Try Again</a>'
+				);
+			}
+
+			function validateEventInput() {
+				let hasErrors = false;
+				let errorMsg =
+					"Please review and address the following errors:" + "<br>";
+
+				let title = document.getElementById("title");
+				if (title && !title.value) {
+					hasErrors = true;
+					errorMsg += "* " + "Title is required." + "<br>";
+					let titleErrorDiv = document.getElementById("title_error");
+					titleErrorDiv.innerHTML =
+						'<font color="red" size="2";>' + "Title is required." + "</font>";
+					titleErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(titleErrorDiv);
+				}
+
+				let startTime = document.getElementById("start_time");
+				let startTimeTime = document.getElementById("start_time_time");
+				if (
+					(startTime && !startTime.value) ||
+					(startTimeTime && !startTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"Start date and time are required and must be in the future." +
+						"<br>";
+					let startTimeErrorDiv = document.getElementById("start_time_error");
+					startTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Start date and time are required and must be in the future." +
+						"</font>";
+					startTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(startTimeErrorDiv);
+				}
+
+				let endTime = document.getElementById("end_time");
+				let endTimeTime = document.getElementById("end_time_time");
+				if (
+					(endTime && !endTime.value) ||
+					(endTimeTime && !endTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"End date and time are required and must be in the future." +
+						"<br>";
+					let endTimeErrorDiv = document.getElementById("end_time_error");
+					endTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"End date and time are required and must be in the future." +
+						"</font>";
+					endTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(endTimeErrorDiv);
+				}
+
+				if (hasErrors) {
+					showStatus(errorMsg);
+					buttonsController(false);
+					return false;
+				}
+
+				hideStatus();
+				return true;
+			}
+
+			function saveEventSuccessCallback(ecData) {
+				populateEventConsoleData(ecData);
+
+				if (ecData.statusText && ecData.statusText.length > 0) {
+					showStatus(ecData.statusText);
+				}
+				buttonsController(false);
+			}
+
+			function saveEventFailureCallback() {}
+
+			let eventDateTimeDiff = 3600000;
+
+			function setEventDateTimeDiff(startDateTime, endDateTime) {
+				if (
+					!startDateTime ||
+					isNaN(startDateTime.valueOf()) ||
+					!endDateTime ||
+					isNaN(endDateTime.valueOf())
+				) {
+					eventDateTimeDiff = 3600000;
+					return;
+				}
+
+				if (startDateTime.getTime() >= endDateTime.getTime()) {
+					eventDateTimeDiff = 3600000;
+					return;
+				}
+
+				eventDateTimeDiff = endDateTime.getTime() - startDateTime.getTime();
+			}
+
+			function clearDateFieldErrors() {
+				document.getElementById("start_time_error").innerHTML = "";
+				document.getElementById("start_time_error").style = "display:none;";
+				document.getElementById("end_time_error").innerHTML = "";
+				document.getElementById("end_time_error").style = "display:none;";
+			}
+
+			function eventStartDateOnChange(startFieldName, endFieldName, errorText) {
+				clearDateFieldErrors();
+				let startTimeFieldValue = document.getElementById(startFieldName).value;
+				let startTimeTimeFieldValue = document.getElementById(
+					startFieldName + "_time"
+				).value;
+				let eventStartDateTime = new Date(
+					startTimeFieldValue + "T" + startTimeTimeFieldValue
+				);
+				let eventStartDate = new Date(startTimeFieldValue + "T00:00");
+
+				let endTimeFieldValue = document.getElementById(endFieldName).value;
+				let endTimeTimeFieldValue = document.getElementById(
+					endFieldName + "_time"
+				).value;
+				let eventEndDateTime = new Date(
+					endTimeFieldValue + "T" + endTimeTimeFieldValue
+				);
+				let eventEndDate = new Date(endTimeFieldValue + "T00:00");
+
+				if (eventStartDateTime && !isNaN(eventStartDateTime.valueOf())) {
+					let newEventEndDateTime = new Date(
+						eventStartDateTime.getTime() + eventDateTimeDiff
+					);
+
+					let month = new String(newEventEndDateTime.getMonth() + 1);
+					if (month.length === 1) {
+						month = "0" + month;
+					}
+
+					let date = new String(newEventEndDateTime.getDate());
+					if (date.length === 1) {
+						date = "0" + date;
+					}
+
+					let hours = new String(newEventEndDateTime.getHours());
+					if (hours.length === 1) {
+						hours = "0" + hours;
+					}
+
+					let minutes = new String(newEventEndDateTime.getMinutes());
+					if (minutes.length === 1) {
+						minutes = "0" + minutes;
+					}
+
+					document.getElementById(endFieldName).value =
+						newEventEndDateTime.getFullYear() + "-" + month + "-" + date;
+					document.getElementById(endFieldName + "_time").value =
+						hours + ":" + minutes;
+				} else if (
+					eventStartDate &&
+					!isNaN(eventStartDate.valueOf()) &&
+					(!eventEndDate || isNaN(eventEndDate.valueOf()))
+				) {
+					document.getElementById(endFieldName).value = startTimeFieldValue;
+				} else if (
+					eventStartDate &&
+					!isNaN(eventStartDate.valueOf()) &&
+					eventEndDate &&
+					!isNaN(eventEndDate.valueOf()) &&
+					eventStartDate.getTime() >= eventEndDate.getTime()
+				) {
+					let endTimeErrorDiv = document.getElementById(
+						endFieldName + "_error"
+					);
+					endTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' + errorText + "</font>";
+					endTimeErrorDiv.style = "display:block;";
+				}
+			}
+
+			function eventEndDateOnChange(startFieldName, endFieldName, errorText) {
+				clearDateFieldErrors();
+				let startTimeFieldValue = document.getElementById(startFieldName).value;
+				let startTimeTimeFieldValue = document.getElementById(
+					startFieldName + "_time"
+				).value;
+				let eventStartDateTime = new Date(
+					startTimeFieldValue + "T" + startTimeTimeFieldValue
+				);
+
+				let endTimeFieldValue = document.getElementById(endFieldName).value;
+				let endTimeTimeFieldValue = document.getElementById(
+					endFieldName + "_time"
+				).value;
+				let eventEndDateTime = new Date(
+					endTimeFieldValue + "T" + endTimeTimeFieldValue
+				);
+
+				if (
+					eventStartDateTime &&
+					!isNaN(eventStartDateTime.valueOf()) &&
+					eventEndDateTime &&
+					!isNaN(eventEndDateTime.valueOf())
+				) {
+					if (eventStartDateTime.getTime() >= eventEndDateTime.getTime()) {
+						let endTimeErrorDiv = document.getElementById(
+							endFieldName + "_error"
+						);
+						endTimeErrorDiv.innerHTML =
+							'<font color="red" size="2">' + errorText + "</font>";
+						endTimeErrorDiv.style = "display:block;";
+					} else {
+						setEventDateTimeDiff(eventStartDateTime, eventEndDateTime);
+					}
+				} else {
+					setEventDateTimeDiff(null, null);
+				}
+			}
+
+			function setStartDefaultTime() {
+				setDefaultTime("start_time_time");
+
+				let endTimeTime = document.getElementById("end_time_time");
+				if (!endTimeTime.value) {
+					endTimeTime.value = "11:00";
+				}
+			}
+
+			function setDefaultTime(timeFieldID) {
+				let timeField = document.getElementById(timeFieldID);
+
+				if (!timeField.value) {
+					timeField.value = "10:00";
+				}
+			}
+
+			function loadFieldErrors(fieldErrors) {
+				if (!fieldErrors) return;
+
+				for (const fieldName in fieldErrors) {
+					let fieldError = fieldErrors[fieldName];
+					let fieldErrorDiv = document.getElementById(fieldName);
+					if (fieldErrorDiv) {
+						fieldErrorDiv.innerHTML =
+							'<font color="red" size="2">' + fieldError + "</font>";
+						fieldErrorDiv.style = "display:block;";
+						fieldErrorDivs.push(fieldErrorDiv);
+					}
+				}
+			}
+
+			function clearFieldErrors() {
+				if (!fieldErrorDivs || fieldErrorDivs.length === 0) return;
+
+				for (let i = 0; i < fieldErrorDivs.length; i++) {
+					fieldErrorDivs[i].innerHTML = "";
+					fieldErrorDivs[i].style = "display:none;";
+				}
+
+				fieldErrorDivs = [];
+			}
+
+			function saveEvent() {
+				clearFieldErrors();
+				if (validateEventInput()) {
+					buttonsController(true);
+					populateFieldsFromRTE();
+					google.script.run
+						.withSuccessHandler(saveEventSuccessCallback)
+						.withFailureHandler(saveEventFailureCallback)
+						.uiSaveEvent($("#event_config_form")[0]);
+				}
+
+				buttonsController(false);
+			}
+
+			function populateFieldsFromRTE() {
+				var onlineEventInstr = document.getElementById(
+					"online_event_instructions"
+				);
+				onlineEventInstr.value = quillOnlineEventInstr.root.innerHTML;
+			}
+
+			function buttonsController(disableButtons) {
+				let buttonsAction = document.getElementsByClassName("action");
+				if (buttonsAction && buttonsAction.length > 0) {
+					for (let i = 0; i < buttonsAction.length; i++) {
+						buttonsAction[i].disabled = disableButtons;
+					}
+				}
+
+				let buttonsActive = document.getElementsByClassName("active");
+				if (buttonsActive && buttonsActive.length > 0) {
+					for (let i = 0; i < buttonsActive.length; i++) {
+						buttonsActive[i].disabled = disableButtons;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<hr style="width: 100%; text-align: left; margin-left: 0; margin: 0px 0" />
+		<br />
+
+		<div
+			id="ec_status_div"
+			style="margin-top: 8px; dislay: none"
+		>
+			<span
+				style="display: block; float: right"
+				;=""
+				><a
+					style="text-decoration: none"
+					onclick="hideStatus();"
+					>[X]</a
+				>&nbsp;</span
+			>
+			<div
+				id="ec_status_content"
+				style="font-size: 13px"
+			></div>
+		</div>
+
+		<div
+			id="ec_mw"
+			style="vertical-align: top; font-family: Sans-Serif; font-size: 14px"
+		>
+			<form
+				id="event_config_form"
+				action=""
+			>
+				<div
+					id="ec_welcome_stage"
+					style="
+						vertical-align: top;
+						overflow-y: auto;
+						width: 100%;
+						min-height: 380px;
+						max-height: 380px;
+						display: none;
+					"
+				>
+					<div
+						id="ec_welcome_stage_content"
+						style="vertical-align: top"
+					></div>
+					<br />
+					<div id="ec_welcome_stage_tos_content"></div>
+					<br />
+					<div
+						id="ec_event_create_stages_next_button"
+						style="horizontal-align: center; position: relative"
+					>
+						<input
+							type="button"
+							class="action"
+							onclick="acceptTos();"
+							value="Get Started"
+						/>
+					</div>
+				</div>
+
+				<div
+					id="ec_event_info_stage"
+					style="
+						vertical-align: top;
+						overflow-y: auto;
+						width: 100%;
+						min-height: 470px;
+						max-height: 470px;
+					"
+				>
+					<div style="overflow-y: scroll; height: 440px">
+						<div id="event_info_component">
+							Let's get started with some basic details about your event. These
+							details can be changed later, so don't worry about getting
+							everything perfect. <br /><br />
+							<div>
+								<label for="title">Title<font color="red">*</font></label>
+							</div>
+							<div id="ec_field_label">Give your event a descriptive name.</div>
+							<div>
+								<input
+									type="text"
+									id="title"
+									name="title"
+									maxlength="75"
+									size="75"
+								/>
+							</div>
+							<div
+								id="title_error"
+								style="display: none"
+							></div>
+							<br />
+							<div><label for="description">Brief Description</label></div>
+							<div id="ec_field_label">
+								Provide a brief but catchy description for your event.
+							</div>
+							<div>
+								<textarea
+									id="description"
+									name="description"
+									rows="4"
+									cols="73"
+									maxlength="150"
+								></textarea>
+							</div>
+							<div
+								id="description_error"
+								style="display: none"
+							></div>
+							<br />
+							<div>
+								<label for="start_time"
+									>Event Date and Time<font color="red">*</font></label
+								>
+							</div>
+							<div id="ec_field_label">
+								Let people know when your event starts and ends.
+							</div>
+							<div>
+								<input
+									type="date"
+									id="start_time"
+									name="start_time"
+									onchange="eventStartDateOnChange('start_time','end_time', 'End date and time must be later than start date and time.')"
+									required=""
+								/>&nbsp;<input
+									id="start_time_time"
+									type="time"
+									name="start_time_time"
+									step="60"
+									onchange="eventStartDateOnChange('start_time','end_time', 'End date and time must be later than start date and time.')"
+									onclick="setStartDefaultTime()"
+									required=""
+								/>&nbsp;&nbsp;to&nbsp;&nbsp;<input
+									id="end_time_time"
+									type="time"
+									name="end_time_time"
+									step="60"
+									onchange="eventEndDateOnChange('start_time','end_time', 'End date and time must be later than start date and time.')"
+									onclick="setDefaultTime('end_time_time')"
+									required=""
+								/>&nbsp;<input
+									type="date"
+									id="end_time"
+									name="end_time"
+									onchange="eventEndDateOnChange('start_time','end_time', 'End date and time must be later than start date and time.')"
+									required=""
+								/>&nbsp;<span
+									id="event_date_timezone"
+									name="event_date_timezone"
+									>America/Los Angeles</span
+								>
+							</div>
+							<div
+								id="start_time_error"
+								style="display: none"
+							></div>
+							<div
+								id="end_time_error"
+								style="display: none"
+							></div>
+							<br />
+							<div><label for="location_type">Location</label></div>
+							<div id="ec_field_label">
+								Tell attendees whether this event will be held online or
+								in-person.
+							</div>
+							<div>
+								<select
+									id="location_type"
+									name="location_type"
+									onchange="displayLocation();"
+								>
+									<option
+										value="TBD"
+										selected=""
+									>
+										To Be Announced
+									</option>
+									<option value="VENUE">In-Person Event</option>
+									<option value="ONLINE_EVENT">Online Event</option>
+									<option value="HYBRID">
+										Both In-Person and Online Event
+									</option>
+								</select>
+							</div>
+							<div
+								id="location_type_error"
+								style="display: none"
+							></div>
+							<div
+								id="location_component"
+								style="display: none"
+							>
+								<br />
+								<div><label for="location">In-Person Location</label></div>
+								<div id="ec_field_label">
+									Tell attendees where to show up for the event.
+								</div>
+								<div>
+									<input
+										type="text"
+										id="location"
+										name="location"
+										maxlength="100"
+										size="75"
+									/>
+								</div>
+								<div
+									id="location_error"
+									style="display: none"
+								></div>
+							</div>
+							<div
+								id="online_event_instructions_component"
+								style="display: none"
+							>
+								<br />
+								<div>
+									<label for="online_event_instructions"
+										>Online Event Instructions</label
+									>
+								</div>
+								<div id="ec_field_label">
+									Tell attendees how to join your event remotely.
+								</div>
+								<input
+									id="online_event_instructions"
+									name="online_event_instructions"
+									type="hidden"
+								/>
+								<div class="ql-toolbar ql-snow">
+									<span class="ql-formats"
+										><span class="ql-header ql-picker"
+											><span
+												class="ql-picker-label"
+												tabindex="0"
+												role="button"
+												aria-expanded="false"
+												aria-controls="ql-picker-options-0"
+												><svg viewBox="0 0 18 18">
+													<polygon
+														class="ql-stroke"
+														points="7 11 9 13 11 11 7 11"
+													></polygon>
+													<polygon
+														class="ql-stroke"
+														points="7 7 9 5 11 7 7 7"
+													></polygon></svg></span
+											><span
+												class="ql-picker-options"
+												aria-hidden="true"
+												tabindex="-1"
+												id="ql-picker-options-0"
+												><span
+													tabindex="0"
+													role="button"
+													class="ql-picker-item"
+													data-value="1"
+												></span
+												><span
+													tabindex="0"
+													role="button"
+													class="ql-picker-item"
+													data-value="2"
+												></span
+												><span
+													tabindex="0"
+													role="button"
+													class="ql-picker-item"
+													data-value="3"
+												></span
+												><span
+													tabindex="0"
+													role="button"
+													class="ql-picker-item ql-selected"
+												></span></span></span
+										><select
+											class="ql-header"
+											style="display: none"
+										>
+											<option value="1"></option>
+											<option value="2"></option>
+											<option value="3"></option>
+											<option selected="selected"></option></select></span
+									><span class="ql-formats"
+										><button
+											type="button"
+											class="ql-bold"
+										>
+											<svg viewBox="0 0 18 18">
+												<path
+													class="ql-stroke"
+													d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"
+												></path>
+												<path
+													class="ql-stroke"
+													d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"
+												></path>
+											</svg></button
+										><button
+											type="button"
+											class="ql-italic"
+										>
+											<svg viewBox="0 0 18 18">
+												<line
+													class="ql-stroke"
+													x1="7"
+													x2="13"
+													y1="4"
+													y2="4"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="5"
+													x2="11"
+													y1="14"
+													y2="14"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="8"
+													x2="10"
+													y1="14"
+													y2="4"
+												></line>
+											</svg></button
+										><button
+											type="button"
+											class="ql-underline"
+										>
+											<svg viewBox="0 0 18 18">
+												<path
+													class="ql-stroke"
+													d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"
+												></path>
+												<rect
+													class="ql-fill"
+													height="1"
+													rx="0.5"
+													ry="0.5"
+													width="12"
+													x="3"
+													y="15"
+												></rect>
+											</svg></button
+										><button
+											type="button"
+											class="ql-link"
+										>
+											<svg viewBox="0 0 18 18">
+												<line
+													class="ql-stroke"
+													x1="7"
+													x2="11"
+													y1="7"
+													y2="11"
+												></line>
+												<path
+													class="ql-even ql-stroke"
+													d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"
+												></path>
+												<path
+													class="ql-even ql-stroke"
+													d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"
+												></path>
+											</svg></button></span
+									><span class="ql-formats"
+										><button
+											type="button"
+											class="ql-list"
+											value="ordered"
+										>
+											<svg viewBox="0 0 18 18">
+												<line
+													class="ql-stroke"
+													x1="7"
+													x2="15"
+													y1="4"
+													y2="4"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="7"
+													x2="15"
+													y1="9"
+													y2="9"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="7"
+													x2="15"
+													y1="14"
+													y2="14"
+												></line>
+												<line
+													class="ql-stroke ql-thin"
+													x1="2.5"
+													x2="4.5"
+													y1="5.5"
+													y2="5.5"
+												></line>
+												<path
+													class="ql-fill"
+													d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"
+												></path>
+												<path
+													class="ql-stroke ql-thin"
+													d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"
+												></path>
+												<path
+													class="ql-stroke ql-thin"
+													d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"
+												></path>
+											</svg></button
+										><button
+											type="button"
+											class="ql-list"
+											value="bullet"
+										>
+											<svg viewBox="0 0 18 18">
+												<line
+													class="ql-stroke"
+													x1="6"
+													x2="15"
+													y1="4"
+													y2="4"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="6"
+													x2="15"
+													y1="9"
+													y2="9"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="6"
+													x2="15"
+													y1="14"
+													y2="14"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="3"
+													x2="3"
+													y1="4"
+													y2="4"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="3"
+													x2="3"
+													y1="9"
+													y2="9"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="3"
+													x2="3"
+													y1="14"
+													y2="14"
+												></line>
+											</svg></button></span
+									><span class="ql-formats"
+										><button
+											type="button"
+											class="ql-clean"
+										>
+											<svg
+												class=""
+												viewBox="0 0 18 18"
+											>
+												<line
+													class="ql-stroke"
+													x1="5"
+													x2="13"
+													y1="3"
+													y2="3"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="6"
+													x2="9.35"
+													y1="12"
+													y2="3"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="11"
+													x2="15"
+													y1="11"
+													y2="15"
+												></line>
+												<line
+													class="ql-stroke"
+													x1="15"
+													x2="11"
+													y1="11"
+													y2="15"
+												></line>
+												<rect
+													class="ql-fill"
+													height="1"
+													rx="0.5"
+													ry="0.5"
+													width="7"
+													x="2"
+													y="14"
+												></rect>
+											</svg></button
+									></span>
+								</div>
+								<div
+									id="online_event_instructions_container"
+									class="ql-container ql-snow"
+								>
+									<div
+										class="ql-editor ql-blank"
+										data-gramm="false"
+										contenteditable="true"
+									>
+										<p><br /></p>
+									</div>
+									<div
+										class="ql-clipboard"
+										contenteditable="true"
+										tabindex="-1"
+									></div>
+									<div class="ql-tooltip ql-hidden">
+										<a
+											class="ql-preview"
+											target="_blank"
+											href="about:blank"
+										></a
+										><input
+											type="text"
+											data-formula="e=mc^2"
+											data-link="https://quilljs.com"
+											data-video="Embed URL"
+										/><a class="ql-action"></a><a class="ql-remove"></a>
+									</div>
+								</div>
+								<div
+									id="online_event_instructions_error"
+									style="display: none"
+								></div>
+							</div>
+							<div
+								id="ec_gcal_select"
+								style=""
+							>
+								<br />
+								<div>
+									<label for="google_calendar">Google Calendar Event</label>
+								</div>
+								<div id="ec_field_label">
+									Which of your Google Calendars should we use for the event?
+									Attendees will receive calendar invitations from the selected
+									calendar.
+								</div>
+								<div>
+									<select
+										id="google_calendar"
+										name="google_calendar"
+									>
+										<option value="eddie@gleeda.net">eddie@gleeda.net</option>
+										<option
+											value="c_967c79cfef443dc8a0208233ae0b3a504dd94bbcab95aaf3bbb4b8f4b4a77a87@group.calendar.google.com"
+										>
+											Another test calendar (NYC)
+										</option>
+									</select>
+								</div>
+								<br />
+							</div>
+						</div>
+					</div>
+					<div style="border-top: solid 1px; margin-top: 20px">
+						<div
+							style="position: absolute; right: 0; bottom: 0; margin-top: 20px"
+						>
+							<div
+								id="ec_event_create_stages_next_button"
+								style="
+									float: right;
+									position: sticky;
+									right: 5px;
+									bottom: 0;
+									margin-top: 5px;
+								"
+							>
+								<input
+									type="button"
+									class="action"
+									onclick="saveEvent();"
+									value="Next"
+								/>
+							</div>
+							<div></div>
+						</div>
+					</div>
+
+					<script>
+						quillOnlineEventInstr = new Quill(
+							"#online_event_instructions_container",
+							{
+								theme: "snow",
+							}
+						);
+					</script>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

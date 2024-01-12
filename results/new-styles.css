@@ -1,0 +1,256 @@
+@import url(https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:regular,500,600,700&display=swap);
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500&display=swap);
+
+@import url(https://fonts.googleapis.com/css?family=Inter:regular,500,600,700&display=swap);
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap);
+
+@charset "UTF-8";
+
+
+.modal {
+  border-radius: 9px;
+  background: #FFF;
+  padding: 20px 30px;
+  font-family: Plus Jakarta Sans;
+}
+
+.modal strong {
+  font-family: Plus Jakarta Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  /* 160% */
+  letter-spacing: 0.1px;
+  color: #171725;
+}
+
+.modal hr {
+  color: rgba(0, 0, 0, 0.14);
+}
+
+.modal label {
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  color: #1F2937;
+  line-height: 22px;
+  /* 157.143% */
+  letter-spacing: 0.07px;
+}
+
+.modal #ec_field_label {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.modal textarea {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.modal select {
+  border-radius: 2px;
+  border: 1px solid #D9D9D9;
+  background: url(https://ssl.gstatic.com/ui/v1/disclosure/grey-disclosure-arrow-up-down.png) no-repeat calc(100% - 10px) center, -webkit-linear-gradient(top, #fff, #fff);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.85);
+  padding: 10px 12px;
+  height: auto;
+  border-radius: 5.268px;
+  border: 1.317px solid #E5E5E5;
+}
+
+.modal #location,
+.modal #title {
+  height: auto;
+  min-height: 45px;
+  border-radius: 5.268px;
+  border: 1.317px solid #E5E5E5;
+  padding: 10px 12px;
+  font-family: Plus Jakarta Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+  margin-top: 2px;
+}
+
+.modal input.action {
+  border-radius: 4px;
+  background: #761B7B;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 34px;
+  padding: 12px 24px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.07px;
+  color: #FEFEFE;
+  height: initial;
+  width: initial;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.modal input[type=button].active {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 34px;
+  padding: 12px 24px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000000;
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.07px;
+  height: initial;
+  width: initial;
+  margin-right: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.modal #ec_field_label {
+  margin-bottom: 10px;
+}
+
+.modal #event_theme {
+  min-width: 300px;
+}
+
+.ql-toolbar.ql-snow {
+  margin-top: 15px;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+.ql-editor {
+  border-radius: 0 0 5px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+#start_time,
+#start_time_time,
+#end_time_time,
+#end_time {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 23.25%;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  padding: 10px 15px;
+  border-radius: 2.644px;
+  border: 1px solid #D9D9D9;
+}
+
+#start_time_error,
+#end_time_error {
+  padding-top: 4px;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+}
+
+#ec_loading .ec_loading_wrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 22px;
+}
+
+#ec_loading .ec_loading_wrapper .ec_loading_text {
+  color: #761B7B;
+  font-family: Plus Jakarta Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.12px;
+}
+
+#ec_loading .ec_loading_wrapper svg {
+  display: inline-block;
+  -webkit-animation: spindotts 2s infinite linear;
+          animation: spindotts 2s infinite linear;
+}
+
+@-webkit-keyframes spindotts {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spindotts {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 47.99875em) {
+  .modal {
+    overflow-x: hidden;
+  }
+}
