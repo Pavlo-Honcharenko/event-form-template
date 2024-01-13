@@ -196,7 +196,9 @@ input.action {
 }
 
 //=======================================================================================================
-
+.tab {
+	margin-bottom: 16px;
+}
 .tab span {
 	height: 38px !important;
 	margin-right: -12px;
@@ -235,6 +237,17 @@ input.action {
 		border-radius: 6px;
 		z-index: -1;
 	}
+}
+
+#ec_share_event_button input[type="button"].action {
+	border-radius: 4px;
+	border: 1px solid #761B7B;
+	background: #000 url('@img/share-arrow.svg') no-repeat calc(100% - 13px) center !important;
+	display: inline-flex;
+	padding: 7px 70px 7px 18px;
+	justify-content: flex-end;
+	align-items: center;
+	cursor: pointer;
 }
 
 
