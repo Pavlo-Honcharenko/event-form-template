@@ -251,6 +251,16 @@ input.action {
 }
 
 
+.tabcontent, .overview_grid, table.overview_grid td {
+	border: initial;
+}
+.overview_content_grid {
+	border-radius: 8px;
+	background: #FFF;
+	box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.12);
+}
+
+
 
 //=======================================================================================================
 
