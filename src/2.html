@@ -5141,5 +5141,18 @@
 				theme: "snow",
 			});
 		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get all elements with the class 'overview_content_grid'
+				var elements = document.querySelectorAll(".overview_content_grid");
+
+				// Iterate through each element and add unique classes
+				elements.forEach(function (element, index) {
+					// Add classes like 'overview_content_grid--1', 'overview_content_grid--2', etc.
+					element.classList.add("overview_content_grid--" + (index + 1));
+				});
+			});
+		</script>
 	</body>
 </html>

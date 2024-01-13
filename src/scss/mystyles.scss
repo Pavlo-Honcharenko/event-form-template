@@ -255,9 +255,24 @@ input.action {
 	border: initial;
 }
 .overview_content_grid {
+	width: 100%;
+	padding: 0 14px 5px;
+}
+
+.overview_content_grid tbody {
 	border-radius: 8px;
+	overflow: hidden;
 	background: #FFF;
 	box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.12);
+}
+
+.overview_grid {
+	margin: 0 -20px;
+	width: calc(100% + 40px);
+}
+
+.overview_content_grid {
+	
 }
 
 
