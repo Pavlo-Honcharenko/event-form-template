@@ -3,13 +3,17 @@
 	background: #FFF;
 	padding: 20px 30px;
 	font-family: "Plus Jakarta Sans";
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 160%;
+	letter-spacing: 0.07px;
 
 	@media (min-width:$mobile){
 		overflow-x: hidden; 
 	}
 
 	strong {
-		font-family: Plus Jakarta Sans;
+		font-family: "Plus Jakarta Sans";
 		font-size: 20px;
 		font-style: normal;
 		font-weight: 700;
@@ -18,18 +22,8 @@
 		color: #171725;
 	}
 
-	span {
-		a {
-
-		}
-	}
-
-	hr {
-		color: rgba(0, 0, 0, 0.14);
-	}
-
 	label {
-		font-family: Plus Jakarta Sans;
+		font-family: "Plus Jakarta Sans";
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 500;
@@ -73,7 +67,7 @@
 		border-radius: 5.268px;
 		border: 1.317px solid #E5E5E5;
 		padding: 10px 12px;
-		font-family: Plus Jakarta Sans;
+		font-family: "Plus Jakarta Sans";
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 500;
@@ -93,7 +87,7 @@
 		justify-content: center;
 		align-items: center;
 		color: #000000;
-		font-family: Plus Jakarta Sans;
+		font-family: "Plus Jakarta Sans";
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 600;
@@ -101,8 +95,6 @@
 		letter-spacing: 0.07px;
 		height: initial;
 		width: initial;
-		margin-right: 8px;
-		margin-top: 15px;
 		cursor: pointer;
 	}
 
@@ -122,7 +114,7 @@ input.action {
 	padding: 12px 24px;
 	justify-content: center;
 	align-items: center;
-	font-family: Plus Jakarta Sans;
+	font-family: "Plus Jakarta Sans";
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 600;
@@ -131,7 +123,7 @@ input.action {
 	color: #FEFEFE !important;
 	height: initial;
 	width: initial;
-	margin-top: 15px;
+	margin-left: 4px;
 	cursor: pointer;
 }
 
@@ -179,7 +171,7 @@ input.action {
 
 		.ec_loading_text {
 			color: #761B7B;
-			font-family: Plus Jakarta Sans;
+			font-family: "Plus Jakarta Sans";
 			font-size: 24px;
 			font-style: normal;
 			font-weight: 600;
