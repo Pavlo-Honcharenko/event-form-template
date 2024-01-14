@@ -78,26 +78,6 @@
 
 	
 
-	input[type="button"].active {
-		border-radius: 4px;
-		background: rgba(0, 0, 0, 0.10);
-		display: inline-flex;
-		height: 34px;
-		padding: 12px 24px;
-		justify-content: center;
-		align-items: center;
-		color: #000000;
-		font-family: "Plus Jakarta Sans";
-		font-size: 14px;
-		font-style: normal;
-		font-weight: 600;
-		line-height: 22px; 
-		letter-spacing: 0.07px;
-		height: initial;
-		width: initial;
-		cursor: pointer;
-	}
-
 	#ec_field_label {
 		margin-bottom: 10px;
 	}
@@ -107,11 +87,54 @@
 	}
 }
 
-input.action {
+//=======================================================================================================
+
+
+
+.button, button, input[type="button"], input[type="image"], input[type="reset"], input[type="submit"] {
+	border-radius: 4px;
+	display: inline-flex;
+	padding: 7px 16px;
+	justify-content: center;
+	align-items: center;
+	font-family: "Plus Jakarta Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 22px; 
+	letter-spacing: 0.07px;
+	height: initial;
+	width: initial;
+	cursor: pointer;
+}
+
+input[type="button"].active {
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.10);
+	display: inline-flex;
+	padding: 7px 16px;
+	justify-content: center;
+	align-items: center;
+	color: #000000;
+	font-family: "Plus Jakarta Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 22px; 
+	letter-spacing: 0.07px;
+	height: initial;
+	width: initial;
+	cursor: pointer;
+}
+
+.button.action, .button.blue, button.action, button.blue, 
+input[type="button"].action, input[type="button"].blue, 
+input[type="submit"].action, input[type="submit"].blue, 
+input.action, button.action {
 	border-radius: 4px;
 	background: #761B7B !important;
 	display: inline-flex;
-	padding: 12px 24px;
+	padding: 7px 16px;
 	justify-content: center;
 	align-items: center;
 	font-family: "Plus Jakarta Sans";
@@ -126,6 +149,29 @@ input.action {
 	margin-left: 4px;
 	cursor: pointer;
 }
+
+.button.disabled, button:disabled, input[type="button"]:disabled, 
+input[type="image"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled {
+	border-radius: 4px;
+	display: inline-flex;
+	padding: 7px 16px;
+	justify-content: center;
+	align-items: center;
+	font-family: "Plus Jakarta Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 22px; 
+	letter-spacing: 0.07px;
+	height: initial;
+	width: initial;
+	cursor: initial;
+}
+
+
+//=======================================================================================================
+
+
 
 .ql-toolbar.ql-snow {
 	margin-top: 15px;
@@ -210,7 +256,7 @@ input.action {
 	font-size: 15px;
 	font-style: normal;
 	font-weight: 600;
-	line-height: 26px;
+	line-height: 38px;
 	letter-spacing: 0.075px;
 	background: #E7E7E7;
 	border-radius: 6px !important;
@@ -219,7 +265,7 @@ input.action {
 .tab span.active {
 	background: #E7E7E7;
 	color: #FFF !important;
-	line-height: 235%;
+	line-height: 38px;
 	border-width: 0px !important;
 	position: relative;
 	z-index: 1;
@@ -284,6 +330,14 @@ background: #FFF;
 		overflow: hidden;
 		box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.12);
 	}
+
+	tr:first-child td {
+		padding-top: 12px;
+	}
+
+	tr:last-child td {
+		padding-bottom: 12px;
+	}
 }
 
 .overview_content_grid.overview_content_grid--1 tbody {
@@ -335,7 +389,7 @@ table.overview_content_grid {
    	height: 20%;
 
 		td {
-			padding: 6px 30px;
+			padding: 2px 30px;
 			text-align: left;
 		}
 
@@ -362,13 +416,19 @@ table.overview_content_grid {
 		}
 
 		.overview_actions {
-				color: #000;
-				font-family: "Plus Jakarta Sans";
-				font-size: 10px;
-				font-style: normal;
-				font-weight: 600;
-				line-height: 26px;
-				letter-spacing: 0.05px;
+			color: #000;
+			font-family: "Plus Jakarta Sans";
+			font-size: 10px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 26px;
+			letter-spacing: 0.05px;
+
+			span {
+				display: block;
+				min-height: 20px;
+			}
+
 			a {
 				color: #000;
 				font-family: "Plus Jakarta Sans";
@@ -378,6 +438,7 @@ table.overview_content_grid {
 				line-height: 26px;
 				letter-spacing: 0.05px;
 				text-decoration-line: underline;
+				cursor: pointer;
 			}
 			
 		}
