@@ -597,14 +597,14 @@ input[type="checkbox"] {
 	}
 }
 
-#max_registrants, #website_passcode {
+#max_registrants, #website_passcode, waitlist_max_registrants {
 	width: 100%;
 	max-width: 530px;
 	border-radius: 5px;
 	border: 1px solid #E5E5E5;
 	background: #FEFEFE;
 	display: flex;
-	height: 60;
+	height: 50px;
 	padding-left: 20px;
 	align-items: center;
 }
