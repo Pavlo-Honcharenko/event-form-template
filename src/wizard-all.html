@@ -314,7 +314,7 @@
 
 		<link
 			rel="stylesheet"
-			href="css/style.min.css"
+			href="css/style.css"
 		/>
 
 		<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -794,7 +794,9 @@
 				><a
 					style="text-decoration: none"
 					onclick="hideStatus();"
-					>[X]</a
+					><img
+						src="@img/close-black-button.svg"
+						alt="close" /></a
 				>&nbsp;</span
 			>
 			<div
@@ -833,16 +835,12 @@
 				id="ec_loading"
 				style="width: 250px; display: none"
 			>
-				<div>
+				<div class="ec_loading_wrapper">
 					<img
-						style="width: 100%"
-						src="https://scooper.gleeda.net/eventform/eventform_logo.png"
+						src="@img/loading-spinner.svg"
+						alt=""
 					/>
-					<br /><br />
-					<img
-						style="width: 100%"
-						src="https://scooper.gleeda.net/eventform/horizontal_loader.gif"
-					/>
+					<div class="ec_loading_text">Loading...</div>
 				</div>
 			</div>
 
@@ -1436,5 +1434,39 @@
 				</div>
 			</form>
 		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get all elements with the class 'overview_content_grid'
+				var elements = document.querySelectorAll(".overview_content_grid");
+
+				// Iterate through each element and add unique classes
+				elements.forEach(function (element, index) {
+					// Add classes like 'overview_content_grid--1', 'overview_content_grid--2', etc.
+					element.classList.add("overview_content_grid--" + (index + 1));
+				});
+			});
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Check if there is an image with id "bannerImage"
+				const bannerImage = document.getElementById("bannerImage");
+
+				if (bannerImage) {
+					// Create a new div element with class "edit-magenta"
+					const magentaDiv = document.createElement("div");
+					magentaDiv.className = "edit-magenta";
+
+					// You can add content or other attributes to the new div if needed
+
+					// Insert the new div after the image with id "bannerImage"
+					bannerImage.parentNode.insertBefore(
+						magentaDiv,
+						bannerImage.nextSibling
+					);
+				}
+			});
+		</script>
 	</body>
 </html>

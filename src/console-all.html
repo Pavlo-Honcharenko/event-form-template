@@ -312,6 +312,11 @@
 			rel="stylesheet"
 		/>
 
+		<link
+			rel="stylesheet"
+			href="css/style.css"
+		/>
+
 		<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -2261,59 +2266,6 @@
 		</script>
 	</head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 	<body>
 		<hr style="width: 100%; text-align: left; margin-left: 0; margin: 0px 0" />
 		<br />
@@ -2333,7 +2285,9 @@
 				><a
 					style="text-decoration: none"
 					onclick="hideStatus();"
-					>[X]</a
+					><img
+						src="@img/close-black-button.svg"
+						alt="close" /></a
 				>&nbsp;</span
 			>
 			<div
@@ -2372,16 +2326,12 @@
 				id="ec_loading"
 				style="width: 250px; display: none"
 			>
-				<div>
+				<div class="ec_loading_wrapper">
 					<img
-						style="width: 100%"
-						src="https://scooper.gleeda.net/eventform/eventform_logo.png"
+						src="@img/loading-spinner.svg"
+						alt=""
 					/>
-					<br /><br />
-					<img
-						style="width: 100%"
-						src="https://scooper.gleeda.net/eventform/horizontal_loader.gif"
-					/>
+					<div class="ec_loading_text">Loading...</div>
 				</div>
 			</div>
 
@@ -2417,7 +2367,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_event_theme');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Event Website Theme</strong>
@@ -2500,7 +2452,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_eventTitle');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Title</strong>
@@ -2572,7 +2526,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_eventDescription');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Brief Description</strong>
@@ -2645,7 +2601,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_eventWhen');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Date and Time</strong>
@@ -2751,7 +2709,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_eventWhere');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Location</strong>
@@ -3192,7 +3152,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_additional_event_info');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px"
@@ -3580,7 +3542,9 @@
 						><a
 							style="text-decoration: none"
 							onclick="closeModalLayer('edit_modal_eventVideoUrl');"
-							>[X]</a
+							><img
+								src="@img/close-black-button.svg"
+								alt="close" /></a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Video</strong>
@@ -3730,7 +3694,9 @@
 					><a
 						style="text-decoration: none"
 						onclick="closeModalLayer('review_registration_form_modal');"
-						>[X]</a
+						><img
+							src="@img/close-black-button.svg"
+							alt="close" /></a
 					>&nbsp;</span
 				>
 				<strong style="font-size: 20px">Review Registration Form</strong>
@@ -3826,7 +3792,9 @@
 					><a
 						style="text-decoration: none"
 						onclick="closeModalLayer('publish_event_modal');"
-						>[X]</a
+						><img
+							src="@img/close-black-button.svg"
+							alt="close" /></a
 					>&nbsp;</span
 				>
 				<strong style="font-size: 20px">Create Event</strong>
@@ -3886,7 +3854,9 @@
 					><a
 						style="text-decoration: none"
 						onclick="closeModalLayer('share_event_modal');"
-						>[X]</a
+						><img
+							src="@img/close-black-button.svg"
+							alt="close" /></a
 					>&nbsp;</span
 				>
 				<strong style="font-size: 20px">Share Event</strong>
@@ -4325,6 +4295,18 @@
 										class="active"
 										value="Apply Filter"
 									/>
+
+									<!-- <div class="multi_options_button">
+	<button onclick="displayMultipleOptions('selectActionRowId')" class="multi_options_btn">Select Action</button>
+	<div id="selectActionRowId" class="multi_options_button-content">
+		<a href="#" id="view_reg_detailsregEmail">View Reg. Details</a>
+		<a href="#" onclick="displayNoteLayer('regEmail','escapedRegNotes')">Add Note</a>
+		<a href="#" onclick="changeRegStatus('ATTENDING', 'regEmail')">Mark as Attending</a>
+		<a href="#" onclick="changeRegStatus('WAITLISTED', 'regEmail')">Mark as Waitlisted</a>
+		<a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'regEmail')">Mark as Not Approved</a>
+		<a href="#" onclick="changeRegStatus('CHECKED_IN', 'regEmail')">Mark as Checked In</a>
+	</div>
+</div> -->
 								</td>
 							</tr>
 						</tbody>
@@ -4471,7 +4453,9 @@
 							><a
 								style="text-decoration: none"
 								onclick="closeModalLayer('add_note_modal');"
-								>[X]</a
+								><img
+									src="@img/close-black-button.svg"
+									alt="close" /></a
 							>&nbsp;</span
 						>
 						<h3>Add a Note</h3>
@@ -4522,7 +4506,9 @@
 							><a
 								style="text-decoration: none"
 								onclick="closeModalLayer('view_reg_details_modal');"
-								>[X]</a
+								><img
+									src="@img/close-black-button.svg"
+									alt="close" /></a
 							>&nbsp;</span
 						>
 						<table id="view_reg_details_table"></table>
@@ -4555,7 +4541,9 @@
 							><a
 								style="text-decoration: none"
 								onclick="closeModalLayer('closte_reg_modal');"
-								>[X]</a
+								><img
+									src="@img/close-black-button.svg"
+									alt="close" /></a
 							>&nbsp;</span
 						>
 						<strong style="font-size: 20px">Close Event Registration</strong>
@@ -4854,10 +4842,8 @@
 									class="editable_field"
 									onclick="editEventField('eventVideoUrl');"
 								>
-									<span id="span_eventVideoUrl"
-										><img
-											width="200"
-											src="https://scooper.gleeda.net/eventform/playvideo.png" /></span
+									<span id="span_eventVideoUrl">
+										<img src="@img/youtube-icon.svg" /> </span
 									><span class="tooltiptext">Click to add video</span>
 								</div>
 							</div>
@@ -5086,6 +5072,137 @@
 
 			quillAddlEventInfo = new Quill("#additional_event_info_container", {
 				theme: "snow",
+			});
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get all elements with the class 'overview_content_grid'
+				var elements = document.querySelectorAll(".overview_content_grid");
+
+				// Iterate through each element and add unique classes
+				elements.forEach(function (element, index) {
+					// Add classes like 'overview_content_grid--1', 'overview_content_grid--2', etc.
+					element.classList.add("overview_content_grid--" + (index + 1));
+				});
+			});
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Check if there is elem with id "bannerImage"
+				const bannerImage = document.getElementById("bannerImage");
+
+				if (bannerImage) {
+					// Create a new div element with class "edit-magenta"
+					const magentaDiv = document.createElement("div");
+					magentaDiv.className = "edit-magenta";
+
+					// You can add content or other attributes to the new div if needed
+
+					// Insert the new div after the image with id "bannerImage"
+					bannerImage.parentNode.insertBefore(
+						magentaDiv,
+						bannerImage.nextSibling
+					);
+				}
+
+				const eventTitleElement = document.getElementById("span_eventTitle");
+
+				if (eventTitleElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					// Insert the new div after the element with id "eventTitle"
+					eventTitleElement.parentNode.insertBefore(
+						whiteDiv,
+						eventTitleElement.nextSibling
+					);
+				}
+
+				const eventDescriptionElement = document.getElementById(
+					"span_eventDescription"
+				);
+
+				if (eventDescriptionElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventDescriptionElement.parentNode.insertBefore(
+						whiteDiv,
+						eventDescriptionElement.nextSibling
+					);
+				}
+
+				const eventWhenElement = document.getElementById("span_eventWhen");
+
+				if (eventWhenElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventWhenElement.parentNode.insertBefore(
+						whiteDiv,
+						eventWhenElement.nextSibling
+					);
+				}
+
+				const eventWhereElement = document.getElementById("span_eventWhere");
+
+				if (eventWhereElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventWhereElement.parentNode.insertBefore(
+						whiteDiv,
+						eventWhereElement.nextSibling
+					);
+				}
+
+				const eventRegWhenElement =
+					document.getElementById("span_eventRegWhen");
+
+				if (eventRegWhenElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventRegWhenElement.parentNode.insertBefore(
+						whiteDiv,
+						eventRegWhenElement.nextSibling
+					);
+				}
+
+				const eventInfoElement = document.getElementById(
+					"span_eventAdditionalEventInfo"
+				);
+
+				if (eventInfoElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventInfoElement.parentNode.insertBefore(
+						whiteDiv,
+						eventInfoElement.nextSibling
+					);
+				}
+
+				const eventVideoElement = document.getElementById("span_eventVideoUrl");
+
+				if (eventVideoElement) {
+					// Create a new div element with class "edit-white"
+					const whiteDiv = document.createElement("div");
+					whiteDiv.className = "edit-white";
+
+					eventVideoElement.parentNode.insertBefore(
+						whiteDiv,
+						eventVideoElement.nextSibling
+					);
+				}
 			});
 		</script>
 	</body>

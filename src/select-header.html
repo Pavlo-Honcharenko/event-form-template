@@ -1,0 +1,403 @@
+<html>
+	<head>
+		<script src="//www.google.com/jsapi"></script>
+		<script>
+			window.parent.maeExportApis_();
+		</script>
+
+		<link
+			rel="stylesheet"
+			href="https://ssl.gstatic.com/docs/script/css/add-ons1.css"
+		/>
+
+		<style>
+			select {
+				text-align-last: left;
+				padding-left: 8px;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			#ec_mw {
+				padding: 5px 10px 5px 5px;
+				z-index: 1000;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 400px;
+				vertical-align: top;
+			}
+
+			#ec_status_div {
+				display: none;
+				background-color: #ffff99;
+				padding: 2px 2px 2px 0px;
+				width: 90%;
+			}
+
+			#ec_status_content {
+				border: 0px solid;
+
+				min-height: 15px;
+				padding: 8px 8px 8px 5px;
+			}
+
+			#ec_tabs {
+				width: 100%;
+			}
+
+			#ec_tab_body {
+				overflow: hidden;
+			}
+
+			.tab {
+				overflow: hidden;
+			}
+
+			.tab span {
+				background-color: inherit;
+				float: left;
+				border-width: 1px;
+				border-style: solid;
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+				cursor: pointer;
+				transition: 0.3s;
+				width: 175px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+			}
+
+			.tab span:hover {
+				background-color: #c0c0c0;
+			}
+
+			.tab span.active {
+				background-color: #d3d3d3;
+			}
+
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				min-height: 400px;
+				max-height: 400px;
+			}
+
+			#ec_field_label {
+				font-size: 10px;
+				color: grey;
+			}
+
+			#online_event_instructions_container {
+				height: 100px;
+			}
+
+			#additional_event_info_container {
+				height: 100px;
+			}
+
+			#registrations_table {
+				font-family: Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			#registrations_table td,
+			#registrations_table th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+
+			#registrations_table tr:nth-child(3n + 2) {
+				background-color: #f2f2f2;
+			}
+
+			#registrations_table tr:hover {
+				background-color: #ddd;
+			}
+
+			#registrations_table th,
+			#registrations_table a {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #04aa6d;
+				color: white;
+			}
+
+			.multi_options_btn {
+				.button: active;
+				cursor: pointer;
+			}
+
+			.multi_options_btn:hover,
+			.multi_options_btn:focus {
+				background-color: #2980b9;
+			}
+
+			.multi_options_button {
+				position: relative;
+				display: inline-block;
+			}
+
+			.multi_options_button-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+				font-size: 11px;
+				text-align: left;
+				z-index: 1;
+			}
+
+			.multi_options_button-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.multi_options_button-content a:hover {
+				background-color: #ddd;
+			}
+
+			.show {
+				display: block;
+			}
+
+			.modal {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				gap: 0.4rem;
+				width: 650px;
+				padding: 1.3rem;
+				min-height: 200px;
+				max-height: 300px;
+				position: absolute;
+				left: 13%;
+				margin: auto;
+				top: 20%;
+				background-color: white;
+				border: 1px solid #ddd;
+				border-radius: 15px;
+				z-index: 1002;
+				overflow-y: auto;
+			}
+
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				backdrop-filter: blur(3px);
+				z-index: 1001;
+			}
+
+			.editable_field {
+				position: relative;
+				display: inline-block;
+			}
+
+			.editable_field:hover {
+				border-style: dashed;
+				cursor: pointer;
+			}
+
+			.editable_field .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: black;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+				position: absolute;
+				z-index: 1;
+				bottom: 150%;
+				left: 50%;
+				margin-left: -60px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+			}
+
+			.editable_field .tooltiptext::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: black transparent transparent transparent;
+			}
+
+			.editable_field:hover .tooltiptext {
+				visibility: visible;
+			}
+
+			.overview_grid {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				padding: 20px;
+				table-layout: fixed;
+				text-align: center;
+				height: 340px;
+				text-align: center;
+			}
+
+			table.overview_grid td {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				width: 33%;
+			}
+
+			table.overview_grid tr {
+				height: 50%;
+			}
+
+			.overview_content_grid {
+				border-style: hidden;
+				table-layout: fixed;
+				text-align: center;
+				height: 100%;
+				wdith: 100%;
+			}
+
+			table.overview_content_grid td {
+				border-style: hidden;
+				text-align: center;
+			}
+
+			table.overview_content_grid tr {
+				height: 33%;
+			}
+
+			.overview_label {
+				font-weight: bold;
+				vertical-align: top;
+			}
+
+			.overview_value {
+				font-size: 20px;
+				color: DodgerBlue;
+				vertical-align: middle;
+			}
+
+			.overview_actions {
+				font-size: 14px;
+				vertical-align: bottom;
+			}
+
+			.last_refresh {
+				boarder-style: solid;
+				width: 100%;
+				font-size: 11px;
+				font-style: italic;
+			}
+		</style>
+
+		<link
+			href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="css/style.css"
+		/>
+	</head>
+
+	<body>
+		<div class="select-header">
+			<div class="select-header__links">
+				<a
+					href=""
+					class="select-header__link select-header__link--active"
+					>Themes</a
+				>
+				<a
+					href=""
+					class="select-header__link"
+					>Upload</a
+				>
+				<a
+					href=""
+					class="select-header__link"
+					>Photo</a
+				>
+			</div>
+			<div class="select-header__content">
+				<div class="select-header__buttons">
+					<div class="select-header__button select-header__button--active">
+						<a href="">Work and School</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Illustration</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Birthday</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Party</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Just Kids</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Wedding</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Night Out</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Sports</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Travel</a>
+					</div>
+					<div class="select-header__button">
+						<a href="">Other</a>
+					</div>
+				</div>
+
+				<div class="select-header__images">
+					<div class="select-header__image-wrapper">
+						<img src="@img/01.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/02.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/03.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/04.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/05.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/06.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/07.jpg" />
+					</div>
+					<div class="select-header__image-wrapper">
+						<img src="@img/08.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
