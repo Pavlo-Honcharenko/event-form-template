@@ -1,0 +1,193 @@
+
+
+Это код для блока с иконкой видео:
+
+<div style="margin-top: 20px" id="eventVideoUrl">
+	<div class="editable_field" onclick="editEventField('eventVideoUrl');">
+		<span id="span_eventVideoUrl">
+			<img src="@img/youtube-icon.svg" /> 
+		</span>
+		<span class="tooltiptext">Click to add video</span>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+Это код для блока загрузки:
+
+<div id="ec_loading" style="width: 250px; display: none">
+	<div class="ec_loading_wrapper">
+		<img src="@img/loading-spinner.svg"	/>
+		<div class="ec_loading_text">Loading...</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Это фрагмент кода всплывающего окна, где вместо встроенного svg подключается изображение из папки на сервере: 
+
+<div class="modal" id="edit_modal_eventDescription">
+	<span style="display: block; float: right" ;="">
+		<a style="text-decoration: none" onclick="closeModalLayer('edit_modal_eventDescription');">
+			<img src="img/close-black-button.svg" alt="close" />
+		</a>
+	</span>
+	. . . 
+</div>
+
+
+
+
+
+
+Эти 2 JavaScript надо разместить после всех скриптов, в конце HTML кода, перед закрывающим тэгом </body> :
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Get all elements with the class 'overview_content_grid'
+		var elements = document.querySelectorAll(".overview_content_grid");
+
+		// Iterate through each element and add unique classes
+		elements.forEach(function (element, index) {
+			// Add classes like 'overview_content_grid--1', 'overview_content_grid--2', etc.
+			element.classList.add("overview_content_grid--" + (index + 1));
+		});
+	});
+</script>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Check if there is elem with id "bannerImage"
+		const bannerImage = document.getElementById("bannerImage");
+
+		if (bannerImage) {
+			// Create a new div element with class "edit-magenta"
+			const magentaDiv = document.createElement("div");
+			magentaDiv.className = "edit-magenta";
+
+			// You can add content or other attributes to the new div if needed
+
+			// Insert the new div after the image with id "bannerImage"
+			bannerImage.parentNode.insertBefore(
+				magentaDiv,
+				bannerImage.nextSibling
+			);
+		}
+
+		const eventTitleElement = document.getElementById("span_eventTitle");
+
+		if (eventTitleElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			// Insert the new div after the element with id "eventTitle"
+			eventTitleElement.parentNode.insertBefore(
+				whiteDiv,
+				eventTitleElement.nextSibling
+			);
+		}
+
+		const eventDescriptionElement = document.getElementById(
+			"span_eventDescription"
+		);
+
+		if (eventDescriptionElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventDescriptionElement.parentNode.insertBefore(
+				whiteDiv,
+				eventDescriptionElement.nextSibling
+			);
+		}
+
+		const eventWhenElement = document.getElementById("span_eventWhen");
+
+		if (eventWhenElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventWhenElement.parentNode.insertBefore(
+				whiteDiv,
+				eventWhenElement.nextSibling
+			);
+		}
+
+		const eventWhereElement = document.getElementById("span_eventWhere");
+
+		if (eventWhereElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventWhereElement.parentNode.insertBefore(
+				whiteDiv,
+				eventWhereElement.nextSibling
+			);
+		}
+
+		const eventRegWhenElement =
+			document.getElementById("span_eventRegWhen");
+
+		if (eventRegWhenElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventRegWhenElement.parentNode.insertBefore(
+				whiteDiv,
+				eventRegWhenElement.nextSibling
+			);
+		}
+
+		const eventInfoElement = document.getElementById(
+			"span_eventAdditionalEventInfo"
+		);
+
+		if (eventInfoElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventInfoElement.parentNode.insertBefore(
+				whiteDiv,
+				eventInfoElement.nextSibling
+			);
+		}
+
+		const eventVideoElement = document.getElementById("span_eventVideoUrl");
+
+		if (eventVideoElement) {
+			// Create a new div element with class "edit-white"
+			const whiteDiv = document.createElement("div");
+			whiteDiv.className = "edit-white";
+
+			eventVideoElement.parentNode.insertBefore(
+				whiteDiv,
+				eventVideoElement.nextSibling
+			);
+		}
+	});
+</script>
