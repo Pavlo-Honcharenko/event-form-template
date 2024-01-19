@@ -5679,6 +5679,7 @@
 
 
 <script>
+	document.addEventListener('DOMContentLoaded', function () {
   // Get all elements with id="ec_field_label"
   var elements = document.querySelectorAll('[id="ec_field_label"]');
 
@@ -5693,7 +5694,67 @@
       precedingDiv.classList.add('info-div');
     }
   });
+
+
+
+
+
+
+	// Get all elements with class 'info-div'
+	var infoDivs = document.querySelectorAll('.info-div');
+
+	// Iterate over each 'info-div'
+	infoDivs.forEach(function (infoDiv) {
+		// Attach click event listener to the current 'info-div'
+		infoDiv.addEventListener('click', function () {
+			// Get the next sibling element with id 'ec_field_label'
+			var labelElement = getNextSiblingById(infoDiv, 'ec_field_label');
+
+			// Toggle the class '.show-label' on the label element
+			labelElement.classList.toggle('show-label');
+		});
+	});
+
+	// Function to get the next sibling element with a specific id
+	function getNextSiblingById(element, id) {
+		var sibling = element.nextElementSibling;
+		while (sibling) {
+			if (sibling.id === id) {
+					return sibling;
+			}
+			sibling = sibling.nextElementSibling;
+		}
+		return null;
+	}
+
+
+
+
+	document.addEventListener('click', function(event) {
+		// Check if the clicked element has the "show-label" class
+		if (event.target.classList.contains('show-label')) {
+			// Get the width of the element
+			const elementWidth = event.target.offsetWidth;
+
+			// Set the threshold for the right part width (40 pixels)
+			const rightPartWidth = 40;
+
+			// Check if the click was in the right part (within 40 pixels from the right edge)
+			if (event.clientX > event.target.getBoundingClientRect().left + elementWidth - rightPartWidth) {
+					// Remove the "show-label" class
+					event.target.classList.remove('show-label');
+			}
+		}
+	});
+
+
+
+	
+
+});
+
 </script>
+
 
 
 
