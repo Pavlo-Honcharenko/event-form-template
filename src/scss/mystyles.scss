@@ -1,4 +1,17 @@
-#event_info_component, #event_config_form {
+#ec_tabs {
+	overflow: auto;
+}
+
+#event_info_component {
+	color: #171725;
+	font-family: "Plus Jakarta Sans";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 26px; 
+	letter-spacing: 0.08px;
+}
+#event_config_form {
 	font-family: "Plus Jakarta Sans";
 	font-size: 14px;
 	font-weight: 500;
@@ -6,8 +19,7 @@
 	letter-spacing: 0.07px;
 }
 label {
-	color: #78828A;
-	/* Body Text/Medium/Medium */
+	color: #1F2937;
 	font-family: "Plus Jakarta Sans";
 	font-size: 14px;
 	font-style: normal;
@@ -70,6 +82,15 @@ label {
 	font-weight: 500;
 	line-height: 160%;
 	letter-spacing: 0.07px;
+	position: relative;
+
+	.modal__header {
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: #fff;
+	}
 
 	// @media (min-width:$mobile){
 	// 	overflow-x: hidden; 
@@ -212,6 +233,9 @@ input.action, button.action, #apply_filter_button {
 	margin-left: 4px;
 	cursor: pointer;
 }
+input[type="button"] {
+	margin-left: 4px;
+}
 
 
 #registrations_table #apply_filter_button, input[type=button].active {
@@ -292,6 +316,8 @@ input[type="date"], input[type="time"] {
 }
 
 #ec_loading {
+	background: #ffffff00;
+	z-index: 1;
 	.ec_loading_wrapper {
 		width: 100%;
 		height: 100%;
@@ -570,7 +596,7 @@ table.overview_content_grid {
 	border-color: #E5E5E5;
 
 	th {
-		padding: 7px 15px;
+		padding: 7px;
 	}
 
 	select#status_filter {
@@ -712,6 +738,7 @@ input[type="checkbox"] {
 	min-height: 16.709px !important;
 	height: 16.709px !important;
 	width: 16.709px !important;
+	margin-right: 0;
 }
 
 
@@ -832,26 +859,6 @@ input[type=button][value="Copy"].action {
 
 
 
-
-
-
-
-//=======================================================================================================
-
-
-// .modal {
-// 	display: block;
-// }
-
-// #ec_loading, #ec_error, #edit_modal_eventDescription, #edit_modal_eventWhen, #edit_modal_eventVideoUrl, #edit_modal_eventAdditionalEventInfo, 
-// #edit_modal_eventWhere, #edit_modal_eventTitle, #edit_modal_event_theme, 
-// #review_registration_form_modal, #publish_event_modal {
-// 	display: none !important;
-// }
-
-// #ec_tabs {
-// 	display: block !important;
-// }
 
 
 
@@ -1048,3 +1055,62 @@ td font {
     align-items: center;
     cursor: pointer;
 }
+
+.button, button, input[type=button], input[type=image], input[type=reset], input[type=submit] {
+	margin-left: 4px;
+	margin-right: 0;
+	right: 0;
+}
+#registrations_table td {
+	&:last-child {
+		padding-right: 10px;
+	}
+}
+
+
+
+
+
+//=======================================================================================================
+
+.info-div {
+	display: inline;
+	position: relative;
+
+	&::after {
+		content:'';
+		display: inline-block;
+		width: 50px;
+		height: 25px;
+		background: url('@img/alert-circle.svg') 0 0 no-repeat;
+	}
+}
+
+#ec_field_label {
+		display: inline-block;
+		width: fit-content;
+		max-width: 60%;
+}
+
+
+//=======================================================================================================
+
+
+// .modal {
+// 	display: block;
+// }
+#ec_loading, #ec_error {
+	display: none !important;
+}
+
+// #ec_loading, #ec_error, #edit_modal_eventDescription, #edit_modal_eventWhen, #edit_modal_eventVideoUrl, #edit_modal_eventAdditionalEventInfo, 
+// #edit_modal_eventWhere, #edit_modal_eventTitle, #edit_modal_event_theme, 
+// #review_registration_form_modal, #publish_event_modal {
+// 	display: none !important;
+// }
+
+#ec_tabs, .ql-container {
+	display: block !important;
+}
+
+
