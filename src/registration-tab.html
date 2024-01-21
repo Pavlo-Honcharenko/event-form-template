@@ -4836,136 +4836,139 @@
 							</tr>
 						</tbody>
 					</table>
+					
 
-					<div
-						id="check_in_button_bulk"
-						style="
-							display: none;
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0;
-							margin-top: 5px;
-						"
-					>
-						&nbsp;&nbsp;<button
-							class="action"
-							onclick="changeRegStatus('CHECKED_IN')"
-						>
-							Check In
-						</button>
-					</div>
-
-					<div
-						class="multi_options_button"
-						style="
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0;
-							margin-top: 5px;
-						"
-					>
-						<button
-							onclick="displayMultipleOptions('change_status_bulk')"
-							class="multi_options_btn"
-						>
-							Change Status
-						</button>
+					<div id="bottom_buttons">
 						<div
-							id="change_status_bulk"
-							class="multi_options_button-content"
+							id="check_in_button_bulk"
+							style="
+								display: none;
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0;
+								margin-top: 5px;
+							"
 						>
-							<a
-								href="#"
-								onclick="changeRegStatus('ATTENDING')"
-								>Attending</a
-							>
-							<a
-								href="#"
-								onclick="changeRegStatus('WAITLISTED')"
-								>Waitlisted</a
-							>
-							<a
-								href="#"
-								onclick="changeRegStatus('DECLINED_ADMIN')"
-								>Not Approved</a
-							>
-							<a
-								href="#"
+							&nbsp;&nbsp;<button
+								class="action"
 								onclick="changeRegStatus('CHECKED_IN')"
-								>Checked In</a
 							>
+								Check In
+							</button>
 						</div>
-					</div>
-					<div
-						id="add_note_button_bulk"
-						style="
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0;
-							margin-top: 5px;
-						"
-					>
-						<button
-							class="active"
-							onclick="displayNoteLayer();"
+
+						<div
+							class="multi_options_button"
+							style="
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0;
+								margin-top: 5px;
+							"
 						>
-							Add Note</button
-						>&nbsp;&nbsp;
-					</div>
-					<div
-						id="export_button"
-						style="
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0;
-							margin-top: 5px;
-						"
-					>
-						<button
-							class="active"
-							onclick="exportRegistrations();"
+							<button
+								onclick="displayMultipleOptions('change_status_bulk')"
+								class="multi_options_btn"
+							>
+								Change Status
+							</button>
+							<div
+								id="change_status_bulk"
+								class="multi_options_button-content"
+							>
+								<a
+									href="#"
+									onclick="changeRegStatus('ATTENDING')"
+									>Attending</a
+								>
+								<a
+									href="#"
+									onclick="changeRegStatus('WAITLISTED')"
+									>Waitlisted</a
+								>
+								<a
+									href="#"
+									onclick="changeRegStatus('DECLINED_ADMIN')"
+									>Not Approved</a
+								>
+								<a
+									href="#"
+									onclick="changeRegStatus('CHECKED_IN')"
+									>Checked In</a
+								>
+							</div>
+						</div>
+						<div
+							id="add_note_button_bulk"
+							style="
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0;
+								margin-top: 5px;
+							"
 						>
-							Export</button
-						>&nbsp;&nbsp;
-					</div>
-					<div
-						id="ec_close_reg_button"
-						style="
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0px;
-							margin-top: 5px;
-						"
-					>
-						<input
-							type="button"
-							class="active"
-							onclick="displayCloseRegModal();"
-							value="Close Registration"
-						/>&nbsp;&nbsp;
-					</div>
-					<div
-						id="ec_open_reg_button"
-						style="
-							display: none;
-							float: right;
-							position: sticky;
-							right: 5px;
-							bottom: 0;
-							margin-top: 5px;
-						"
-					>
-						<input
-							type="button"
-							class="action"
-							onclick="openRegistration();"
-							value="Open Registration"
-						/>&nbsp;&nbsp;
+							<button
+								class="active"
+								onclick="displayNoteLayer();"
+							>
+								Add Note</button
+							>&nbsp;&nbsp;
+						</div>
+						<div
+							id="export_button" class="leftward" 
+							style="
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0;
+								margin-top: 5px;
+							"
+						>
+							<button
+								class="active"
+								onclick="exportRegistrations();"
+							>
+								Export</button
+							>&nbsp;&nbsp;
+						</div>
+						<div
+							id="ec_close_reg_button"
+							style="
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0px;
+								margin-top: 5px;
+							"
+						>
+							<input
+								type="button"
+								class="active"
+								onclick="displayCloseRegModal();"
+								value="Close Registration"
+							/>&nbsp;&nbsp;
+						</div>
+						<div
+							id="ec_open_reg_button"
+							style="
+								display: none;
+								float: right;
+								position: sticky;
+								right: 5px;
+								bottom: 0;
+								margin-top: 5px;
+							"
+						>
+							<input
+								type="button"
+								class="action"
+								onclick="openRegistration();"
+								value="Open Registration"
+							/>&nbsp;&nbsp;
+						</div>
 					</div>
 
 					<div
@@ -5037,16 +5040,86 @@
 						class="modal"
 						id="view_reg_details_modal"
 					>
-						<span
-							style="display: block; float: right"
-							;=""
-							><a
-								style="text-decoration: none"
-								onclick="closeModalLayer('view_reg_details_modal');"
-								>[X]</a
-							>&nbsp;</span
-						>
-						<table id="view_reg_details_table"></table>
+						
+						<div class="details__header">
+							<div class="details__col">Question</div>
+							<div class="details__col">Answer
+								<span style="display: block; float: right"
+							;=""><a style="text-decoration: none"
+								onclick="closeModalLayer('edit_modal_event_theme');"><img src="@img/close-black-button.svg" alt="close" /></a>&nbsp;</span>	
+							</div>
+						</div>
+						<table id="view_reg_details_table">
+							<div class="details">
+								<div class="details__body">
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit atque, voluptatum rem dolor nemo veniam quisquam itaque, porro qui at dolores illum saepe libero eius sint magnam. Numquam, facere quis.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+									<div class="details__row">
+										<div class="details__col">
+											Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+										</div>
+										<div class="details__col">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ut.
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</table>
 						<div
 							id="close_button"
 							style="
@@ -5624,10 +5697,6 @@
 
 
 
-<br><br>
-
-<input type="time" step="900" class="customTime">
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
@@ -5749,7 +5818,142 @@
 
 
 
+
+
+
+
 	
+
+
+// Get the <thead> and <tbody> elements
+const thead = document.querySelector('#registrations_table thead');
+const tbody = document.querySelector('#registrations_table_tbody');
+
+// Get the initial offset, width, and th widths
+const initialOffset = thead.getBoundingClientRect().top;
+let initialOffsetCorrect = initialOffset - 69 -56;
+if (initialOffsetCorrect < 67) {
+	initialOffsetCorrect = 67;
+}
+const initialWidth = thead.offsetWidth;
+const thElements = Array.from(thead.querySelectorAll('th'));
+
+// Fix the position of <thead> immediately
+thead.style.position = 'fixed';
+thead.style.top = `${initialOffsetCorrect}px`; // Set top position to the initial offset
+thead.style.width = `${initialWidth}px`;
+
+
+
+
+
+
+
+
+// фиксация элементов на месте
+// Find the first element with the class "tab"
+const tabElement = document.querySelector('.tab');
+
+// Check if the element is found before proceeding
+if (tabElement) {
+  // Get the width of the element
+  const tabWidth = tabElement.offsetWidth;
+
+  // Get the position of the element on the screen
+  const tabPosition = tabElement.getBoundingClientRect();
+
+  let tabPositionCorrect = tabPosition.top
+  if (tabPositionCorrect < 10) {
+		tabPositionCorrect = 10;
+	}
+
+  // Add width and position properties to the element
+  tabElement.style.width = `${tabWidth}px`;
+  tabElement.style.position = 'fixed';
+  tabElement.style.top = `${tabPositionCorrect}px`;
+  tabElement.style.left = `${tabPosition.left}px`;
+
+
+
+  // если элементы не были зафиксированы сверху изначально, то при скроле исправим это
+window.addEventListener('scroll', function() {
+	// Get the vertical scroll position of the page
+	var scrollPosition = window.scrollY || window.pageYOffset;
+
+	// Check if the scroll position is greater than or equal to 67 pixels
+	if (scrollPosition >= 20) {
+		tabElement.style.top = `10px`;
+		thead.style.top = `67px`;
+
+			
+		// Check if the element with id "registrations_table" exists
+		var registrationsTable = document.getElementById('registrations_table');
+
+		if (registrationsTable) {
+			// If the element exists, set its margin-top to 32px
+			registrationsTable.style.marginTop = '32px';
+		} 
+
+		var ecStatusDiv = document.getElementById('ec_status_div'); 
+		if (ecStatusDiv) {
+			ecStatusDiv.style.display = 'none';
+		}
+	}
+});
+
+
+
+// Изменение положения фиксированного блока если сообщение закрывается:
+document.getElementById('ec_status_div').addEventListener('click', function (event) {
+	// Check if the click occurred on an anchor element
+	if (event.target.tagName === 'A') {
+		// поднимаем фиксированные части и таблицу к верху окна
+		tabElement.style.top = `10px`;
+		thead.style.top = `67px`;
+	}
+});
+
+
+
+
+// открывание окна в зависимости от положения относительно экрана:
+document.addEventListener('click', function(event) {
+    // Check if the clicked element has the class "multi_options_btn" and is a child of "#registrations_table_tbody"
+    if (event.target.classList.contains('multi_options_btn') && event.target.closest('#registrations_table_tbody')) {
+        // Get the next sibling element with class "multi_options_button-content"
+        var contentElement = event.target.nextElementSibling;
+
+        // Check if the next sibling exists and has the desired class
+        if (contentElement && contentElement.classList.contains('multi_options_button-content')) {
+            // Get the coordinates of the clicked element
+            var elementRect = event.target.getBoundingClientRect();
+            var elementY = elementRect.top + window.scrollY;
+
+            // Get the height of the window
+            var windowHeight = window.innerHeight;
+
+            // Calculate the distance to the top and bottom edges
+            var distanceToTop = elementY;
+				/* console.log("distanceToTop "+ distanceToTop); */
+            var distanceToBottom = windowHeight - elementY;
+				/* console.log("distanceToBottom "+ distanceToBottom); */
+
+            // Apply styles based on the proximity to the top or bottom
+            if (distanceToTop < distanceToBottom) {
+                 contentElement.style.top = '100%';
+                contentElement.style.bottom = ''; // Reset bottom style
+            } else {
+					contentElement.style.bottom = '100%';
+                contentElement.style.top = ''; // Reset top style
+            }
+        }
+    }
+});
+
+
+}
+
+
 
 });
 
