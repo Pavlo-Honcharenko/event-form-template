@@ -1,0 +1,71 @@
+<div id="bottom_buttons">
+	<div id="check_in_button_bulk" style="
+				display: none;
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0;
+				margin-top: 5px;
+			">
+		&nbsp;&nbsp;<button class="action" onclick="changeRegStatus('CHECKED_IN')">
+			Check In
+		</button>
+	</div>
+
+	<div class="multi_options_button" style="
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0;
+				margin-top: 5px;
+			">
+		<button onclick="displayMultipleOptions('change_status_bulk')" class="multi_options_btn">
+			Change Status
+		</button>
+		<div id="change_status_bulk" class="multi_options_button-content">
+			<a href="#" onclick="changeRegStatus('ATTENDING')">Attending</a>
+			<a href="#" onclick="changeRegStatus('WAITLISTED')">Waitlisted</a>
+			<a href="#" onclick="changeRegStatus('DECLINED_ADMIN')">Not Approved</a>
+			<a href="#" onclick="changeRegStatus('CHECKED_IN')">Checked In</a>
+		</div>
+	</div>
+	<div id="add_note_button_bulk" style="
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0;
+				margin-top: 5px;
+			">
+		<button class="active" onclick="displayNoteLayer();">
+			Add Note</button>&nbsp;&nbsp;
+	</div>
+	<div id="export_button" class="leftward" style="
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0;
+				margin-top: 5px;
+			">
+		<button class="active" onclick="exportRegistrations();">
+			Export</button>&nbsp;&nbsp;
+	</div>
+	<div id="ec_close_reg_button" style="
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0px;
+				margin-top: 5px;
+			">
+		<input type="button" class="active" onclick="displayCloseRegModal();" value="Close Registration">&nbsp;&nbsp;
+	</div>
+	<div id="ec_open_reg_button" style="
+				display: none;
+				float: right;
+				position: sticky;
+				right: 5px;
+				bottom: 0;
+				margin-top: 5px;
+			">
+		<input type="button" class="action" onclick="openRegistration();" value="Open Registration">&nbsp;&nbsp;
+	</div>
+</div>
