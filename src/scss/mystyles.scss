@@ -50,7 +50,7 @@ label {
 
 	#event_date_timezone {
 		display: block;
-    	margin-top: 10px;
+		margin-top: 10px;
 	}
 
 	select {
@@ -239,19 +239,19 @@ input[type="button"] {
 }
 
 
-#registrations_table #apply_filter_button, input[type=button].active {
+#registrations_table #apply_filter_button, input[type=button].active, button.active {
 	background: linear-gradient(top, #f5f5f5, #f1f1f1) !important;
-    border: 1px solid #dcdcdc;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    color: #333 !important;
+	border: 1px solid #dcdcdc;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #333 !important;
 }
 .button.disabled, button:disabled, input[type="button"]:disabled, 
-input[type="image"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled {
+input[type="image"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled, button.disabled  {
 	border-radius: 4px;
 	display: inline-flex;
 	padding: 7px 16px;
@@ -384,7 +384,7 @@ input.timepicker {
 	position: relative;
 }
 .tab span:hover {
-   background-color: #E7E7E7;
+	background-color: #E7E7E7;
 	z-index: 0;
 	
 	&::before {
@@ -426,7 +426,7 @@ input.timepicker {
 	}
 }
 
-#ec_share_event_button input[type="button"].action {
+#ec_share_event_button input[type="button"].action, #ec_share_event_button button.action {
 	border-radius: 4px;
 	border: 1px solid #761B7B;
 	background: #761B7B url('@img/share-circles.svg') no-repeat calc(100% - 13px) center !important;
@@ -536,7 +536,7 @@ background: #FFF;
 
 table.overview_content_grid {
 	tr {
-   	height: 20%;
+		height: 20%;
 
 		td {
 			padding: 2px 30px;
@@ -601,7 +601,7 @@ table.overview_content_grid {
 //=======================================================================================================
 
 #registrations_table {
-	margin-top: 120px;
+	// margin-top: 120px;
 	color: #000;
 	font-family: "Plus Jakarta Sans";
 	font-size: 14px;
@@ -866,7 +866,7 @@ input[type="checkbox"] {
 	line-height: 29px; /* 157.143% */
 	letter-spacing: 0.093px;
 
-	input[type=button].action {
+	input[type=button].action, button.action {
 		max-width: 120px;
 	}
 }
@@ -905,7 +905,7 @@ input[type="checkbox"]:checked:after {
 	border: initial;
 }
 
-input[type=button][value="Copy"].action {
+input[type=button][value="Copy"].action, button.copy {
 	background: url('@img/copy.svg') no-repeat 16px center, linear-gradient(top, #E5E5E5, #E5E5E5) !important;
 	padding-left: 42px !important;
 	color: #000000 !important;
@@ -982,10 +982,10 @@ input[type=button][value="Copy"].action {
 }
 .edit-white {
 		display: inline-block;
-    margin: 0 0 0 10px;
-    height: 25px;
-    width: 25px;
-    background: url('@img/edit-white.svg') center center no-repeat;
+	margin: 0 0 0 10px;
+	height: 25px;
+	width: 25px;
+	background: url('@img/edit-white.svg') center center no-repeat;
 }
 
 #eventTitle .edit-white {
@@ -1063,10 +1063,10 @@ input[type=button][value="Copy"].action {
 			content:'';
 			position: absolute;
 			bottom: -14px;
-    left: -20px;
-    display: block;
-    height: 2px;
-    width: calc(100% + 40px);
+	left: -20px;
+	display: block;
+	height: 2px;
+	width: calc(100% + 40px);
 			display: block;
 			height: 2px;
 			background: #761B7B;
@@ -1192,10 +1192,10 @@ padding: 18px;
 
 	&::before {
 		content:'';
-		    display: block;
-			 flex: 0 0 25px;
-    width: 25px;
-    height: 25px;
+			display: block;
+			flex: 0 0 25px;
+	width: 25px;
+	height: 25px;
 		background: url('@img/alertReportProblem.svg') 0 0 no-repeat;
 	}
 }
@@ -1223,10 +1223,10 @@ padding: 18px;
 
 	&::before {
 		content:'';
-		    display: block;
-			 flex: 0 0 25px;
-    width: 25px;
-    height: 25px;
+			display: block;
+			flex: 0 0 25px;
+	width: 25px;
+	height: 25px;
 		background: url('@img/check-circle-outline.svg') 0 0 no-repeat;
 	}
 }
@@ -1237,21 +1237,21 @@ td font {
 }
 
 
-#ec_share_event_button input[type=button].action.reverse {
-    border-radius: 4px;
-    border: 1px solid #761B7B;
-    background: #761B7B url(../img/share-circles.svg) no-repeat 13px center !important;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    padding: 7px 18px 7px 50px;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    cursor: pointer;
+#ec_share_event_button input[type=button].action.reverse, #ec_share_event_button button.action.reverse {
+	border-radius: 4px;
+	border: 1px solid #761B7B;
+	background: #761B7B url(../img/share-circles.svg) no-repeat 13px center !important;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	padding: 7px 18px 7px 50px;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	cursor: pointer;
 }
 
 .button, button, input[type=button], input[type=image], input[type=reset], input[type=submit] {
@@ -1344,7 +1344,7 @@ td font {
 	letter-spacing: -0.5px;
 }
 #registrations_table td {
-    padding: 7px;
+	padding: 7px;
 }
 
 #bottom_buttons {
@@ -1397,8 +1397,8 @@ display: flex;
 	position: sticky;
 	background: #fff;
 	top: 0;
-    left: 0;
-    width: 100%;
+	left: 0;
+	width: 100%;
 
 	.details__col {
 		flex: 0 1 50%;
@@ -1436,17 +1436,17 @@ overflow: auto;
 
 
 
-#registrations_table_tbody tr:nth-child(6n-4),
+#registrations_table_tbody tr:nth-child(6n-4), 
 #registrations_table_tbody tr:nth-child(6n-3), 
 #registrations_table_tbody tr:nth-child(6n-2) {
-    background-color: #E8EAFB; /* Gray background for 2nd, 3rd, and 4th rows */
+	background-color: #E8EAFB; /* Gray background for 2nd, 3rd, and 4th rows */
 
 }
 
 #registrations_table_tbody tr:nth-child(6n-5),
 #registrations_table_tbody tr:nth-child(6n-1),
 #registrations_table_tbody tr:nth-child(6n-0) {
-    background-color: #fff; /* White background for 5th, 6th, 7th rows, and so on */
+	background-color: #fff; /* White background for 5th, 6th, 7th rows, and so on */
 }
 
 
@@ -1472,7 +1472,7 @@ overflow: auto;
 #registrations_table_tbody tr:nth-child(6n-0) {
 	border-left: 2px solid #E8EAFB;
 	border-right: 2px solid #E8EAFB;
-   td {
+	td {
 		border: 1px solid #FFF;
 		padding-top: 7px;
 		padding-bottom: 0;
@@ -1488,8 +1488,8 @@ overflow: auto;
 
 
 #registrations_table_tbody tr:first-child {
-    background-color: #fff !important; /* White background for the first row */
-	 border: 1px solid #E8EAFB !important;
+	background-color: #fff !important; /* White background for the first row */
+	border: 1px solid #E8EAFB !important;
 }
 #registrations_table_tbody tr:first-child td {
 	border: 1px solid #E8EAFB !important;
@@ -1505,83 +1505,83 @@ overflow: auto;
 //=======================================================================================================
 
 /**
- * jQuery Timepicker
- * http://timepicker.co
- *
- * Enhances standard form input fields helping users to select (or type) times.
- *
- * Copyright (c) 2016 Willington Vega; Licensed MIT, GPL
- */
+* jQuery Timepicker
+* http://timepicker.co
+*
+* Enhances standard form input fields helping users to select (or type) times.
+*
+* Copyright (c) 2016 Willington Vega; Licensed MIT, GPL
+*/
 
- .ui-timepicker-container {
-    position: absolute;
-    overflow: hidden;
-    box-sizing: border-box;
+.ui-timepicker-container {
+	position: absolute;
+	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .ui-timepicker {
-    box-sizing: content-box;
-    display: block;
-    height: 205px;
-    list-style: none outside none;
-    margin: 0;
-    padding: 0 1px;
-    text-align: center;
+	box-sizing: content-box;
+	display: block;
+	height: 205px;
+	list-style: none outside none;
+	margin: 0;
+	padding: 0 1px;
+	text-align: center;
 }
 
 .ui-timepicker-viewport {
-    box-sizing: content-box;
-    display: block;
-    height: 205px;
-    margin: 0;
-    padding: 0;
+	box-sizing: content-box;
+	display: block;
+	height: 205px;
+	margin: 0;
+	padding: 0;
 }
 
 .ui-timepicker-standard {
-    /* overwrites .ui-widget */
-    /* overwrites .ui-widget-content */
-    background-color: #FFF;
-    border: 1px solid #AAA;
-    color: #222;
-    /* overwrites .ui-menu */
-    margin: 0;
-    padding: 2px;
+	/* overwrites .ui-widget */
+	/* overwrites .ui-widget-content */
+	background-color: #FFF;
+	border: 1px solid #AAA;
+	color: #222;
+	/* overwrites .ui-menu */
+	margin: 0;
+	padding: 2px;
 }
 .ui-timepicker-standard a {
-    border: 1px solid transparent;
-    color: #222;
-    display: block;
-    text-decoration: none;
+	border: 1px solid transparent;
+	color: #222;
+	display: block;
+	text-decoration: none;
 }
 .ui-timepicker-standard .ui-state-hover {
-    /* overwrites .ui-state-hover */
-    background-color: #DADADA;
-    border: 1px solid #999;
-    font-weight: normal;
-    color: #212121;
+	/* overwrites .ui-state-hover */
+	background-color: #DADADA;
+	border: 1px solid #999;
+	font-weight: normal;
+	color: #212121;
 }
 .ui-timepicker-standard .ui-menu-item {
-    /* overwrites .ui-menu and .ui-menu-item */
-    /*clear: left;
-    float: left;*/
-    margin: 0;
-    padding: 0;
+	/* overwrites .ui-menu and .ui-menu-item */
+	/*clear: left;
+	float: left;*/
+	margin: 0;
+	padding: 0;
 }
 
 .ui-timepicker-corners,
 .ui-timepicker-corners .ui-corner-all {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
 }
 
 .ui-timepicker-hidden {
-    /* overwrites .ui-helper-hidden */
-    display: none;
+	/* overwrites .ui-helper-hidden */
+	display: none;
 }
 
 .ui-timepicker-no-scrollbar .ui-timepicker {
-    border: none;
+	border: none;
 }
 
 
@@ -1606,44 +1606,254 @@ overflow: auto;
 
 //=======================================================================================================
 
-input[type=button].active.server__button {
-	color: rgba(51, 51, 51, 0) !important;
-	position: relative;
 
+
+
+.server-button {
+position: relative;
+background: linear-gradient(top, #f5f5f5, #f1f1f1) !important;
+overflow: hidden;
+}
+
+body button.server-button.pressed-button, #registrations_table #apply_filter_button.server-button.pressed-button {
+	color: transparent !important;
+}
+#registrations_table #apply_filter_button.server-button.pressed-button {
+	background: #761B7B !important;
 }
 
 
-.server__button {
-  position: relative;
-  background: linear-gradient(top, #f5f5f5, #f1f1f1) !important;
-  overflow: hidden;
+.server-button.pressed-button::before {
+content: "";
+display: block;
+width: 100%;
+height: 100%;
+background-image: url('@img/mini-spinner-black.svg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+animation: rotateImage 2s linear infinite; 
+transform-origin: center;
+position: absolute;
+top: 0;
+left: 0;
 }
 
-.server__button::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url('@img/close-black-button.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  animation: rotateImage 2s linear infinite; /* Adjust the duration and timing function as needed */
-  transform-origin: center;
-  position: absolute;
-  top: 0;
-  left: 0;
+#ec_share_event_button button.action.server-button.pressed-button::before {
+	background-image: url('@img/mini-spinner-white.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	animation: rotateImage 2s linear infinite; 
+	transform-origin: center;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 @keyframes rotateImage {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+0% {
+	transform: rotate(0deg);
+}
+100% {
+	transform: rotate(360deg);
+}
 }
 
+
+
+
+
+
+
+//=======================================================================================================
+#registrations_table {
+	.head-table {
+		// .head-table__row
+		&__row {
+			display: flex;
+			justify-content: space-between;
+		}
+		// .head-table__col
+		&__col {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid #E8EAFB;
+			color: #000;
+			font-family: "Plus Jakarta Sans";
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 47px;
+			letter-spacing: 0.084px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			text-align: left;
+			background-color: #E8EAFB;
+			text-align: center;
+			padding: 5px;
+
+			a {
+				color: #000;
+				font-family: "Plus Jakarta Sans";
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 47px;
+				letter-spacing: 0.084px;
+				padding-top: 0px;
+				padding-bottom: 0px;
+				text-align: left;
+				background-color: #E8EAFB;
+				text-align: center;
+			}
+		}
+		&__col:nth-child(1) {
+			flex: 0 0 34px;
+		}
+		&__col:nth-child(2) {
+			flex: 0 0 108px;
+		}
+		&__col:nth-child(3) {
+			flex: 0 0 122px;
+		}
+		&__col:nth-child(4) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(5) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(6) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(7) {
+			flex: 0 0 147px;
+		}
+}
+.body-table {
+		// .body-table__row
+		&__row {
+			display: flex;
+			justify-content: space-between;
+		}
+		// .body-table__filter
+		&__filter {}
+		// .body-table__col
+		&__col {}
+		&__col {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid #E8EAFB;
+		}
+		&__col:nth-child(1) {
+			flex: 0 0 34px;
+		}
+		&__col:nth-child(2) {
+			flex: 0 0 108px;
+		}
+		&__col:nth-child(3) {
+			flex: 0 0 122px;
+		}
+		&__col:nth-child(4) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(5) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(6) {
+			flex: 0 1 25%;
+		}
+		&__col:nth-child(7) {
+			flex: 0 0 147px;
+		}
+		// .body-table__note
+		&__note {
+			.body-table__col {
+				flex: 0 0 100%;
+				justify-content: left;
+			}
+		}
+		// .body-table__update-message
+		&__update-message {
+			.body-table__col {
+				flex: 0 0 100%;
+				flex: 0 0 100%;
+			}
+		}
+	}
+}
+
+.active {
+}
+.multi_options_button {
+}
+.multi_options_btn {
+}
+.multi_options_button-content {
+}
+
+
+
+#registrations_table_tbody .body-table__row:nth-child(6n-4), 
+#registrations_table_tbody .body-table__row:nth-child(6n-3), 
+#registrations_table_tbody .body-table__row:nth-child(6n-2) {
+	background-color: #E8EAFB; /* Gray background for 2nd, 3rd, and 4th rows */
+
+}
+
+#registrations_table_tbody .body-table__row:nth-child(6n-5),
+#registrations_table_tbody .body-table__row:nth-child(6n-1),
+#registrations_table_tbody .body-table__row:nth-child(6n-0) {
+	background-color: #fff; /* White background for 5th, 6th, 7th rows, and so on */
+}
+
+
+
+#registrations_table_tbody .body-table__row:nth-child(6n-3),
+#registrations_table_tbody .body-table__row:nth-child(6n-2) {
+	border-left: 2px solid #E8EAFB;
+	border-right: 2px solid #E8EAFB;
+	.body-table__col {
+		border: 1px solid #E8EAFB;
+		padding-top: 7px;
+		padding-bottom: 0;
+		line-height: 22px !important;
+	}
+}
+#registrations_table_tbody .body-table__row:nth-child(6n-2) {
+	.body-table__col {
+		padding-bottom: 7px;
+	}
+}
+
+#registrations_table_tbody .body-table__row:nth-child(6n-5),
+#registrations_table_tbody .body-table__row:nth-child(6n-0) {
+	border-left: 2px solid #E8EAFB;
+	border-right: 2px solid #E8EAFB;
+	.body-table__col {
+		border: 1px solid #FFF;
+		padding-top: 7px;
+		padding-bottom: 0;
+		line-height: 22px !important;
+	}
+}
+#registrations_table_tbody .body-table__row:nth-child(6n-5) {
+	.body-table__col {
+		padding-bottom: 7px;
+	}
+}
+
+
+
+#registrations_table_tbody .body-table__row:first-child {
+	background-color: #fff !important; /* White background for the first row */
+	border: 1px solid #E8EAFB !important;
+}
+#registrations_table_tbody tr:first-child td {
+	border: 1px solid #E8EAFB !important;
+}
 
 
 

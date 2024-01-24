@@ -1,31 +1,2969 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-</head>
-<body>
-	<input class="timepicker text-center" jt-timepicker="" time="model.time" time-string="model.timeString" default-time="model.options.defaultTime" time-format="model.options.timeFormat" start-time="model.options.startTime" min-time="model.options.minTime" max-time="model.options.maxTime" interval="model.options.interval" dynamic="model.options.dynamic" scrollbar="model.options.scrollbar" dropdown="model.options.dropdown">
 
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$('input.timepicker').timepicker({
-				timeFormat: 'h:mm p',
-				interval: 15,
-				minTime: '10',
-				maxTime: '9:00pm',
-				defaultTime: '10',
-				startTime: '10:00',
-				dynamic: false,
-				dropdown: true,
-				scrollbar: true
+
+		<script src="//www.google.com/jsapi"></script>
+		<script>
+			window.parent.maeExportApis_();
+		</script>
+
+		<link
+			rel="stylesheet"
+			href="https://ssl.gstatic.com/docs/script/css/add-ons1.css"
+		/>
+
+		<style>
+			select {
+				text-align-last: left;
+				padding-left: 8px;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+			}
+
+			#ec_mw {
+				padding: 5px 10px 5px 5px;
+				z-index: 1000;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 400px;
+				vertical-align: top;
+			}
+
+			#ec_status_div {
+				display: none;
+				background-color: #ffff99;
+				padding: 2px 2px 2px 0px;
+				width: 90%;
+			}
+
+			#ec_status_content {
+				border: 0px solid;
+
+				min-height: 15px;
+				padding: 8px 8px 8px 5px;
+			}
+
+			#ec_tabs {
+				width: 100%;
+			}
+
+			#ec_tab_body {
+				overflow: hidden;
+			}
+
+			.tab {
+				overflow: hidden;
+			}
+
+			.tab span {
+				background-color: inherit;
+				float: left;
+				border-width: 1px;
+				border-style: solid;
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+				cursor: pointer;
+				transition: 0.3s;
+				width: 175px;
+				height: 35px;
+				line-height: 35px;
+				text-align: center;
+			}
+
+			.tab span:hover {
+				background-color: #c0c0c0;
+			}
+
+			.tab span.active {
+				background-color: #d3d3d3;
+			}
+
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				min-height: 400px;
+				max-height: 400px;
+			}
+
+			#ec_field_label {
+				font-size: 10px;
+				color: grey;
+			}
+
+			#online_event_instructions_container {
+				height: 100px;
+			}
+
+			#additional_event_info_container {
+				height: 100px;
+			}
+
+			#registrations_table {
+				font-family: Arial, Helvetica, sans-serif;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			#registrations_table td,
+			#registrations_table th {
+				border: 1px solid #ddd;
+				padding: 8px;
+			}
+
+			#registrations_table tr:nth-child(3n + 2) {
+				background-color: #f2f2f2;
+			}
+
+			#registrations_table tr:hover {
+				background-color: #ddd;
+			}
+
+			#registrations_table th,
+			#registrations_table a {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				text-align: left;
+				background-color: #04aa6d;
+				color: white;
+			}
+
+			.multi_options_btn {
+				.button: active;
+				cursor: pointer;
+			}
+
+			.multi_options_btn:hover,
+			.multi_options_btn:focus {
+				background-color: #2980b9;
+			}
+
+			.multi_options_button {
+				position: relative;
+				display: inline-block;
+			}
+
+			.multi_options_button-content {
+				display: none;
+				position: absolute;
+				background-color: #f1f1f1;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+				font-size: 11px;
+				text-align: left;
+				z-index: 1;
+			}
+
+			.multi_options_button-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.multi_options_button-content a:hover {
+				background-color: #ddd;
+			}
+
+			.show {
+				display: block;
+			}
+
+			.modal {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				gap: 0.4rem;
+				width: 650px;
+				padding: 1.3rem;
+				min-height: 200px;
+				max-height: 300px;
+				position: absolute;
+				left: 13%;
+				margin: auto;
+				top: 20%;
+				background-color: white;
+				border: 1px solid #ddd;
+				border-radius: 15px;
+				z-index: 1002;
+				overflow-y: auto;
+			}
+
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				backdrop-filter: blur(3px);
+				z-index: 1001;
+			}
+
+			.editable_field {
+				position: relative;
+				display: inline-block;
+			}
+
+			.editable_field:hover {
+				border-style: dashed;
+				cursor: pointer;
+			}
+
+			.editable_field .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: black;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+				position: absolute;
+				z-index: 1;
+				bottom: 150%;
+				left: 50%;
+				margin-left: -60px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+			}
+
+			.editable_field .tooltiptext::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: black transparent transparent transparent;
+			}
+
+			.editable_field:hover .tooltiptext {
+				visibility: visible;
+			}
+
+			.overview_grid {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				padding: 20px;
+				table-layout: fixed;
+				text-align: center;
+				height: 340px;
+				text-align: center;
+			}
+
+			table.overview_grid td {
+				border: 1px solid gray;
+				border-collapse: collapse;
+				width: 33%;
+			}
+
+			table.overview_grid tr {
+				height: 50%;
+			}
+
+			.overview_content_grid {
+				border-style: hidden;
+				table-layout: fixed;
+				text-align: center;
+				height: 100%;
+				wdith: 100%;
+			}
+
+			table.overview_content_grid td {
+				border-style: hidden;
+				text-align: center;
+			}
+
+			table.overview_content_grid tr {
+				height: 33%;
+			}
+
+			.overview_label {
+				font-weight: bold;
+				vertical-align: top;
+			}
+
+			.overview_value {
+				font-size: 20px;
+				color: DodgerBlue;
+				vertical-align: middle;
+			}
+
+			.overview_actions {
+				font-size: 14px;
+				vertical-align: bottom;
+			}
+
+			.last_refresh {
+				boarder-style: solid;
+				width: 100%;
+				font-size: 11px;
+				font-style: italic;
+			}
+
+			@import url(https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:regular,500,600,700&display=swap);
+
+			@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500&display=swap);
+
+			@import url(https://fonts.googleapis.com/css?family=Inter:regular,500,600,700&display=swap);
+
+			@import url(https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap);
+
+			@charset "UTF-8";
+
+			.modal {
+				border-radius: 9px;
+				background: #fff;
+				padding: 20px 30px;
+				font-family: Plus Jakarta Sans;
+			}
+
+			.modal strong {
+				font-family: Plus Jakarta Sans;
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: 32px;
+
+				letter-spacing: 0.1px;
+				color: #171725;
+			}
+
+			.modal hr {
+				color: rgba(0, 0, 0, 0.14);
+			}
+
+			.modal label {
+				font-family: Plus Jakarta Sans;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 500;
+				color: #1f2937;
+				line-height: 22px;
+
+				letter-spacing: 0.07px;
+			}
+
+			.modal #ec_field_label {
+				margin-top: 2px;
+				font-size: 14px;
+			}
+
+			.modal textarea {
+				border-radius: 5px;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				width: 100%;
+				margin: 6px 0;
+				font-size: 16px;
+			}
+
+			.modal select {
+				border-radius: 2px;
+				border: 1px solid #d9d9d9;
+				background:
+					url(https://ssl.gstatic.com/ui/v1/disclosure/grey-disclosure-arrow-up-down.png)
+						no-repeat calc(100% - 10px) center,
+					-webkit-linear-gradient(top, #fff, #fff);
+				font-family: Roboto;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 24px;
+				color: rgba(0, 0, 0, 0.85);
+				padding: 10px 12px;
+				height: auto;
+				border-radius: 5.268px;
+				border: 1.317px solid #e5e5e5;
+			}
+
+			.modal #location,
+			.modal #title {
+				height: auto;
+				min-height: 45px;
+				border-radius: 5.268px;
+				border: 1.317px solid #e5e5e5;
+				padding: 10px 12px;
+				font-family: Plus Jakarta Sans;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 24px;
+				letter-spacing: 0.08px;
+				margin-top: 2px;
+			}
+
+			.modal input.action {
+				border-radius: 4px;
+				background: #761b7b;
+				display: -webkit-inline-box;
+				display: -ms-inline-flexbox;
+				display: inline-flex;
+				height: 34px;
+				padding: 12px 24px;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				font-family: Plus Jakarta Sans;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: 22px;
+				letter-spacing: 0.07px;
+				color: #fefefe;
+				height: initial;
+				width: initial;
+				margin-top: 15px;
+				cursor: pointer;
+			}
+
+			.modal input[type="button"].active {
+				border-radius: 4px;
+				background: rgba(0, 0, 0, 0.1);
+				display: -webkit-inline-box;
+				display: -ms-inline-flexbox;
+				display: inline-flex;
+				height: 34px;
+				padding: 12px 24px;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				color: #000000;
+				font-family: Plus Jakarta Sans;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: 22px;
+				letter-spacing: 0.07px;
+				height: initial;
+				width: initial;
+				margin-right: 8px;
+				margin-top: 15px;
+				cursor: pointer;
+			}
+
+			.modal #ec_field_label {
+				margin-bottom: 10px;
+			}
+
+			.modal #event_theme {
+				min-width: 300px;
+			}
+
+			.ql-toolbar.ql-snow {
+				margin-top: 15px;
+				border-radius: 5px 5px 0 0;
+				border: 1px solid rgba(0, 0, 0, 0.14);
+			}
+
+			.ql-editor {
+				border-radius: 0 0 5px 5px;
+				border: 1px solid rgba(0, 0, 0, 0.14);
+			}
+
+			#start_time,
+			#start_time_time,
+			#end_time_time,
+			#end_time {
+				width: -webkit-fit-content;
+				width: -moz-fit-content;
+				width: fit-content;
+				min-width: 23.25%;
+				color: rgba(0, 0, 0, 0.85);
+				font-family: Roboto;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				padding: 10px 15px;
+				border-radius: 2.644px;
+				border: 1px solid #d9d9d9;
+			}
+
+			#start_time_error,
+			#end_time_error {
+				padding-top: 4px;
+				font-family: Inter;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 20px;
+				letter-spacing: 0.15px;
+			}
+
+			#ec_loading .ec_loading_wrapper {
+				width: 100%;
+				height: 100%;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				gap: 22px;
+			}
+
+			#ec_loading .ec_loading_wrapper .ec_loading_text {
+				color: #761b7b;
+				font-family: Plus Jakarta Sans;
+				font-size: 24px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: 38px;
+				letter-spacing: 0.12px;
+			}
+
+			#ec_loading .ec_loading_wrapper svg {
+				display: inline-block;
+				-webkit-animation: spindotts 2s infinite linear;
+				animation: spindotts 2s infinite linear;
+			}
+
+			@-webkit-keyframes spindotts {
+				from {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+
+				to {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes spindotts {
+				from {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+
+				to {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+
+			@media (min-width: 47.99875em) {
+				.modal {
+					overflow-x: hidden;
+				}
+			}
+		</style>
+
+		<link
+			href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="css/style.css"
+		/>
+
+		<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+		<script>
+			var quillOnlineEventInstr;
+			var quillAddlEventInfo;
+
+			let sessionTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			let regFormURL;
+			let currentRegSortBy;
+			let formQuestions;
+			let formQuestionIDs;
+
+			let refreshOverviewTimeout;
+
+			$(function () {
+				init();
 			});
+
+			function init() {
+				call_timeout = window.setInterval(populateReprocessDataTimeout, 300000);
+
+				loadEventConsoleWindow();
+			}
+
+			function loadEventConsoleWindow() {
+				$("#ec_tabs").hide();
+
+				$("#ec_loading").show();
+				google.script.run
+					.withSuccessHandler(populateEventConsoleData)
+					.withFailureHandler(populateEventConsoleDataError)
+					.uiGetEventConsoleData();
+			}
+
+			function populateEventConsoleData(ecData) {
+				window.clearInterval(call_timeout);
+
+				$("#ec_loading").hide();
+
+				if (!ecData || ecData.event_load_status == "2") {
+					showError(
+						"We are unable to access your event data. Please contact EventForm support."
+					);
+					return;
+				}
+
+				populateEventWebsiteHTML(
+					ecData.event.event_state,
+					ecData.eventWebsiteHTML
+				);
+				activateBanner(ecData.event.event_theme, ecData.eventThemes, true);
+
+				if (ecData.event.event_state === "INACTIVE") {
+					$("#review_and_publish").show();
+					regFormURL = ecData.editableRegFormURL;
+				} else {
+					populateShareEvent(ecData.event, ecData.eventWebsiteURL);
+					loadOverview(ecData);
+
+					formQuestions = ecData.formQuestions;
+					formQuestionIDs = ecData.formQuestionIDs;
+					loadRegistrations(
+						ecData.registrations,
+						ecData.registrationFilter,
+						ecData.registrationSortBy
+					);
+					loadRegButtonsBar(ecData.event);
+					$("#ec_tabs").show();
+				}
+
+				loadFormFields(ecData);
+
+				loadButtonsBar(ecData.event.event_state);
+
+				document.getElementById("event_id").value = ecData.event.event_id;
+				document.getElementById("event_id_for_settings").value =
+					ecData.event.event_id;
+				document.getElementById("event_website_url").value =
+					ecData.eventWebsiteURL;
+			}
+
+			function refreshOverview() {
+				window.clearInterval(refreshOverviewTimeout);
+
+				google.script.run
+					.withSuccessHandler(refreshOverviewSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiRefreshOverviewData();
+			}
+
+			function refreshOverviewSuccessCallback(ecData) {
+				loadOverview(ecData);
+			}
+
+			function loadOverview(ecData) {
+				let currentDate = new Date().getTime();
+				let eventStartTime = new Date(
+					ecData.event.start_time + "T" + ecData.event.start_time_time
+				).getTime();
+
+				document.getElementById("time_till_event_overview").innerHTML =
+					getTimeTillEvent(ecData.event);
+
+				let regBreakdown = getRegBreakdown(ecData.registrations);
+
+				if (currentDate >= eventStartTime - 3600000) {
+					document.getElementById("registered_attendees_label").innerHTML =
+						"Checked In Attendees: ";
+					document.getElementById("registered_attendees_overview").innerHTML =
+						regBreakdown["checkedIn"] +
+						" out of " +
+						(regBreakdown["attending"] + regBreakdown["checkedIn"]);
+					document.getElementById("registered_attendees_actions").innerHTML =
+						'<a href="#" onclick="viewFilteredRegistrations(\'' +
+						"CHECKED_IN" +
+						"')\">" +
+						"View" +
+						"</a>";
+				} else {
+					document.getElementById("registered_attendees_overview").innerHTML =
+						regBreakdown["attending"];
+				}
+
+				document.getElementById("awaiting_admin_approval_overview").innerHTML =
+					regBreakdown["awaitingApproval"];
+				document.getElementById("waitlisted_overview").innerHTML =
+					regBreakdown["waitlisted"];
+
+				let regWindownOverviewResponse = getRegWindowOverview(ecData.event);
+				document.getElementById("days_till_reg_close_overview").innerHTML =
+					regWindownOverviewResponse["regWindowOverview"];
+				document.getElementById("days_till_reg_close_actions").innerHTML =
+					regWindownOverviewResponse["regWindowActions"];
+
+				document.getElementById("last_refresh_overview").innerHTML =
+					"Last Updated: " + new Date().toLocaleTimeString();
+
+				refreshOverviewTimeout = window.setInterval(refreshOverview, 300000);
+			}
+
+			function editEventCapacity() {
+				openTab(null, "settings", "settings_tab");
+				document
+					.getElementById("max_registrants")
+					.focus({ focusVisible: true });
+			}
+
+			function editRegistrationPeriod() {
+				openTab(null, "settings", "settings_tab");
+				document.getElementById("reg_start_time").focus({ focusVisible: true });
+			}
+
+			function editWaitlistSettings() {
+				openTab(null, "settings", "settings_tab");
+				document
+					.getElementById("waitlist_enabled")
+					.focus({ focusVisible: true });
+			}
+
+			function editEventWebsite() {
+				openTab(null, "event_website", "event_website_tab");
+			}
+
+			function getRegWindowOverview(event) {
+				let regWindowOverviewResponse = {};
+				let regWindowOverview = "";
+				let regWindowActions = "";
+
+				let currentDate = new Date().getTime();
+				let eventStartTime = new Date(
+					event.start_time + "T" + event.start_time_time
+				).getTime();
+				let eventEndTime = new Date(
+					event.end_time + "T" + event.end_time_time
+				).getTime();
+
+				let regStartTime = currentDate - 86400000;
+				if (event.reg_start_time) {
+					regStartTime = new Date(
+						event.reg_start_time + "T" + event.reg_start_time_time
+					).getTime();
+				}
+
+				let regEndTime = eventStartTime;
+				if (event.reg_end_time) {
+					regEndTime = new Date(
+						event.reg_end_time + "T" + event.reg_end_time_time
+					).getTime();
+				}
+
+				if (event["event_state"] === "CLOSED") {
+					regWindowOverview = "Closed by Administrator";
+					if (currentDate < eventEndTime) {
+						regWindowActions =
+							'<a href="#" onclick="openRegistration()">' +
+							"Open Registration" +
+							"</a>";
+					}
+				} else if (currentDate > regEndTime) {
+					regWindowOverview = "Closed";
+				} else if (currentDate < regStartTime) {
+					regWindowOverview = "Opens in ";
+					let ms = regStartTime - currentDate;
+					let timeTillRegOpens = getTimeTill(ms);
+
+					if (timeTillRegOpens.length === 0) {
+						timeTillRegOpens = "Less Than a Minute";
+					}
+
+					regWindowOverview += timeTillRegOpens;
+				} else {
+					let ms = regEndTime - currentDate;
+					let timeTillRegCloses = getTimeTill(ms);
+
+					if (timeTillRegCloses.length === 0) {
+						timeTillRegCloses = "Less Than a Minute";
+					}
+
+					regWindowOverview = timeTillRegCloses;
+				}
+
+				if (event["event_state"] !== "CLOSED" && currentDate < eventEndTime) {
+					regWindowActions =
+						'<a href="#" onclick="editRegistrationPeriod()">' +
+						"Edit Reg. Period" +
+						"</a>";
+				}
+
+				regWindowOverviewResponse = {
+					regWindowOverview: regWindowOverview,
+					regWindowActions: regWindowActions,
+				};
+
+				return regWindowOverviewResponse;
+			}
+
+			function getRegBreakdown(registrations) {
+				let attending = 0;
+				let awaitingApproval = 0;
+				let waitlisted = 0;
+				let checkedIn = 0;
+
+				let regBreakdown = {
+					attending: attending,
+					awaitingApproval: awaitingApproval,
+					waitlisted: waitlisted,
+					checkedIn: checkedIn,
+				};
+
+				if (!registrations || registrations.length === 0) regBreakdown;
+
+				for (let i = 0; i < registrations.length; i++) {
+					let reg = registrations[i];
+
+					if (reg["regStatus"] === "ATTENDING") {
+						attending++;
+					} else if (reg["regStatus"] === "UNPROCESSED") {
+						awaitingApproval++;
+					}
+					if (reg["regStatus"] === "WAITLISTED") {
+						waitlisted++;
+					}
+					if (reg["regStatus"] === "CHECKED_IN") {
+						checkedIn++;
+					}
+				}
+
+				regBreakdown = {
+					attending: attending,
+					awaitingApproval: awaitingApproval,
+					waitlisted: waitlisted,
+					checkedIn: checkedIn,
+				};
+
+				return regBreakdown;
+			}
+
+			function getTimeTillEvent(event) {
+				let timeTillEvent = "";
+				let currentDate = new Date().getTime();
+				let eventStartTime = new Date(
+					event.start_time + "T" + event.start_time_time
+				).getTime();
+				let eventEndTime = new Date(
+					event.end_time + "T" + event.end_time_time
+				).getTime();
+				let ms = eventStartTime - currentDate;
+
+				if (currentDate >= eventEndTime) {
+					timeTillEvent = "Event Finished";
+				} else if (
+					currentDate >= eventStartTime &&
+					currentDate < eventEndTime
+				) {
+					timeTillEvent = "Happening Now";
+				} else {
+					timeTillEvent = getTimeTill(ms);
+
+					if (timeTillEvent.length === 0) {
+						timeTillEvent = "Starting Now";
+					}
+				}
+
+				return timeTillEvent;
+			}
+
+			function getTimeTill(ms) {
+				let timeTill;
+
+				if (ms < 86400000) {
+					timeTill = getHoursTillEvent(ms);
+					let minutesStr = getMinutesTillEvent(ms);
+					if (timeTill.length > 0 && minutesStr.length > 0) {
+						timeTill += " and ";
+					}
+					if (minutesStr.length > 0) {
+						timeTill += minutesStr;
+					}
+				} else {
+					timeTill = getDaysTillEvent(ms);
+					let hoursStr = getHoursTillEvent(ms);
+					if (timeTill.length > 0 && hoursStr.length > 0) {
+						timeTill += " and ";
+					}
+					if (hoursStr.length > 0) {
+						timeTill += hoursStr;
+					}
+				}
+
+				return timeTill;
+			}
+
+			function getDaysTillEvent(ms) {
+				let days = Math.floor(ms / 1000 / 60 / 60 / 24);
+
+				if (days === 0) {
+					return "";
+				} else if (days === 1) {
+					return days + " Day";
+				}
+
+				return days + " Days";
+			}
+
+			function getHoursTillEvent(ms) {
+				let hours = Math.floor((ms / 1000 / 60 / 60) % 24);
+
+				if (hours === 0) {
+					return "";
+				} else if (hours === 1) {
+					return hours + " Hour";
+				}
+
+				return hours + " Hours";
+			}
+
+			function getMinutesTillEvent(ms) {
+				let minutes = Math.floor((ms / 1000 / 60) % 60);
+
+				if (minutes === 0) {
+					return "";
+				} else if (minutes === 1) {
+					return minutes + " Minute";
+				}
+
+				return minutes + " Minutes";
+			}
+
+			function activateBanner(currentTheme, eventThemes, loadThemes) {
+				let bannerDiv = document.getElementById("bannerImage");
+				bannerDiv.className = "editable_field";
+				bannerDiv.addEventListener("click", function () {
+					editTheme();
+				});
+
+				let bannerDivHTML = bannerDiv.innerHTML;
+				bannerDiv.innerHTML =
+					bannerDivHTML +
+					'<span class="tooltiptext">' +
+					"Click to edit" +
+					"</span></div>";
+
+				if (loadThemes) {
+					let themeSelectElement = document.getElementById("event_theme");
+					for (let theme in eventThemes) {
+						let themeOption = new Option();
+						themeOption.value = eventThemes[theme];
+						themeOption.text = theme;
+						if (eventThemes[theme] === currentTheme) {
+							themeOption.selected = true;
+						}
+						themeSelectElement.options.add(themeOption);
+					}
+				}
+			}
+
+			function editTheme() {
+				document.getElementById("edit_modal_event_theme").style =
+					"display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer(elementId);
+					});
+			}
+
+			function populateEventWebsiteHTML(eventState, eventWebsiteHTML) {
+				if (eventState === "INACTIVE") {
+					$("#themed_event_view").html(eventWebsiteHTML);
+				} else {
+					$("#themed_event_view_ed").html(eventWebsiteHTML);
+				}
+			}
+
+			function loadFormFields(ecData) {
+				loadFormFieldsFromObj(ecData.event);
+
+				let onlineEventInstr = document.getElementById(
+					"online_event_instructions"
+				);
+				if (onlineEventInstr && onlineEventInstr.value.length > 0) {
+					quillOnlineEventInstr.clipboard.dangerouslyPasteHTML(
+						onlineEventInstr.value
+					);
+				}
+
+				let addlEventInfo = document.getElementById("additional_event_info");
+				if (addlEventInfo && addlEventInfo.value.length > 0) {
+					quillAddlEventInfo.clipboard.dangerouslyPasteHTML(
+						addlEventInfo.value
+					);
+				}
+
+				if (ecData.event.start_time && ecData.event.start_time.length > 0) {
+					let startDateTime = new Date(
+						ecData.event.start_time + "T" + ecData.event.start_time_time
+					);
+					let endDateTime = new Date(
+						ecData.event.end_time + "T" + ecData.event.end_time_time
+					);
+					setEventDateTimeDiff(startDateTime, endDateTime);
+				}
+
+				displayLocation();
+				enableWaitlist();
+			}
+
+			function populateShareEvent(event, event_website_url) {
+				let shareEventText = event_website_url;
+				if (event.website_passcode) {
+					shareEventText += "\n\nPasscode: " + event.website_passcode;
+				}
+				document.getElementById("share_event_instr").value = shareEventText;
+			}
+
+			function editEventField(field) {
+				if (
+					field === "eventStartDate" ||
+					field === "eventEndDate" ||
+					field === "eventStartTime" ||
+					field === "eventEndTime" ||
+					field === "eventStartDateAndTime" ||
+					field === "eventEndDateAndTime" ||
+					field === "eventTimezone"
+				) {
+					field = "eventWhen";
+				}
+
+				if (
+					field === "eventLocationType" ||
+					field === "eventLocation" ||
+					field === "eventOnlineInstructions"
+				) {
+					field = "eventWhere";
+				}
+
+				let elementId = "edit_modal_" + field;
+				document.getElementById(elementId).style = "display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer(elementId);
+					});
+			}
+
+			function loadFormFieldsFromObj(obj) {
+				if (!obj) return;
+				for (const objKey in obj) {
+					let objVal = obj[objKey];
+
+					if (typeof objVal === "object") {
+						loadFormFieldsFromObj(objVal);
+					} else {
+						setFormField(objKey, objVal);
+					}
+				}
+			}
+
+			function setFormField(fieldId, fieldVal) {
+				let formField = document.getElementById(fieldId);
+				if (formField) {
+					if (formField.type === "checkbox" && fieldVal === "on") {
+						formField.checked = true;
+					} else {
+						formField.value = fieldVal;
+					}
+				}
+			}
+
+			function previewEvent() {
+				window.open(document.getElementById("event_website_url").value);
+			}
+
+			let fieldErrorDivs = new Array();
+
+			function loadFieldErrors(fieldErrors) {
+				if (!fieldErrors) return;
+
+				for (const fieldName in fieldErrors) {
+					let fieldError = fieldErrors[fieldName];
+					let fieldErrorDiv = document.getElementById(fieldName);
+					if (fieldErrorDiv) {
+						fieldErrorDiv.innerHTML =
+							'<font color="red" size="2">' + fieldError + "</font>";
+						fieldErrorDiv.style = "display:block;";
+						fieldErrorDivs.push(fieldErrorDiv);
+					}
+				}
+			}
+
+			function clearFieldErrors() {
+				if (!fieldErrorDivs || fieldErrorDivs.length === 0) return;
+
+				for (let i = 0; i < fieldErrorDivs.length; i++) {
+					fieldErrorDivs[i].innerHTML = "";
+					fieldErrorDivs[i].style = "display:none;";
+				}
+
+				fieldErrorDivs = [];
+			}
+
+			function saveEvent(doNotRefresh) {
+				clearFieldErrors();
+				if (validateEventInput()) {
+					buttonsController(true);
+					populateFieldsFromRTE();
+					if (doNotRefresh) {
+						document.getElementById("doNotRefresh").value = "1";
+					} else {
+						document.getElementById("doNotRefresh").value = "0";
+					}
+					google.script.run
+						.withSuccessHandler(saveEventSuccessCallback)
+						.withFailureHandler(saveEventFailureCallback)
+						.uiSaveEvent($("#event_config_form")[0]);
+				}
+			}
+
+			function populateFieldsFromRTE() {
+				var onlineEventInstr = document.getElementById(
+					"online_event_instructions"
+				);
+				onlineEventInstr.value = quillOnlineEventInstr.root.innerHTML;
+
+				var addlEventInfo = document.getElementById("additional_event_info");
+				addlEventInfo.value = quillAddlEventInfo.root.innerHTML;
+			}
+
+			function validateEventInput() {
+				let hasErrors = false;
+				let errorMsg =
+					"Please review and address the following errors:" + "<br>";
+
+				let title = document.getElementById("title");
+				if (title && !title.value) {
+					hasErrors = true;
+					errorMsg += "* " + "Title is required." + "<br>";
+					let titleErrorDiv = document.getElementById("title_error");
+					titleErrorDiv.innerHTML =
+						'<font color="red" size="2";>' + "Title is required." + "</font>";
+					titleErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(titleErrorDiv);
+				}
+
+				let startTime = document.getElementById("start_time");
+				let startTimeTime = document.getElementById("start_time_time");
+				if (
+					(startTime && !startTime.value) ||
+					(startTimeTime && !startTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"Start date and time are required and must be in the future." +
+						"<br>";
+					let startTimeErrorDiv = document.getElementById("start_time_error");
+					startTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Start date and time are required and must be in the future." +
+						"</font>";
+					startTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(startTimeErrorDiv);
+				}
+
+				let endTime = document.getElementById("end_time");
+				let endTimeTime = document.getElementById("end_time_time");
+				if (
+					(endTime && !endTime.value) ||
+					(endTimeTime && !endTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"End date and time are required and must be in the future." +
+						"<br>";
+					let endTimeErrorDiv = document.getElementById("end_time_error");
+					endTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"End date and time are required and must be in the future." +
+						"</font>";
+					endTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(endTimeErrorDiv);
+				}
+
+				if (hasErrors) {
+					buttonsController(false);
+
+					return false;
+				}
+
+				return true;
+			}
+
+			function saveEventSettings() {
+				clearFieldErrors();
+				if (validateEventSettingsInput()) {
+					buttonsController(true);
+					google.script.run
+						.withSuccessHandler(saveEventSettingsSuccessCallback)
+						.withFailureHandler(saveEventFailureCallback)
+						.uiSaveEventSettings($("#event_settings_form")[0]);
+				}
+
+				buttonsController(false);
+			}
+
+			function saveEventSettingsSuccessCallback(ecData) {
+				loadFieldErrors(ecData.fieldErrors);
+				buttonsController(false);
+
+				if (ecData.statusText && ecData.statusText.length > 0) {
+					showStatus(ecData.statusText);
+				}
+
+				if (!ecData.fieldErrors) {
+					loadFormFieldsFromObj(ecData.event);
+					populateShareEvent(ecData.event, ecData.eventWebsiteURL);
+				}
+			}
+
+			function enableWaitlist() {
+				let enableWlField = document.getElementById("waitlist_enabled");
+				let maxWlRegs = document.getElementById(
+					"waitlist_max_registrants_component"
+				);
+				if (enableWlField && enableWlField.checked) {
+					maxWlRegs.style.display = "block";
+				} else {
+					maxWlRegs.style.display = "none";
+				}
+			}
+
+			function publishEvent() {
+				document.getElementById("review_registration_form_modal").style =
+					"display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("review_registration_form_modal");
+					});
+			}
+
+			function reviewRegForm() {
+				window.open(regFormURL, "_blank");
+				document.getElementById("continue_button_div").style.display = "block";
+				document.getElementById("review_later_button_div").style.display =
+					"none";
+				document.getElementById("review_reg_form_button").className = "active";
+			}
+
+			function displayPublishModal() {
+				closeModalLayer("review_registration_form_modal");
+				document.getElementById("publish_event_modal").style = "display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("publish_event_modal");
+					});
+			}
+
+			function finalPublishEvent() {
+				buttonsController(true);
+				google.script.run
+					.withSuccessHandler(publishEventSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiPublishEvent();
+			}
+
+			function publishEventSuccessCallback(ecData) {
+				buttonsController(false);
+
+				if (ecData.statusText && ecData.statusText.length > 0) {
+					closeModalLayer("publish_event_modal");
+					showStatus(ecData.statusText);
+				} else {
+					populateEventConsoleData(ecData);
+				}
+			}
+
+			function shareEvent() {
+				document.getElementById("share_event_modal").style = "display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("share_event_modal");
+					});
+			}
+
+			function copyToCB() {
+				let shareEventInstrText =
+					document.getElementById("share_event_instr").value;
+				try {
+					navigator.clipboard.writeText(shareEventInstrText);
+				} catch (err) {}
+			}
+
+			let eventDateTimeDiff = 3600000;
+
+			function setEventDateTimeDiff(startDateTime, endDateTime) {
+				if (
+					!startDateTime ||
+					isNaN(startDateTime.valueOf()) ||
+					!endDateTime ||
+					isNaN(endDateTime.valueOf())
+				) {
+					eventDateTimeDiff = 3600000;
+					return;
+				}
+
+				if (startDateTime.getTime() >= endDateTime.getTime()) {
+					eventDateTimeDiff = 3600000;
+					return;
+				}
+
+				eventDateTimeDiff = endDateTime.getTime() - startDateTime.getTime();
+			}
+
+			function clearDateFieldErrors() {
+				document.getElementById("start_time_error").innerHTML = "";
+				document.getElementById("start_time_error").style = "display:none;";
+				document.getElementById("end_time_error").innerHTML = "";
+				document.getElementById("end_time_error").style = "display:none;";
+			}
+
+			function eventStartDateOnChange(startFieldName, endFieldName, errorText) {
+				clearDateFieldErrors();
+				let startTimeFieldValue = document.getElementById(startFieldName).value;
+				let startTimeTimeFieldValue = document.getElementById(
+					startFieldName + "_time"
+				).value;
+				let eventStartDateTime = new Date(
+					startTimeFieldValue + "T" + startTimeTimeFieldValue
+				);
+				let eventStartDate = new Date(startTimeFieldValue + "T00:00");
+
+				let endTimeFieldValue = document.getElementById(endFieldName).value;
+				let endTimeTimeFieldValue = document.getElementById(
+					endFieldName + "_time"
+				).value;
+				let eventEndDateTime = new Date(
+					endTimeFieldValue + "T" + endTimeTimeFieldValue
+				);
+				let eventEndDate = new Date(endTimeFieldValue + "T00:00");
+
+				if (eventStartDateTime && !isNaN(eventStartDateTime.valueOf())) {
+					let newEventEndDateTime = new Date(
+						eventStartDateTime.getTime() + eventDateTimeDiff
+					);
+
+					let month = new String(newEventEndDateTime.getMonth() + 1);
+					if (month.length === 1) {
+						month = "0" + month;
+					}
+
+					let date = new String(newEventEndDateTime.getDate());
+					if (date.length === 1) {
+						date = "0" + date;
+					}
+
+					let hours = new String(newEventEndDateTime.getHours());
+					if (hours.length === 1) {
+						hours = "0" + hours;
+					}
+
+					let minutes = new String(newEventEndDateTime.getMinutes());
+					if (minutes.length === 1) {
+						minutes = "0" + minutes;
+					}
+
+					document.getElementById(endFieldName).value =
+						newEventEndDateTime.getFullYear() + "-" + month + "-" + date;
+					document.getElementById(endFieldName + "_time").value =
+						hours + ":" + minutes;
+				} else if (
+					eventStartDate &&
+					!isNaN(eventStartDate.valueOf()) &&
+					(!eventEndDate || isNaN(eventEndDate.valueOf()))
+				) {
+					document.getElementById(endFieldName).value = startTimeFieldValue;
+				} else if (
+					eventStartDate &&
+					!isNaN(eventStartDate.valueOf()) &&
+					eventEndDate &&
+					!isNaN(eventEndDate.valueOf()) &&
+					eventStartDate.getTime() >= eventEndDate.getTime()
+				) {
+					let endTimeErrorDiv = document.getElementById(
+						endFieldName + "_error"
+					);
+					endTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' + errorText + "</font>";
+					endTimeErrorDiv.style = "display:block;";
+				}
+			}
+
+			function eventEndDateOnChange(startFieldName, endFieldName, errorText) {
+				clearDateFieldErrors();
+				let startTimeFieldValue = document.getElementById(startFieldName).value;
+				let startTimeTimeFieldValue = document.getElementById(
+					startFieldName + "_time"
+				).value;
+				let eventStartDateTime = new Date(
+					startTimeFieldValue + "T" + startTimeTimeFieldValue
+				);
+
+				let endTimeFieldValue = document.getElementById(endFieldName).value;
+				let endTimeTimeFieldValue = document.getElementById(
+					endFieldName + "_time"
+				).value;
+				let eventEndDateTime = new Date(
+					endTimeFieldValue + "T" + endTimeTimeFieldValue
+				);
+
+				if (
+					eventStartDateTime &&
+					!isNaN(eventStartDateTime.valueOf()) &&
+					eventEndDateTime &&
+					!isNaN(eventEndDateTime.valueOf())
+				) {
+					if (eventStartDateTime.getTime() >= eventEndDateTime.getTime()) {
+						let endTimeErrorDiv = document.getElementById(
+							endFieldName + "_error"
+						);
+						endTimeErrorDiv.innerHTML =
+							'<font color="red" size="2">' + errorText + "</font>";
+						endTimeErrorDiv.style = "display:block;";
+					} else {
+						setEventDateTimeDiff(eventStartDateTime, eventEndDateTime);
+					}
+				} else {
+					setEventDateTimeDiff(null, null);
+				}
+			}
+
+			function setStartDefaultTime() {
+				setDefaultTime("start_time_time");
+
+				let endTimeTime = document.getElementById("end_time_time");
+				if (!endTimeTime.value) {
+					endTimeTime.value = "11:00";
+				}
+			}
+
+			function setDefaultTime(timeFieldID) {
+				let timeField = document.getElementById(timeFieldID);
+
+				if (!timeField.value) {
+					timeField.value = "10:00";
+				}
+			}
+
+			function displayLocation() {
+				let locType = document.getElementById("location_type");
+				let location = document.getElementById("location_component");
+				let onlineEventInstr = document.getElementById(
+					"online_event_instructions_component"
+				);
+
+				if (locType.value === "TBD") {
+					location.style.display = "none";
+					onlineEventInstr.style.display = "none";
+				} else if (locType.value === "VENUE") {
+					location.style.display = "block";
+					onlineEventInstr.style.display = "none";
+				} else if (locType.value === "ONLINE_EVENT") {
+					location.style.display = "none";
+					onlineEventInstr.style.display = "block";
+				} else {
+					location.style.display = "block";
+					onlineEventInstr.style.display = "block";
+				}
+			}
+
+			function loadButtonsBar(eventState) {
+				if (eventState === "ACTIVE") {
+					$("#ec_share_event_button").show();
+					$("#ec_close_reg_button").show();
+				} else {
+					$("#ec_close_reg_button").hide();
+				}
+
+				if (eventState === "CLOSED") {
+					$("#ec_open_reg_button").show();
+					$("#ec_open_reg_button_tabs").show();
+					$("#ec_share_event_button").hide();
+				} else {
+					$("#ec_open_reg_button").hide();
+					$("#ec_open_reg_button_tabs").hide();
+				}
+
+				if (eventState === "INACTIVE") {
+					$("#ec_preview_event_button").show();
+					$("#ec_publish_event_button").show();
+				}
+			}
+
+			function loadRegButtonsBar(event) {
+				let currentDate = new Date().getTime();
+				let eventStartTime = new Date(
+					event.start_time + "T" + event.start_time_time
+				).getTime();
+				let eventEndTime = new Date(
+					event.end_time + "T" + event.end_time_time
+				).getTime();
+
+				if (currentDate >= eventStartTime - 3600000) {
+					document.getElementById("check_in_button_bulk").style.display =
+						"block";
+				}
+			}
+
+			function isPositiveInteger(value) {
+				if (!value || value.length === 0) return false;
+
+				const number = Number(value);
+
+				return Number.isInteger(number) && number > 0;
+			}
+
+			function validateEventSettingsInput() {
+				let hasErrors = false;
+				let errorMsg =
+					"Please review and address the following errors:" + "<br>";
+
+				let regStartTime = document.getElementById("reg_start_time");
+				let regStartTimeTime = document.getElementById("reg_start_time_time");
+				if (
+					regStartTime &&
+					regStartTime.value &&
+					(!regStartTimeTime || !regStartTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg += "* " + "Missing registration start time." + "<br>";
+					let regStartTimeErrorDiv = document.getElementById(
+						"reg_start_time_error"
+					);
+					regStartTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Missing registration start time." +
+						"</font>";
+					regStartTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(regStartTimeErrorDiv);
+				}
+
+				let regEndTime = document.getElementById("reg_end_time");
+				let regEndTimeTime = document.getElementById("reg_end_time_time");
+				if (
+					regEndTime &&
+					regEndTime.value &&
+					(!regEndTimeTime || !regEndTimeTime.value)
+				) {
+					hasErrors = true;
+					errorMsg += "* " + "Missing registration end time." + "<br>";
+					let regEndTimeErrorDiv =
+						document.getElementById("reg_end_time_error");
+					regEndTimeErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Missing registration end time." +
+						"</font>";
+					regEndTimeErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(regEndTimeErrorDiv);
+				}
+
+				let maxRegistrants = document.getElementById("max_registrants");
+				if (
+					maxRegistrants &&
+					maxRegistrants.value &&
+					!isPositiveInteger(maxRegistrants.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"Invalid event capacity. Please provide a whole number greater than zero." +
+						"<br>";
+					let maxRegistrantsErrorDiv = document.getElementById(
+						"max_registrants_error"
+					);
+					maxRegistrantsErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Invalid event capacity. Please provide a whole number greater than zero." +
+						"</font>";
+					maxRegistrantsErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(maxRegistrantsErrorDiv);
+				}
+
+				let waitlistMaxRegistrants = document.getElementById(
+					"waitlist_max_registrants"
+				);
+				if (
+					waitlistMaxRegistrants &&
+					waitlistMaxRegistrants.value &&
+					!isPositiveInteger(waitlistMaxRegistrants.value)
+				) {
+					hasErrors = true;
+					errorMsg +=
+						"* " +
+						"Invalid maximum waitlist capacity. Please provide a whole number greater than zero." +
+						"<br>";
+					let waitlistMaxRegistrantsErrorDiv = document.getElementById(
+						"waitlist_max_registrants_error"
+					);
+					waitlistMaxRegistrantsErrorDiv.innerHTML =
+						'<font color="red" size="2">' +
+						"Invalid maximum waitlist capacity. Please provide a whole number greater than zero." +
+						"</font>";
+					waitlistMaxRegistrantsErrorDiv.style = "display:block;";
+					fieldErrorDivs.push(waitlistMaxRegistrantsErrorDiv);
+				}
+
+				if (hasErrors) {
+					showStatus(errorMsg);
+					return false;
+				}
+
+				hideStatus();
+				return true;
+			}
+
+			function displayCloseRegModal() {
+				document.getElementById("closte_reg_modal").style = "display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("closte_reg_modal");
+					});
+			}
+
+			function closeRegistration() {
+				buttonsController(true);
+
+				let eventID = document.getElementById("event_id").value;
+				let eventStateMessage = document.getElementById("close_reg_msg").value;
+				let eventHideWebsite =
+					document.getElementById("event_hide_website").checked;
+
+				google.script.run
+					.withSuccessHandler(changeEventStatusSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiUpdateEventState(
+						eventID,
+						"CLOSED",
+						eventStateMessage,
+						eventHideWebsite
+					);
+			}
+
+			function openRegistration() {
+				buttonsController(true);
+				let eventID = document.getElementById("event_id").value;
+				google.script.run
+					.withSuccessHandler(changeEventStatusSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiUpdateEventState(eventID, "ACTIVE", "", false);
+			}
+
+			function discardEvent() {
+				if (
+					confirm(
+						"Please confirm that you would like to discard this event and all associated registration data. You will NOT be able to recover this data if you continue."
+					)
+				) {
+					buttonsController(true);
+					let eventID = document.getElementById("event_id").value;
+					google.script.run
+						.withSuccessHandler(changeEventStatusSuccessCallback)
+						.withFailureHandler(saveEventFailureCallback)
+						.uiUpdateEventState(eventID, "DISCARDED", "", false);
+				}
+			}
+
+			function showError(msg) {
+				$("#ec_loading").hide();
+				$("#ec_tabs").hide();
+
+				$("#ec_error_msg").html(msg);
+				$("#ec_error").show(100);
+			}
+
+			function populateEventConsoleDataError(e) {
+				window.clearInterval(call_timeout);
+
+				buttonsController(false);
+
+				console.log("populateEventConsoleDataError: " + e);
+
+				showError(e);
+			}
+
+			function setStatusDisplayNone() {
+				$("#ec_status_div").css("display", "none");
+			}
+
+			function showStatus(msg) {
+				status_showing = true;
+				$("#ec_status_content").html(msg);
+				$("#ec_status_div").show(300);
+			}
+
+			function hideStatus() {
+				status_showing = false;
+				$("#ec_status_div").hide(300, setStatusDisplayNone);
+			}
+
+			function populateReprocessDataTimeout() {
+				window.clearInterval(call_timeout);
+				buttonsController(false);
+
+				showError(
+					'Unable to reach Google services.<br><a onclick="reinit();">Try Again</a>'
+				);
+			}
+
+			function openTab(evt, tabName, tabId) {
+				var i, tabcontent, tablinks;
+
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+
+				document.getElementById(tabName).style.display = "block";
+				if (evt) {
+					evt.currentTarget.className += " active";
+				} else {
+					document.getElementById(tabId).className += " active";
+				}
+
+				if (tabName === "overview") {
+					refreshOverview();
+				}
+
+				if (tabName === "registrations") {
+					applyFilter(true);
+				}
+			}
+
+			function saveEventSuccessCallback(ecData) {
+				loadFieldErrors(ecData.fieldErrors);
+				buttonsController(false);
+
+				if (!ecData.fieldErrors) {
+					loadFormFields(ecData);
+
+					populateEventWebsiteHTML(
+						ecData.event.event_state,
+						ecData.eventWebsiteHTML
+					);
+					activateBanner(ecData.event.event_theme, ecData.eventThemes, false);
+
+					closeAllModalLayers();
+				}
+			}
+
+			function changeEventStatusSuccessCallback(ecData) {
+				loadButtonsBar(ecData.event.event_state);
+				buttonsController(false);
+				closeModalLayer("closte_reg_modal");
+
+				if (ecData.statusText && ecData.statusText.length > 0) {
+					showStatus(ecData.statusText);
+				}
+			}
+
+			function statusUpdateOnlySuccessCallback(statusText) {
+				buttonsController(false);
+				if (statusText && statusText.length > 0) {
+					showStatus(statusText);
+				}
+			}
+
+			function updateRegistrationsSuccessCallback(ecData) {
+				buttonsController(false);
+
+				document.getElementById("select_rows_header_control").checked = false;
+
+				loadRegistrations(
+					ecData.registrations,
+					ecData.registrationFilter,
+					ecData.registrationSortBy
+				);
+				if (ecData.statusText && ecData.statusText.length > 0) {
+					showStatus(ecData.statusText);
+				}
+
+				displayRowSpecificUpdateMessages(ecData.localizedRegUpdateResults);
+			}
+
+			function saveEventFailureCallback() {
+				buttonsController(false);
+				console.log("saveEventFailureCallback: failed callback.");
+			}
+
+			function displayRowSpecificUpdateMessages(localizedRegUpdateResults) {
+				if (
+					!localizedRegUpdateResults ||
+					localizedRegUpdateResults.length === 0
+				)
+					return;
+
+				let regTableTbody = document.getElementById(
+					"registrations_table_tbody"
+				);
+
+				for (let i = 0; i < localizedRegUpdateResults.length; i++) {
+					let updateResult = localizedRegUpdateResults[i];
+					let regEmail = updateResult.email;
+					let regMessageCol = document.getElementById(
+						"reg_col_update_message" + regEmail
+					);
+					if (regMessageCol) {
+						let message;
+						if (updateResult.status == "0") {
+							message =
+								'<font color="green" size="2";>' +
+								updateResult.locStatus +
+								"</font>";
+						} else {
+							message =
+								'<font color="red" size="2";>' +
+								updateResult.locStatus +
+								"</font>";
+						}
+						regMessageCol.innerHTML = message;
+					}
+				}
+			}
+
+			const regStatuses = {
+				ATTENDING: "Attending",
+				CHECKED_IN: "Checked In",
+				DECLINED_REGISTRANT: "Declined",
+
+				DECLINED_ADMIN: "Not Approved",
+				UNPROCESSED: "Pending",
+				WAITLISTED: "Waitlisted",
+			};
+
+			function loadRegistrations(registrations, filter, sortBy) {
+				let regTableTbody = document.getElementById(
+					"registrations_table_tbody"
+				);
+
+				regTableTbody.innerHTML = "";
+
+				loadFilterRow(filter);
+				currentRegSortBy = sortBy;
+				loadSortBy(sortBy);
+
+				if (!registrations || registrations.length === 0) return;
+
+				for (let i = 0; i < registrations.length; i++) {
+					let reg = registrations[i];
+					let regEmail = reg["email"];
+
+					let regRow = regTableTbody.insertRow(-1);
+					regRow.setAttribute("name", "reg_row");
+					regRow.id = "reg_row" + regEmail;
+
+					let selectRowCell = regRow.insertCell(0);
+					selectRowCell.innerHTML =
+						'<input type="checkbox" id="select_row_' +
+						regEmail +
+						'" name="select_row_checkbox" onchange="selectRow()">';
+					selectRowCell.style = "text-align: center";
+
+					let statusCell = regRow.insertCell(1);
+					statusCell.innerHTML = regStatuses[reg["regStatus"]];
+
+					let regTimeCell = regRow.insertCell(2);
+					regTimeCell.innerHTML = getRegTimeDisplayStr(reg["regTime"]);
+
+					let emailCell = regRow.insertCell(3);
+					emailCell.innerHTML = regEmail;
+
+					let firstNameCell = regRow.insertCell(4);
+					firstNameCell.innerHTML = reg["firstName"];
+
+					let lastNameCell = regRow.insertCell(5);
+					lastNameCell.innerHTML = reg["lastName"];
+
+					let regNotes = reg["notes"];
+
+					let escapedRegNotes = regNotes
+						.replace(/[\\"']/g, "\\$&")
+						.replace(/\u0000/g, "\\0");
+
+					let selectActionRowId = "select_action_button_" + regEmail;
+					let actionsHTML =
+						'<div class="multi_options_button"><button onclick="displayMultipleOptions(\'' +
+						selectActionRowId +
+						'\')" class="multi_options_btn">Select Action</button><div id="' +
+						selectActionRowId +
+						'" class="multi_options_button-content"><a href="#" id="view_reg_details' +
+						regEmail +
+						'">View Reg. Details</a><a href="#" onclick="displayNoteLayer(\'' +
+						regEmail +
+						"','" +
+						escapedRegNotes +
+						"')\">Add Note</a>";
+
+					if (reg["regStatus"] !== "ATTENDING") {
+						actionsHTML +=
+							'<a href="#" onclick="changeRegStatus(\'' +
+							"ATTENDING" +
+							"', '" +
+							regEmail +
+							"')\">Mark as Attending</a>";
+					}
+					if (reg["regStatus"] !== "WAITLISTED") {
+						actionsHTML +=
+							'<a href="#" onclick="changeRegStatus(\'' +
+							"WAITLISTED" +
+							"', '" +
+							regEmail +
+							"')\">Mark as Waitlisted</a>";
+					}
+					if (reg["regStatus"] !== "DECLINED_ADMIN") {
+						actionsHTML +=
+							'<a href="#" onclick="changeRegStatus(\'' +
+							"DECLINED_ADMIN" +
+							"', '" +
+							regEmail +
+							"')\">Mark as Not Approved</a>";
+					}
+					if (reg["regStatus"] !== "CHECKED_IN") {
+						actionsHTML +=
+							'<a href="#" onclick="changeRegStatus(\'' +
+							"CHECKED_IN" +
+							"', '" +
+							regEmail +
+							"')\">Mark as Checked In</a>";
+					}
+
+					actionsHTML += "</div></div>";
+
+					let actionsCell = regRow.insertCell(6);
+					actionsCell.innerHTML = actionsHTML;
+					actionsCell.style = "text-align: center";
+
+					let viewRegDetailsAElement = document.getElementById(
+						"view_reg_details" + regEmail
+					);
+					viewRegDetailsAElement.addEventListener("click", function () {
+						viewRegDetails(
+							reg["questionResponses"],
+							formQuestions,
+							formQuestionIDs
+						);
+					});
+
+					let regNotesRow = regTableTbody.insertRow(-1);
+					regNotesRow.id = "reg_row_notes" + regEmail;
+					regNotesRow.insertCell(0);
+					let regNotesCell = regNotesRow.insertCell(1);
+					regNotesCell.colSpan = "6";
+					regNotesCell.id = "reg_col_notes" + regEmail;
+					if (regNotes && regNotes.length > 0) {
+						regNotesCell.innerHTML =
+							'<font size="2">Notes: ' + regNotes + "</font>";
+					}
+
+					let regUpdateStatusRow = regTableTbody.insertRow(-1);
+					regUpdateStatusRow.id = "reg_row_update_message" + regEmail;
+					regUpdateStatusRow.insertCell(0);
+					let regUpdateStatusCell = regUpdateStatusRow.insertCell(1);
+					regUpdateStatusCell.colSpan = "6";
+					regUpdateStatusCell.id = "reg_col_update_message" + regEmail;
+				}
+			}
+
+			function getRegTimeDisplayStr(regTime) {
+				let today = new Date();
+				let regTimeDate = new Date(regTime);
+
+				if (
+					regTimeDate.getDate() == today.getDate() &&
+					regTimeDate.getMonth() == today.getMonth() &&
+					regTimeDate.getFullYear() == today.getFullYear()
+				) {
+					return regTimeDate.toLocaleTimeString([], { timeStyle: "short" });
+				}
+
+				return regTimeDate.toLocaleDateString([], {
+					month: "short",
+					day: "numeric",
+				});
+			}
+
+			function loadFilterRow(filter) {
+				let regTableTbody = document.getElementById(
+					"registrations_table_tbody"
+				);
+
+				let filterRow = regTableTbody.insertRow(-1);
+				filterRow.insertCell(0);
+
+				let statusFilterCell = filterRow.insertCell(1);
+				let statusSelectElement = document.createElement("select");
+				statusSelectElement.id = "status_filter";
+				let emptyStatusOption = new Option();
+				emptyStatusOption.value = "";
+				emptyStatusOption.text = "";
+				statusSelectElement.options.add(emptyStatusOption);
+				for (let statusID in regStatuses) {
+					let statusOption = new Option();
+					statusOption.value = statusID;
+					statusOption.text = regStatuses[statusID];
+					if (filter && filter.regStatus && filter.regStatus[1] === statusID) {
+						statusOption.selected = true;
+					}
+					statusSelectElement.options.add(statusOption);
+				}
+				statusFilterCell.appendChild(statusSelectElement);
+
+				filterRow.insertCell(2);
+
+				let emailFilterCell = filterRow.insertCell(3);
+				let emailFilterElement = document.createElement("input");
+				emailFilterElement.id = "email_filter";
+				emailFilterElement.type = "text";
+				emailFilterElement.maxlength = "25";
+				emailFilterElement.size = "15";
+				if (filter && filter.email) {
+					emailFilterElement.value = filter.email;
+				}
+				emailFilterCell.appendChild(emailFilterElement);
+
+				let fNameFilterCell = filterRow.insertCell(4);
+				let fNameFilterElement = document.createElement("input");
+				fNameFilterElement.id = "fname_filter";
+				fNameFilterElement.type = "text";
+				fNameFilterElement.maxlength = "25";
+				fNameFilterElement.size = "15";
+				if (filter && filter.firstName) {
+					fNameFilterElement.value = filter.firstName;
+				}
+				fNameFilterCell.appendChild(fNameFilterElement);
+
+				let lNameFilterCell = filterRow.insertCell(5);
+				let lNameFilterElement = document.createElement("input");
+				lNameFilterElement.id = "lname_filter";
+				lNameFilterElement.type = "text";
+				lNameFilterElement.maxlength = "25";
+				lNameFilterElement.size = "15";
+				if (filter && filter.lastName) {
+					lNameFilterElement.value = filter.lastName;
+				}
+				lNameFilterCell.appendChild(lNameFilterElement);
+
+				let actionFilterCell = filterRow.insertCell(6);
+				actionFilterCell.style = "text-align:center";
+				let applyFilterElement = document.createElement("input");
+				applyFilterElement.type = "button";
+				applyFilterElement.id = "apply_filter_button";
+				applyFilterElement.setAttribute("class", "active");
+				applyFilterElement.value = "Apply Filter";
+				applyFilterElement.addEventListener("click", function () {
+					applyFilter(true);
+				});
+				actionFilterCell.appendChild(applyFilterElement);
+
+				if (filter && !isEmpty(filter)) {
+					let clearFilterElement = document.createElement("input");
+					clearFilterElement.type = "button";
+					clearFilterElement.id = "clear_filter_button";
+					clearFilterElement.setAttribute("class", "active");
+					clearFilterElement.value = "Clear Filter";
+					clearFilterElement.addEventListener("click", function () {
+						applyFilter(false);
+					});
+					actionFilterCell.appendChild(clearFilterElement);
+				}
+			}
+
+			function applyFilter(doApply, sortBy) {
+				buttonsController(true);
+
+				let filter = {};
+
+				if (doApply) {
+					filter = getFilterObj();
+				}
+
+				if (!sortBy) {
+					sortBy = currentRegSortBy;
+				}
+
+				google.script.run
+					.withSuccessHandler(updateRegistrationsSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiUpdateRegistrationsFilter(filter, sortBy);
+			}
+
+			function getFilterObj() {
+				let filter = {};
+
+				let statusFilter = document.getElementById("status_filter").value;
+				if (statusFilter && statusFilter.length > 0) {
+					filter["regStatus"] = [1, statusFilter];
+				}
+
+				let emailFilter = document.getElementById("email_filter").value;
+				if (emailFilter && emailFilter.length > 0) {
+					filter["email"] = [1, emailFilter + "*"];
+				}
+
+				let fNameFilter = document.getElementById("fname_filter").value;
+				if (fNameFilter && fNameFilter.length > 0) {
+					filter["firstName"] = [1, fNameFilter + "*"];
+				}
+
+				let lNameFilter = document.getElementById("lname_filter").value;
+				if (lNameFilter && lNameFilter.length > 0) {
+					filter["lastName"] = [1, lNameFilter + "*"];
+				}
+
+				return filter;
+			}
+
+			function viewFilteredRegistrations(status) {
+				let statusFilter = document.getElementById("status_filter");
+
+				for (var i = 0; i < statusFilter.options.length; i++) {
+					if (statusFilter.options[i].value === status) {
+						statusFilter.options[i].selected = true;
+					}
+				}
+
+				document.getElementById("email_filter").value = "";
+				document.getElementById("fname_filter").value = "";
+				document.getElementById("lname_filter").value = "";
+
+				openTab(null, "registrations", "reg_tab");
+				applyFilter(true);
+			}
+
+			function isEmpty(obj) {
+				for (const prop in obj) {
+					if (Object.hasOwn(obj, prop)) {
+						return false;
+					}
+				}
+
+				return true;
+			}
+
+			function viewRegDetails(responses, questions, questionIDs) {
+				let viewRegDetailsTable = document.getElementById(
+					"view_reg_details_table"
+				);
+
+				viewRegDetailsTable.innerHTML = "";
+
+				for (let i = 0; i < questionIDs.length; i++) {
+					let questionID = questionIDs[i];
+					let questionTitle = questions[questionID];
+					let response = responses[questionID];
+
+					if (!response) {
+						response = "";
+					}
+
+					let row = viewRegDetailsTable.insertRow(-1);
+
+					let questionCell = row.insertCell(0);
+					questionCell.innerHTML = questionTitle;
+
+					let responseCell = row.insertCell(1);
+					responseCell.innerHTML = response;
+				}
+
+				document.getElementById("view_reg_details_modal").style =
+					"display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("view_reg_details_modal");
+					});
+			}
+
+			function closeModalLayer(layerId) {
+				document.getElementById(layerId).style = "display:none;";
+				document.getElementById("overlay").style = "display:none;";
+			}
+
+			function closeAllModalLayers() {
+				document.getElementById("overlay").style = "display:none;";
+				document.getElementById("edit_modal_event_theme").style =
+					"display:none;";
+				document.getElementById("edit_modal_eventTitle").style =
+					"display:none;";
+				document.getElementById("edit_modal_eventDescription").style =
+					"display:none;";
+				document.getElementById("edit_modal_eventWhen").style = "display:none;";
+				document.getElementById("edit_modal_eventWhere").style =
+					"display:none;";
+				document.getElementById("edit_modal_eventAdditionalEventInfo").style =
+					"display:none;";
+				document.getElementById("edit_modal_eventVideoUrl").style =
+					"display:none;";
+			}
+
+			function changeRegStatus(newStatus, regEmail) {
+				buttonsController(true);
+				hideStatus();
+
+				let registrations = [];
+
+				if (regEmail && regEmail.length > 0) {
+					registrations.push(regEmail);
+				} else {
+					let selectRowCheckboxes = document.getElementsByName(
+						"select_row_checkbox"
+					);
+
+					for (let i = 0; i < selectRowCheckboxes.length; i++) {
+						let selectRowCheckbox = selectRowCheckboxes[i];
+						if (selectRowCheckbox.checked) {
+							registrations.push(selectRowCheckbox.id.slice(11));
+						}
+					}
+
+					if (registrations.length === 0) {
+						showStatus("Please select one or more registration rows.");
+						buttonsController(false);
+						return;
+					}
+				}
+
+				let filter = getFilterObj();
+
+				google.script.run
+					.withSuccessHandler(updateRegistrationsSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiUpdateRegistration(
+						registrations,
+						newStatus,
+						null,
+						filter,
+						currentRegSortBy
+					);
+			}
+
+			function displayNoteLayer(regEmail, regNotes) {
+				hideStatus();
+
+				let registrations = [];
+
+				if (regEmail && regEmail.length > 0) {
+					registrations.push(regEmail);
+				} else {
+					let selectRowCheckboxes = document.getElementsByName(
+						"select_row_checkbox"
+					);
+
+					for (let i = 0; i < selectRowCheckboxes.length; i++) {
+						let selectRowCheckbox = selectRowCheckboxes[i];
+						if (selectRowCheckbox.checked) {
+							registrations.push(selectRowCheckbox.id.slice(11));
+						}
+					}
+
+					if (registrations.length === 0) {
+						showStatus("Please select one or more registration rows.");
+						return;
+					}
+				}
+
+				let addNoteInstrElement = document.getElementById(
+					"add_modal_note_instructions"
+				);
+				let addNoteInstrHTML;
+
+				if (regEmail && regEmail.length > 0) {
+					addNoteInstrHTML =
+						"Add or modify a note for the selected registration. The note is for your internal use only and will not be visible to event attendees.";
+				} else if (registrations.length === 1) {
+					addNoteInstrHTML =
+						"Add a note for " +
+						registrations.length +
+						" selected registration. Provided note will override existing note on the registration if one exists. The note is for your internal use only and will not be visible to event attendees.";
+				} else {
+					addNoteInstrHTML =
+						"Add a note for " +
+						registrations.length +
+						" selected registrations. Provided note will override existing notes on those registrations if they exist. The notes are for your internal use only and will not be visible to event attendees.";
+				}
+
+				addNoteInstrElement.innerHTML = addNoteInstrHTML;
+
+				let regNotesInput = document.getElementById("add_note_input");
+				if (regNotes && regNotes.length > 0) {
+					regNotesInput.value = regNotes.replace("'", "'").replace('"', '"');
+				} else {
+					regNotesInput.value = "";
+				}
+
+				let saveButtonElement = document.createElement("input");
+				saveButtonElement.type = "button";
+				saveButtonElement.setAttribute("class", "action");
+				saveButtonElement.value = "Save";
+				saveButtonElement.addEventListener("click", function () {
+					addNote(registrations);
+				});
+
+				let saveNoteButtonDiv = document.getElementById("save_note_button");
+
+				saveNoteButtonDiv.removeChild(saveNoteButtonDiv.firstChild);
+				saveNoteButtonDiv.appendChild(saveButtonElement);
+
+				document.getElementById("add_note_modal").style = "display:block;";
+				document.getElementById("overlay").style = "display:block;";
+				document
+					.getElementById("overlay")
+					.addEventListener("click", function () {
+						closeModalLayer("add_note_modal");
+					});
+			}
+
+			function addNote(registrations) {
+				buttonsController(true);
+				closeModalLayer("add_note_modal");
+				let filter = getFilterObj();
+
+				let regNotesInput = document.getElementById("add_note_input");
+				google.script.run
+					.withSuccessHandler(updateRegistrationsSuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiUpdateRegistration(
+						registrations,
+						null,
+						regNotesInput.value,
+						filter,
+						currentRegSortBy
+					);
+			}
+
+			function selectAllRows() {
+				let selectAllCheckbox = document.getElementById(
+					"select_rows_header_control"
+				);
+				let regRows = document.getElementsByName("reg_row");
+
+				if (!regRows || regRows.length === 0) return;
+
+				for (let i = 0; i < regRows.length; i++) {
+					let regEmail = regRows[i].id.slice(7);
+					let regRowCheckbox = document.getElementById(
+						"select_row_" + regEmail
+					);
+					regRowCheckbox.checked = selectAllCheckbox.checked;
+				}
+			}
+
+			function selectRow() {
+				let selectAllCheckbox = document.getElementById(
+					"select_rows_header_control"
+				);
+				let regRows = document.getElementsByName("reg_row");
+
+				let checked = 0;
+
+				for (let i = 0; i < regRows.length; i++) {
+					let regEmail = regRows[i].id.slice(7);
+					let regRowCheckbox = document.getElementById(
+						"select_row_" + regEmail
+					);
+					if (regRowCheckbox.checked) {
+						checked++;
+					}
+				}
+
+				if (checked === regRows.length) {
+					selectAllCheckbox.checked = true;
+				} else {
+					selectAllCheckbox.checked = false;
+				}
+			}
+
+			function displayMultipleOptions(buttonId) {
+				document.getElementById(buttonId).classList.toggle("show");
+			}
+
+			window.onclick = function (event) {
+				if (!event.target.matches(".multi_options_btn")) {
+					var dropdowns = document.getElementsByClassName(
+						"multi_options_button-content"
+					);
+					var i;
+					for (i = 0; i < dropdowns.length; i++) {
+						var openDropdown = dropdowns[i];
+						if (openDropdown.classList.contains("show")) {
+							openDropdown.classList.remove("show");
+						}
+					}
+				}
+			};
+
+			function loadSortBy(sortBy) {
+				if (!sortBy) return;
+
+				const descSort = "&nbsp;&nbsp;&#9660;";
+				const ascSort = "&nbsp;&nbsp;&#9650;";
+
+				let sortByCol = sortBy.sortFieldName;
+
+				sortByColName = "reg_col_sort_" + sortByCol;
+				sortElement = document.getElementById(sortByColName);
+
+				if (sortBy.sortOrder === "desc") {
+					sortElement.innerHTML = descSort;
+				} else {
+					sortElement.innerHTML = ascSort;
+				}
+
+				let sortColumns = document.getElementsByName("reg_col_sort");
+				for (let i = 0; i < sortColumns.length; i++) {
+					let sortColumn = sortColumns[i];
+					if (sortColumn.id !== sortByColName) {
+						sortColumn.innerHTML = "";
+					}
+				}
+			}
+
+			function sortRegColumn(column) {
+				let sortOrder = "desc";
+
+				if (
+					currentRegSortBy &&
+					currentRegSortBy.sortFieldName === column &&
+					currentRegSortBy.sortOrder === "desc"
+				) {
+					sortOrder = "asc";
+				}
+
+				let sortBy = {
+					sortFieldName: column,
+					sortOrder: sortOrder,
+				};
+
+				applyFilter(true, sortBy);
+			}
+
+			function exportRegistrations() {
+				buttonsController(true);
+				hideStatus();
+
+				let filter = getFilterObj();
+
+				let selectRowCheckboxes = document.getElementsByName(
+					"select_row_checkbox"
+				);
+				if (selectRowCheckboxes.length === 0) {
+					showStatus(
+						"Registrations export unsuccessful. Please adjust page filters so that at least one registration record is in view."
+					);
+					return;
+				}
+
+				google.script.run
+					.withSuccessHandler(statusUpdateOnlySuccessCallback)
+					.withFailureHandler(saveEventFailureCallback)
+					.uiExportRegistrations(filter, currentRegSortBy);
+			}
+
+			function buttonsController(disableButtons) {
+				if (disableButtons) {
+				} else {
+				}
+
+				let buttonsAction = document.getElementsByClassName("action");
+				if (buttonsAction && buttonsAction.length > 0) {
+					for (let i = 0; i < buttonsAction.length; i++) {
+						buttonsAction[i].disabled = disableButtons;
+					}
+				}
+
+				let buttonsActive = document.getElementsByClassName("active");
+				if (buttonsActive && buttonsActive.length > 0) {
+					for (let i = 0; i < buttonsActive.length; i++) {
+						buttonsActive[i].disabled = disableButtons;
+					}
+				}
+
+				let buttonsMultiOpt =
+					document.getElementsByClassName("multi_options_btn");
+				if (buttonsMultiOpt && buttonsMultiOpt.length > 0) {
+					for (let i = 0; i < buttonsMultiOpt.length; i++) {
+						buttonsMultiOpt[i].disabled = disableButtons;
+					}
+				}
+			}
+		</script>
+
+
+	</head>
+<body>
+
+
+
+
+
+
+
+
+	<div id="ec_tabs">
+		<div class="tab">
+			ttttttttaaaaaaaaaaaabbbbbbbbbbbb
+		</div>
+		<div id="registrations" class="tabcontent">
+
+			<div id="registrations_table">
+				<div class="head-table">
+					<div class="head-table__row">
+						<div class="head-table__col head-table__col">
+							<input type="checkbox" id="select_rows_header_control" name="select_rows_header_control" onchange="selectAllRows()">
+						</div>
+						<div class="head-table__col head-table__col">
+							<a href="#" onclick="sortRegColumn('regStatus')">Status<span id="reg_col_sort_regStatus" name="reg_col_sort"></span></a>
+						</div>
+						<div class="head-table__col head-table__col">
+							<a href="#" onclick="sortRegColumn('regTime')">Reg. Date<span id="reg_col_sort_regTime" name="reg_col_sort">&nbsp;&nbsp;▼</span></a>
+						</div>
+						<div class="head-table__col head-table__col">
+							<a href="#" onclick="sortRegColumn('email')">Email<span id="reg_col_sort_email" name="reg_col_sort"></span></a>
+						</div>
+						<div class="head-table__col head-table__col">
+							<a href="#" onclick="sortRegColumn('firstName')">First Name<span id="reg_col_sort_firstName" name="reg_col_sort"></span></a>
+						</div>
+						<div class="head-table__col head-table__col">
+							<a href="#" onclick="sortRegColumn('lastName')">Last Name<span id="reg_col_sort_lastName" name="reg_col_sort"></span></a>
+						</div>
+						<div class="head-table__col head-table__col">
+							Actions
+						</div>
+					</div>
+				</div>
+
+				<div id="registrations_table_tbody">
+					<div class="body-table">
+
+						<div class="body-table__row body-table__filter">
+							<div class="body-table__col">
+							</div>
+							<div class="body-table__col">
+								<select id="status_filter">
+									<option value=""></option>
+									<option value="ATTENDING">Attending</option>
+									<option value="CHECKED_IN">Checked In</option>
+									<option value="DECLINED_REGISTRANT">Declined</option>
+									<option value="DECLINED_ADMIN">Not Approved</option>
+									<option value="UNPROCESSED">Pending</option>
+									<option value="WAITLISTED">Waitlisted</option>
+								</select>
+							</div>
+							<div class="body-table__col">
+							</div>
+							<div class="body-table__col">
+								<input id="email_filter" type="text" size="15">
+							</div>
+							<div class="body-table__col">
+								<input id="fname_filter" type="text" size="15">
+							</div>
+							<div class="body-table__col">
+								<input id="lname_filter" type="text" size="15">
+							</div>
+							<div class="body-table__col">
+								<button id="apply_filter_button" class="active" disabled="">Apply Filter</button>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Начало События -->
+					<div class="body-table__row" id="reg_rowpete.buttee@petepetepete.com">
+						<div class="body-table__col">
+							<input type="checkbox" id="select_row_pete.buttee@petepetepete.com" name="select_row_checkbox" onchange="selectRow()">
+						</div>
+						<div class="body-table__col">
+							Waitlisted
+						</div>
+						<div class="body-table__col">
+							11:05 AM
+						</div>
+						<div class="body-table__col">
+							pete.buttee@petepetepete.com
+						</div>
+						<div class="body-table__col">
+							Pete
+						</div>
+						<div class="body-table__col">
+							Buttee
+						</div>
+						<div class="body-table__col">
+							<div class="multi_options_button">
+								<button onclick="displayMultipleOptions('select_action_button_pete.buttee@petepetepete.com')" class="multi_options_btn" disabled="">
+									Select Action
+								</button>
+								<div id="select_action_button_pete.buttee@petepetepete.com" class="multi_options_button-content">
+									<a href="#" id="view_reg_detailspete.buttee@petepetepete.com">View Reg. Details</a><a href="#" onclick="displayNoteLayer('pete.buttee@petepetepete.com','This is a very important guest.')">Add Note</a><a href="#" onclick="changeRegStatus('ATTENDING', 'pete.buttee@petepetepete.com')">Mark as Attending</a><a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'pete.buttee@petepetepete.com')">Mark as Not Approved</a><a href="#" onclick="changeRegStatus('CHECKED_IN', 'pete.buttee@petepetepete.com')">Mark as Checked In</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="body-table__row body-table__note" id="reg_row_notespete.buttee@petepetepete.com">
+						<div class="body-table__col" id="reg_col_notespete.buttee@petepetepete.com">
+							<font size="2">Notes: This is a very important guest.</font>
+						</div>
+					</div>
+					<div class="body-table__row body-table__update-message" id="reg_row_notespete.buttee@petepetepete.com">
+						<div class="body-table__col" id="reg_col_update_messagepete.buttee@petepetepete.com">
+							<font color="green" size="2" ;="">Registration updated successfully.</font>
+						</div>
+					</div>
+					<!-- Конец События -->
+
+
+					<!-- Начало События -->
+					<div class="body-table__row" id="reg_rowpete.buttee@petepetepete.com">
+						<div class="body-table__col">
+							<input type="checkbox" id="select_row_pete.buttee@petepetepete.com" name="select_row_checkbox" onchange="selectRow()">
+						</div>
+						<div class="body-table__col">
+							Waitlisted
+						</div>
+						<div class="body-table__col">
+							11:05 AM
+						</div>
+						<div class="body-table__col">
+							pete.buttee@petepetepete.com
+						</div>
+						<div class="body-table__col">
+							Pete
+						</div>
+						<div class="body-table__col">
+							Buttee
+						</div>
+						<div class="body-table__col">
+							<div class="multi_options_button">
+								<button onclick="displayMultipleOptions('select_action_button_pete.buttee@petepetepete.com')" class="multi_options_btn" disabled="">
+									Select Action
+								</button>
+								<div id="select_action_button_pete.buttee@petepetepete.com" class="multi_options_button-content">
+									<a href="#" id="view_reg_detailspete.buttee@petepetepete.com">View Reg. Details</a><a href="#" onclick="displayNoteLayer('pete.buttee@petepetepete.com','This is a very important guest.')">Add Note</a><a href="#" onclick="changeRegStatus('ATTENDING', 'pete.buttee@petepetepete.com')">Mark as Attending</a><a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'pete.buttee@petepetepete.com')">Mark as Not Approved</a><a href="#" onclick="changeRegStatus('CHECKED_IN', 'pete.buttee@petepetepete.com')">Mark as Checked In</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="body-table__row body-table__note" id="reg_row_notespete.buttee@petepetepete.com">
+						<div class="body-table__col" id="reg_col_notespete.buttee@petepetepete.com">
+							<font size="2">Notes: This is a very important guest.</font>
+						</div>
+					</div>
+					<div class="body-table__row body-table__update-message" id="reg_row_notespete.buttee@petepetepete.com">
+						<div class="body-table__col" id="reg_col_update_messagepete.buttee@petepetepete.com">
+							<font color="green" size="2" ;="">Registration updated successfully.</font>
+						</div>
+					</div>
+					<!-- Конец События -->
+
+					
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	// Get all elements with id="ec_field_label"
+	var elements = document.querySelectorAll('[id="ec_field_label"]');
+
+	// Iterate through each element
+	elements.forEach(function(element) {
+		// Find the preceding div
+		var precedingDiv = element.previousElementSibling;
+
+		// Check if the preceding div contains a <label>
+		if (precedingDiv && precedingDiv.querySelector('label')) {
+			// Add the class "info-div" to the preceding div
+			precedingDiv.classList.add('info-div');
+		}
+	});
+
+
+
+
+
+
+	// Get all elements with class 'info-div'
+	var infoDivs = document.querySelectorAll('.info-div');
+
+	// Iterate over each 'info-div'
+	infoDivs.forEach(function (infoDiv) {
+		// Attach click event listener to the current 'info-div'
+		infoDiv.addEventListener('click', function () {
+			// Get the next sibling element with id 'ec_field_label'
+			var labelElement = getNextSiblingById(infoDiv, 'ec_field_label');
+
+			// Toggle the class '.show-label' on the label element
+			labelElement.classList.toggle('show-label');
 		});
-	</script>
+	});
+
+	// Function to get the next sibling element with a specific id
+	function getNextSiblingById(element, id) {
+		var sibling = element.nextElementSibling;
+		while (sibling) {
+			if (sibling.id === id) {
+					return sibling;
+			}
+			sibling = sibling.nextElementSibling;
+		}
+		return null;
+	}
+
+
+
+
+	document.addEventListener('click', function(event) {
+		// Check if the clicked element has the "show-label" class
+		if (event.target.classList.contains('show-label')) {
+			// Get the width of the element
+			const elementWidth = event.target.offsetWidth;
+
+			// Set the threshold for the right part width (40 pixels)
+			const rightPartWidth = 40;
+
+			// Check if the click was in the right part (within 40 pixels from the right edge)
+			if (event.clientX > event.target.getBoundingClientRect().left + elementWidth - rightPartWidth) {
+					// Remove the "show-label" class
+					event.target.classList.remove('show-label');
+			}
+		}
+	});
+
+
+
+
+
+
+
+
+
+
+	// // Get the <thead> and <tbody> elements
+	// const thead = document.querySelector('#registrations_table thead');
+	// const tbody = document.querySelector('#registrations_table_tbody');
+
+	// // Get the initial offset, width, and th widths
+	// const initialOffset = thead.getBoundingClientRect().top;
+	// let initialOffsetCorrect = initialOffset - 69 -56;
+	// if (initialOffsetCorrect < 67) {
+	// 	initialOffsetCorrect = 67;
+	// }
+	// const initialWidth = thead.offsetWidth;
+	// const thElements = Array.from(thead.querySelectorAll('th'));
+
+	// // Fix the position of <thead> immediately
+	// thead.style.position = 'fixed';
+	// thead.style.top = `${initialOffsetCorrect}px`; // Set top position to the initial offset
+	// thead.style.width = `${initialWidth}px`;
+
+
+
+
+
+
+
+
+	// фиксация элементов на месте
+	// Find the first element with the class "tab"
+	const tabElement = document.querySelector('.tab');
+
+	// Check if the element is found before proceeding
+	if (tabElement) {
+		// // Get the width of the element
+		// const tabWidth = tabElement.offsetWidth;
+
+		// // Get the position of the element on the screen
+		// const tabPosition = tabElement.getBoundingClientRect();
+
+		// let tabPositionCorrect = tabPosition.top
+		// if (tabPositionCorrect < 10) {
+		// 		tabPositionCorrect = 10;
+		// 	}
+
+		// // Add width and position properties to the element
+		// tabElement.style.width = `${tabWidth}px`;
+		// tabElement.style.position = 'fixed';
+		// tabElement.style.top = `${tabPositionCorrect}px`;
+		// tabElement.style.left = `${tabPosition.left}px`;
+
+
+
+		/* // если элементы не были зафиксированы сверху изначально, то при скроле исправим это
+		window.addEventListener('scroll', function() {
+			// Get the vertical scroll position of the page
+			var scrollPosition = window.scrollY || window.pageYOffset;
+
+			// Check if the scroll position is greater than or equal to 67 pixels
+			if (scrollPosition >= 20) {
+				tabElement.style.top = `10px`;
+				thead.style.top = `67px`;
+
+					
+				// Check if the element with id "registrations_table" exists
+				var registrationsTable = document.getElementById('registrations_table');
+
+				if (registrationsTable) {
+					// If the element exists, set its margin-top to 32px
+					registrationsTable.style.marginTop = '32px';
+				} 
+
+				var ecStatusDiv = document.getElementById('ec_status_div'); 
+				if (ecStatusDiv) {
+					ecStatusDiv.style.display = 'none';
+				}
+			}
+		}); */
+
+
+
+		// // Изменение положения фиксированного блока если сообщение закрывается:
+		// document.getElementById('ec_status_div').addEventListener('click', function (event) {
+		// 	// Check if the click occurred on an anchor element
+		// 	if (event.target.tagName === 'A') {
+		// 		// поднимаем фиксированные части и таблицу к верху окна
+		// 		tabElement.style.top = `10px`;
+		// 		thead.style.top = `67px`;
+		// 	}
+		// });
+
+
+
+
+		// открывание окна в зависимости от положения относительно экрана:
+		document.addEventListener('click', function(event) {
+			// Check if the clicked element has the class "multi_options_btn" and is a child of "#registrations_table_tbody"
+			if (event.target.classList.contains('multi_options_btn') && event.target.closest('#registrations_table_tbody')) {
+				// Get the next sibling element with class "multi_options_button-content"
+				var contentElement = event.target.nextElementSibling;
+
+				// Check if the next sibling exists and has the desired class
+				if (contentElement && contentElement.classList.contains('multi_options_button-content')) {
+					// Get the coordinates of the clicked element
+					var elementRect = event.target.getBoundingClientRect();
+					var elementY = elementRect.top + window.scrollY;
+
+					// Get the height of the window
+					var windowHeight = window.innerHeight;
+
+					// Calculate the distance to the top and bottom edges
+					var distanceToTop = elementY;
+					console.log("distanceToTop "+ distanceToTop);
+					var distanceToBottom = windowHeight - elementY;
+					console.log("distanceToBottom "+ distanceToBottom);
+
+					// Apply styles based on the proximity to the top or bottom
+					if (distanceToTop < distanceToBottom) {
+						contentElement.style.top = '100%';
+						contentElement.style.bottom = ''; // Reset bottom style
+					} else {
+						contentElement.style.bottom = '100%';
+						contentElement.style.top = ''; // Reset top style
+					}
+				}
+			}
+		});
+
+
+	}
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
