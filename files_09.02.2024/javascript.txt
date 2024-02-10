@@ -1,0 +1,10 @@
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    // Check if the element with id "ec_tabs" exists
+	    var ecTabsElement = document.getElementById('ec_tabs');
+	    if (ecTabsElement) {
+	        // If the element exists, add the style to the body
+	        document.body.style.overflow = 'hidden';
+	    }
+	});
+</script>

@@ -132,7 +132,6 @@
 			}
 
 			.multi_options_btn {
-				.button: active;
 				cursor: pointer;
 			}
 
@@ -273,7 +272,7 @@
 				table-layout: fixed;
 				text-align: center;
 				height: 100%;
-				wdith: 100%;
+				width: 100%;
 			}
 
 			table.overview_content_grid td {
@@ -302,21 +301,11 @@
 			}
 
 			.last_refresh {
-				boarder-style: solid;
+				border-style: solid;
 				width: 100%;
 				font-size: 11px;
 				font-style: italic;
 			}
-
-			@import url(https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:regular,500,600,700&display=swap);
-
-			@import url(https://fonts.googleapis.com/css?family=Roboto:regular,500&display=swap);
-
-			@import url(https://fonts.googleapis.com/css?family=Inter:regular,500,600,700&display=swap);
-
-			@import url(https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap);
-
-			@charset "UTF-8";
 
 			.modal {
 				border-radius: 9px;
@@ -2660,7 +2649,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_event_theme'); >[X]</a
+							onclick="closeModalLayer('edit_modal_event_theme');" >[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Event Website Theme</strong>
@@ -2835,7 +2824,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_eventDescription'); >[X]</a
+							onclick="closeModalLayer('edit_modal_eventDescription'); ">[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Brief Description</strong>
@@ -2912,7 +2901,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_eventWhen'); >[X]</a
+							onclick="closeModalLayer('edit_modal_eventWhen'); ">[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Date and Time</strong>
@@ -3021,7 +3010,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_eventWhere'); >[X]</a
+							onclick="closeModalLayer('edit_modal_eventWhere'); ">[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Location</strong>
@@ -3454,7 +3443,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_additional_event_info'); >[X]</a
+							onclick="closeModalLayer('edit_modal_additional_event_info'); ">[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px" >Edit Additional Event Information</strong
@@ -3521,7 +3510,7 @@
 										class="ql-picker-item"></span></span></span
 							><select
 								class="ql-header"
-								style="display: none >
+								style="display: none;" >
 								<option value="1"></option>
 								<option value="2"></option>
 								<option value="3"></option>
@@ -3790,7 +3779,7 @@
 						style="display: block; float: right"
 						;="" ><a
 							style="text-decoration: none"
-							onclick="closeModalLayer('edit_modal_eventVideoUrl'); >[X]</a
+							onclick="closeModalLayer('edit_modal_eventVideoUrl');" >[X]</a
 						>&nbsp;</span
 					>
 					<strong style="font-size: 20px">Edit Video</strong>
@@ -3882,7 +3871,7 @@
 				</div>
 				<div
 					id="themed_event_view"
-					style="height:360px;margin-left:5px; border solid 1px; overflow-y:scroll;"
+					style="height:360px;margin-left:5px; border: solid 1px; overflow-y:scroll;"
 				></div>
 
 				<div
@@ -3957,86 +3946,96 @@
 				<div>
 					Before proceeding, please review the Google Form people will use to
 					register. Be sure the first two questions collect their first and last
+					name. When you're done, come back to this window.<br /><br /><br />Before proceeding, please review the Google Form people will use to
+					register. Be sure the first two questions collect their first and last
+					name. When you're done, come back to this window.<br /><br /><br />Before proceeding, please review the Google Form people will use to
+					register. Be sure the first two questions collect their first and last
+					name. When you're done, come back to this window.<br /><br /><br />Before proceeding, please review the Google Form people will use to
+					register. Be sure the first two questions collect their first and last
+					name. When you're done, come back to this window.<br /><br /><br />Before proceeding, please review the Google Form people will use to
+					register. Be sure the first two questions collect their first and last
 					name. When you're done, come back to this window.<br /><br /><br />
 				</div>
-				<div
-					id="continue_button_div"
-					style="
-						display: none;
-						float: right;
-						position: sticky;
-						right: 5px;
-						bottom: 0;
-						margin-top: 5px;
-					"
-				>
-					<!-- <input
-						type="button"
-						class="action"
-						onclick="displayPublishModal();"
-						value="Continue"
-					/> -->
-					<button class="action server-button pressed-button" onclick="displayPublishModal();">Continue</button>
-					&nbsp;&nbsp;
-				</div>
-				<div
-					id="review_reg_form_button_div"
-					style="
-						float: right;
-						position: sticky;
-						right: 5px;
-						bottom: 0;
-						margin-top: 5px;
-					"
-				>
-					<input
-						id="review_reg_form_button"
-						type="button"
-						class="action"
-						onclick="reviewRegForm();"
-						value="Review Registration Form [⬈]"
-					/>
-					<button class="action server-button pressed-button" onclick="reviewRegForm();">Review Registration Form [⬈]</button>
-					&nbsp;&nbsp;
-				</div>
-				<div
-					id="review_later_button_div"
-					style="
-						float: right;
-						position: sticky;
-						right: 5px;
-						bottom: 0;
-						margin-top: 5px;
-					"
-				>
-					<!-- <input
-						type="button"
-						class="active"
-						onclick="displayPublishModal();"
-						value="Review Later"
-					/> -->
-					<button class="active server-button pressed-button" onclick="displayPublishModal();">Review Later</button>
-					&nbsp;&nbsp;
-				</div>
-				<div
-					id="close_button"
-					style="
-						float: right;
-						position: sticky;
-						right: 5px;
-						bottom: 0;
-						margin-top: 5px;
-					"
-				>
-					<!-- <input
-						type="button"
-						class="active"
-						onclick="closeModalLayer('review_registration_form_modal');"
-						value="Cancel"
-					/> -->
-					<button class="active server-button pressed-button" onclick="closeModalLayer('review_registration_form_modal');">Cancel</button>
-					&nbsp;&nbsp;
-				</div>
+				<div id="bottom_buttons">
+					<div
+						id="continue_button_div"
+						style="
+							display: none;
+							float: right;
+							position: sticky;
+							right: 5px;
+							bottom: 0;
+							margin-top: 5px;
+						"
+					>
+						<!-- <input
+							type="button"
+							class="action"
+							onclick="displayPublishModal();"
+							value="Continue"
+						/> -->
+						<button class="action server-button pressed-button" onclick="displayPublishModal();">Continue</button>
+						&nbsp;&nbsp;
+					</div>
+					<div
+						id="review_reg_form_button_div"
+						style="
+							float: right;
+							position: sticky;
+							right: 5px;
+							bottom: 0;
+							margin-top: 5px;
+						"
+					>
+						<input
+							id="review_reg_form_button"
+							type="button"
+							class="action"
+							onclick="reviewRegForm();"
+							value="Review Registration Form [⬈]"
+						/>
+						<button class="action server-button pressed-button" onclick="reviewRegForm();">Review Registration Form [⬈]</button>
+						&nbsp;&nbsp;
+					</div>
+					<div
+						id="review_later_button_div"
+						style="
+							float: right;
+							position: sticky;
+							right: 5px;
+							bottom: 0;
+							margin-top: 5px;
+						"
+					>
+						<!-- <input
+							type="button"
+							class="active"
+							onclick="displayPublishModal();"
+							value="Review Later"
+						/> -->
+						<button class="active server-button pressed-button" onclick="displayPublishModal();">Review Later</button>
+						&nbsp;&nbsp;
+					</div>
+					<div
+						id="close_button"
+						style="
+							float: right;
+							position: sticky;
+							right: 5px;
+							bottom: 0;
+							margin-top: 5px;
+						"
+					>
+						<!-- <input
+							type="button"
+							class="active"
+							onclick="closeModalLayer('review_registration_form_modal');"
+							value="Cancel"
+						/> -->
+						<button class="active server-button pressed-button" onclick="closeModalLayer('review_registration_form_modal');">Cancel</button>
+						&nbsp;&nbsp;
+					</div>
+					</div>	
 			</div>
 			<div
 				class="modal"
@@ -4936,7 +4935,7 @@
 							" >
 							<button
 								class="active"
-								onclick="closeModalLayer('add_note_modal'); >
+								onclick="closeModalLayer('add_note_modal');" >
 								Cancel</button
 							>&nbsp;&nbsp;
 						</div>
@@ -5036,7 +5035,7 @@
 							" >
 							<button
 								class="active"
-								onclick="closeModalLayer('view_reg_details_modal'); >
+								onclick="closeModalLayer('view_reg_details_modal');" >
 								Close
 							</button>
 						</div>
@@ -5130,7 +5129,7 @@
 							" >
 							<button
 								class="active"
-								onclick="closeModalLayer('closte_reg_modal'); >
+								onclick="closeModalLayer('closte_reg_modal');" >
 								Cancel</button
 							>&nbsp;&nbsp;
 						</div>
@@ -5198,7 +5197,7 @@
 					</div>
 					<div
 						id="themed_event_view_ed"
-						style="height:370px;margin-left:5px; border solid 1px; overflow-y:scroll;"
+						style="height:370px;margin-left:5px; border: solid 1px; overflow-y:scroll;"
 					>
 						<style>
 							.templateContent {
@@ -5249,8 +5248,9 @@
 							  color: #666666;
 							}
 
+							</style>
 							<div class="editable_field" onclick="editEventField('eventConfigStyleBlock');"><span id="span_eventConfigStyleBlock">{{eventConfigStyleBlock}}</span><span class="tooltiptext">Click to edit</span></div>
-						</style>
+	
 
 						<!-- clear our any prior CSS from parent page. needed to ensure preview in Add-on
      closely resembles actual web page.
@@ -5392,10 +5392,7 @@
 
 								&nbsp;<input class="timepicker" id="reg_start_time_time"
 									name="reg_start_time_time" 
-									 
-									onclick="setDefaultTime('reg_start_time_time')">
-
-								
+									onclick="setDefaultTime('reg_start_time_time')">					
 								
 								&nbsp;&nbsp;to&nbsp;&nbsp;<input
 									id="reg_end_time_time"
@@ -5413,9 +5410,9 @@
 								></span>
 							</div>
 							<div id="reg_start_time_error"
-								style="display: none ></div>
+								style="display: none;"></div>
 							<div id="reg_end_time_error"
-								style="display: none ></div>
+								style="display: none;"></div>
 							<br />
 							<div><label for="max_registrants">Event Capacity</label></div>
 							<div id="ec_field_label">
@@ -5434,7 +5431,7 @@
 								/>
 							</div>
 							<div id="max_registrants_error"
-								style="display: none ></div>
+								style="display: none;"></div>
 							<br />
 							<div>
 								<label for="waitlist_enabled">Enable Registration Waitlist</label
@@ -5453,10 +5450,10 @@
 								/>
 							</div>
 							<div id="waitlist_enabled_error"
-								style="display: none ></div>
+								style="display: none;"></div>
 							<br />
 							<div id="waitlist_max_registrants_component"
-								style="display: none >
+								style="display: none;">
 								<div>
 									<label for="waitlist_max_registrants"
 										>Maximum Waitlist Capacity</label
@@ -5500,7 +5497,7 @@
 								/>
 							</div>
 							<div id="manual_admin_approval_required_error"
-								style="display: none ></div>
+								style="display: none;"></div>
 							<br />
 							<div><label for="website_passcode">Website Passcode</label></div>
 							<div id="ec_field_label">
@@ -5554,6 +5551,8 @@
 					</form>
 				</div>
 			</div>
+
+			
 		</div>
 
 
@@ -5851,17 +5850,32 @@ document.addEventListener('DOMContentLoaded', function () {
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script>
-		$('.timepicker').timepicker({
-			timeFormat: 'HH:mm',
-			interval: 15,
-			minTime: '10',
-			maxTime: '6:00pm',
-			defaultTime: '10',
-			startTime: '10:00',
-			dynamic: false,
-			dropdown: true,
-			scrollbar: true
-		});
+		// Get the content of #user_local
+		var userLocalContent = $("#user_local").text().trim();
+		console.log("userLocalContent" + userLocalContent);
+
+		// Array of values to compare with
+		var ampmArray = ["USA", "Canada"];
+
+		// Check if userLocalContent is in the ampmArray
+		if ($.inArray(userLocalContent, ampmArray) !== -1) {
+			console.log("am pm");
+			
+		} else {
+			console.log("1 24");
+		}
+
+			$('.timepicker').timepicker({
+				timeFormat: 'HH:mm',
+				interval: 15,
+				minTime: '10',
+				maxTime: '6:00pm',
+				defaultTime: '10',
+				startTime: '10:00',
+				dynamic: false,
+				dropdown: true,
+				scrollbar: true
+			});
 	</script>
 
 	

@@ -133,7 +133,6 @@
 			}
 
 			.multi_options_btn {
-				.button: active;
 				cursor: pointer;
 			}
 
@@ -274,7 +273,7 @@
 				table-layout: fixed;
 				text-align: center;
 				height: 100%;
-				wdith: 100%;
+				width: 100%;
 			}
 
 			table.overview_content_grid td {
@@ -303,7 +302,7 @@
 			}
 
 			.last_refresh {
-				boarder-style: solid;
+				border-style: solid;
 				width: 100%;
 				font-size: 11px;
 				font-style: italic;
@@ -317,7 +316,6 @@
 
 			@import url(https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap);
 
-			@charset "UTF-8";
 
 			.modal {
 				border-radius: 9px;
@@ -2542,165 +2540,166 @@
 		<div class="tab">
 			ttttttttaaaaaaaaaaaabbbbbbbbbbbb
 		</div>
-		<div id="registrations" class="tabcontent">
 
-			<div id="registrations_table">
-				<div class="head-table">
-					<div class="head-table__row">
-						<div class="head-table__col head-table__col">
-							<input type="checkbox" id="select_rows_header_control" name="select_rows_header_control" onchange="selectAllRows()">
-						</div>
-						<div class="head-table__col head-table__col">
-							<a href="#" onclick="sortRegColumn('regStatus')">Status<span id="reg_col_sort_regStatus" name="reg_col_sort"></span></a>
-						</div>
-						<div class="head-table__col head-table__col">
-							<a href="#" onclick="sortRegColumn('regTime')">Reg. Date<span id="reg_col_sort_regTime" name="reg_col_sort">&nbsp;&nbsp;▼</span></a>
-						</div>
-						<div class="head-table__col head-table__col">
-							<a href="#" onclick="sortRegColumn('email')">Email<span id="reg_col_sort_email" name="reg_col_sort"></span></a>
-						</div>
-						<div class="head-table__col head-table__col">
-							<a href="#" onclick="sortRegColumn('firstName')">First Name<span id="reg_col_sort_firstName" name="reg_col_sort"></span></a>
-						</div>
-						<div class="head-table__col head-table__col">
-							<a href="#" onclick="sortRegColumn('lastName')">Last Name<span id="reg_col_sort_lastName" name="reg_col_sort"></span></a>
-						</div>
-						<div class="head-table__col head-table__col">
-							Actions
+					<div id="user_local" style="opacity: 0; height: 1px;">USA</div>
+
+					<div>
+								<input
+									type="date"
+									id="reg_start_time"
+									name="reg_start_time"
+								/>
+								
+								&nbsp;<input class="timepicker" id="reg_start_time_time"
+									name="reg_start_time_time" 
+									onclick="setDefaultTime('reg_start_time_time')">					
+								
+								&nbsp;&nbsp;to&nbsp;&nbsp;<input
+									id="reg_end_time_time"
+									type="time"
+									name="reg_end_time_time"
+									step="60"
+									onclick="setDefaultTime('reg_end_time_time')"
+								/>&nbsp;<input
+									type="date"
+									id="reg_end_time"
+									name="reg_end_time"
+								/>&nbsp;<span
+									id="reg_date_timezone"
+									name="reg_date_timezone"
+								></span>
+							</div>
+
+
+
+		
+<div id="registrations" class="tabcontent">
+	
+	<!-- НАЧАЛО ТАБЛИЦЫ -->
+	<div id="registrations_table">
+
+		<!-- начало заголовка таблицы -->
+		<div class="head-table">
+			<div class="head-table__row">
+				<div class="head-table__col head-table__col">
+					<input type="checkbox" id="select_rows_header_control" name="select_rows_header_control" onchange="selectAllRows()">
+				</div>
+				<div class="head-table__col head-table__col">
+					<a href="#" onclick="sortRegColumn('regStatus')">Status<span id="reg_col_sort_regStatus" name="reg_col_sort"></span></a>
+				</div>
+				<div class="head-table__col head-table__col">
+					<a href="#" onclick="sortRegColumn('regTime')">Reg. Date<span id="reg_col_sort_regTime" name="reg_col_sort">&nbsp;&nbsp;▼</span></a>
+				</div>
+				<div class="head-table__col head-table__col">
+					<a href="#" onclick="sortRegColumn('email')">Email<span id="reg_col_sort_email" name="reg_col_sort"></span></a>
+				</div>
+				<div class="head-table__col head-table__col">
+					<a href="#" onclick="sortRegColumn('firstName')">First Name<span id="reg_col_sort_firstName" name="reg_col_sort"></span></a>
+				</div>
+				<div class="head-table__col head-table__col">
+					<a href="#" onclick="sortRegColumn('lastName')">Last Name<span id="reg_col_sort_lastName" name="reg_col_sort"></span></a>
+				</div>
+				<div class="head-table__col head-table__col">
+					Actions
+				</div>
+			</div>
+		</div>
+		<!-- конец заголовка таблицы -->
+
+
+
+		<!-- начало контента таблицы -->
+		<!-- <div id="registrations_table_tbody"> -->
+			<div id="registrations_table_tbody" class="body-table">
+
+				<!-- начало строки фильта -->
+				<div class="body-table__row body-table__filter">
+					<div class="body-table__col">
+					</div>
+					<div class="body-table__col">
+						<select id="status_filter">
+							<option value=""></option>
+							<option value="ATTENDING">Attending</option>
+							<option value="CHECKED_IN">Checked In</option>
+							<option value="DECLINED_REGISTRANT">Declined</option>
+							<option value="DECLINED_ADMIN">Not Approved</option>
+							<option value="UNPROCESSED">Pending</option>
+							<option value="WAITLISTED">Waitlisted</option>
+						</select>
+					</div>
+					<div class="body-table__col">
+					</div>
+					<div class="body-table__col">
+						<input id="email_filter" type="text" size="15">
+					</div>
+					<div class="body-table__col">
+						<input id="fname_filter" type="text" size="15">
+					</div>
+					<div class="body-table__col">
+						<input id="lname_filter" type="text" size="15">
+					</div>
+					<div class="body-table__col">
+						<button id="apply_filter_button" class="active" disabled="">Apply Filter</button>
+					</div>
+				</div>
+				<!-- конец строки фильтра -->
+
+
+				<!-- Начало строки с данными -->
+				<div class="body-table__row" id="reg_rowpete.buttee@petepetepete.com">
+					<div class="body-table__col">
+						<input type="checkbox" id="select_row_pete.buttee@petepetepete.com" name="select_row_checkbox" onchange="selectRow()">
+					</div>
+					<div class="body-table__col">
+						Waitlisted
+					</div>
+					<div class="body-table__col">
+						11:05 AM
+					</div>
+					<div class="body-table__col">
+						pete.buttee@petepetepete.com
+					</div>
+					<div class="body-table__col">
+						Pete
+					</div>
+					<div class="body-table__col">
+						Buttee
+					</div>
+					<div class="body-table__col">
+						<div class="multi_options_button">
+							<button onclick="displayMultipleOptions('select_action_button_pete.buttee@petepetepete.com')" class="multi_options_btn" disabled="">
+								Select Action
+							</button>
+							<div id="select_action_button_pete.buttee@petepetepete.com" class="multi_options_button-content">
+								<a href="#" id="view_reg_detailspete.buttee@petepetepete.com">View Reg. Details</a><a href="#" onclick="displayNoteLayer('pete.buttee@petepetepete.com','This is a very important guest.')">Add Note</a><a href="#" onclick="changeRegStatus('ATTENDING', 'pete.buttee@petepetepete.com')">Mark as Attending</a><a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'pete.buttee@petepetepete.com')">Mark as Not Approved</a><a href="#" onclick="changeRegStatus('CHECKED_IN', 'pete.buttee@petepetepete.com')">Mark as Checked In</a>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div id="registrations_table_tbody">
-					<div class="body-table">
-
-						<div class="body-table__row body-table__filter">
-							<div class="body-table__col">
-							</div>
-							<div class="body-table__col">
-								<select id="status_filter">
-									<option value=""></option>
-									<option value="ATTENDING">Attending</option>
-									<option value="CHECKED_IN">Checked In</option>
-									<option value="DECLINED_REGISTRANT">Declined</option>
-									<option value="DECLINED_ADMIN">Not Approved</option>
-									<option value="UNPROCESSED">Pending</option>
-									<option value="WAITLISTED">Waitlisted</option>
-								</select>
-							</div>
-							<div class="body-table__col">
-							</div>
-							<div class="body-table__col">
-								<input id="email_filter" type="text" size="15">
-							</div>
-							<div class="body-table__col">
-								<input id="fname_filter" type="text" size="15">
-							</div>
-							<div class="body-table__col">
-								<input id="lname_filter" type="text" size="15">
-							</div>
-							<div class="body-table__col">
-								<button id="apply_filter_button" class="active" disabled="">Apply Filter</button>
-							</div>
-						</div>
+				<div class="body-table__row body-table__note" id="reg_row_notespete.buttee@petepetepete.com">
+					<div class="body-table__col" id="reg_col_notespete.buttee@petepetepete.com">
+						<font size="2">Notes: This is a very important guest.</font>
 					</div>
-
-
-					<!-- Начало События -->
-					<div class="body-table__row" id="reg_rowpete.buttee@petepetepete.com">
-						<div class="body-table__col">
-							<input type="checkbox" id="select_row_pete.buttee@petepetepete.com" name="select_row_checkbox" onchange="selectRow()">
-						</div>
-						<div class="body-table__col">
-							Waitlisted
-						</div>
-						<div class="body-table__col">
-							11:05 AM
-						</div>
-						<div class="body-table__col">
-							pete.buttee@petepetepete.com
-						</div>
-						<div class="body-table__col">
-							Pete
-						</div>
-						<div class="body-table__col">
-							Buttee
-						</div>
-						<div class="body-table__col">
-							<div class="multi_options_button">
-								<button onclick="displayMultipleOptions('select_action_button_pete.buttee@petepetepete.com')" class="multi_options_btn" disabled="">
-									Select Action
-								</button>
-								<div id="select_action_button_pete.buttee@petepetepete.com" class="multi_options_button-content">
-									<a href="#" id="view_reg_detailspete.buttee@petepetepete.com">View Reg. Details</a><a href="#" onclick="displayNoteLayer('pete.buttee@petepetepete.com','This is a very important guest.')">Add Note</a><a href="#" onclick="changeRegStatus('ATTENDING', 'pete.buttee@petepetepete.com')">Mark as Attending</a><a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'pete.buttee@petepetepete.com')">Mark as Not Approved</a><a href="#" onclick="changeRegStatus('CHECKED_IN', 'pete.buttee@petepetepete.com')">Mark as Checked In</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="body-table__row body-table__note" id="reg_row_notespete.buttee@petepetepete.com">
-						<div class="body-table__col" id="reg_col_notespete.buttee@petepetepete.com">
-							<font size="2">Notes: This is a very important guest.</font>
-						</div>
-					</div>
-					<div class="body-table__row body-table__update-message" id="reg_row_notespete.buttee@petepetepete.com">
-						<div class="body-table__col" id="reg_col_update_messagepete.buttee@petepetepete.com">
-							<font color="green" size="2" ;="">Registration updated successfully.</font>
-						</div>
-					</div>
-					<!-- Конец События -->
-
-
-					<!-- Начало События -->
-					<div class="body-table__row" id="reg_rowpete.buttee@petepetepete.com">
-						<div class="body-table__col">
-							<input type="checkbox" id="select_row_pete.buttee@petepetepete.com" name="select_row_checkbox" onchange="selectRow()">
-						</div>
-						<div class="body-table__col">
-							Waitlisted
-						</div>
-						<div class="body-table__col">
-							11:05 AM
-						</div>
-						<div class="body-table__col">
-							pete.buttee@petepetepete.com
-						</div>
-						<div class="body-table__col">
-							Pete
-						</div>
-						<div class="body-table__col">
-							Buttee
-						</div>
-						<div class="body-table__col">
-							<div class="multi_options_button">
-								<button onclick="displayMultipleOptions('select_action_button_pete.buttee@petepetepete.com')" class="multi_options_btn" disabled="">
-									Select Action
-								</button>
-								<div id="select_action_button_pete.buttee@petepetepete.com" class="multi_options_button-content">
-									<a href="#" id="view_reg_detailspete.buttee@petepetepete.com">View Reg. Details</a><a href="#" onclick="displayNoteLayer('pete.buttee@petepetepete.com','This is a very important guest.')">Add Note</a><a href="#" onclick="changeRegStatus('ATTENDING', 'pete.buttee@petepetepete.com')">Mark as Attending</a><a href="#" onclick="changeRegStatus('DECLINED_ADMIN', 'pete.buttee@petepetepete.com')">Mark as Not Approved</a><a href="#" onclick="changeRegStatus('CHECKED_IN', 'pete.buttee@petepetepete.com')">Mark as Checked In</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="body-table__row body-table__note" id="reg_row_notespete.buttee@petepetepete.com">
-						<div class="body-table__col" id="reg_col_notespete.buttee@petepetepete.com">
-							<font size="2">Notes: This is a very important guest.</font>
-						</div>
-					</div>
-					<div class="body-table__row body-table__update-message" id="reg_row_notespete.buttee@petepetepete.com">
-						<div class="body-table__col" id="reg_col_update_messagepete.buttee@petepetepete.com">
-							<font color="green" size="2" ;="">Registration updated successfully.</font>
-						</div>
-					</div>
-					<!-- Конец События -->
-
-					
 				</div>
+				<div class="body-table__row body-table__update-message" id="reg_row_notespete.buttee@petepetepete.com">
+					<div class="body-table__col" id="reg_col_update_messagepete.buttee@petepetepete.com">
+						<font color="green" size="2" ;="">Registration updated successfully.</font>
+					</div>
+				</div>
+				<!-- Конец строки с данными -->
 
 
 			</div>
 
+		<!-- </div> -->
+		<!-- Конец контента таблицы -->
 
-		</div>
+
+	</div>
+	<!-- КОНЕЦ ТАБЛИЦЫ -->
+
+
+</div>
 	</div>
 	
 	
@@ -2730,6 +2729,8 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+
+	// Делаем tooltips вместо lables:
 	// Get all elements with id="ec_field_label"
 	var elements = document.querySelectorAll('[id="ec_field_label"]');
 
@@ -2744,10 +2745,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			precedingDiv.classList.add('info-div');
 		}
 	});
-
-
-
-
 
 
 	// Get all elements with class 'info-div'
@@ -2777,9 +2774,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		return null;
 	}
 
-
-
-
+	// показ и скрытие текста по клику:
 	document.addEventListener('click', function(event) {
 		// Check if the clicked element has the "show-label" class
 		if (event.target.classList.contains('show-label')) {
@@ -2800,104 +2795,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
-
-
-
-	// // Get the <thead> and <tbody> elements
-	// const thead = document.querySelector('#registrations_table thead');
-	// const tbody = document.querySelector('#registrations_table_tbody');
-
-	// // Get the initial offset, width, and th widths
-	// const initialOffset = thead.getBoundingClientRect().top;
-	// let initialOffsetCorrect = initialOffset - 69 -56;
-	// if (initialOffsetCorrect < 67) {
-	// 	initialOffsetCorrect = 67;
-	// }
-	// const initialWidth = thead.offsetWidth;
-	// const thElements = Array.from(thead.querySelectorAll('th'));
-
-	// // Fix the position of <thead> immediately
-	// thead.style.position = 'fixed';
-	// thead.style.top = `${initialOffsetCorrect}px`; // Set top position to the initial offset
-	// thead.style.width = `${initialWidth}px`;
-
-
-
-
-
-
-
-
-	// фиксация элементов на месте
-	// Find the first element with the class "tab"
+	// открывание окна multioptions button в зависимости от положения относительно экрана:
 	const tabElement = document.querySelector('.tab');
 
 	// Check if the element is found before proceeding
 	if (tabElement) {
-		// // Get the width of the element
-		// const tabWidth = tabElement.offsetWidth;
 
-		// // Get the position of the element on the screen
-		// const tabPosition = tabElement.getBoundingClientRect();
-
-		// let tabPositionCorrect = tabPosition.top
-		// if (tabPositionCorrect < 10) {
-		// 		tabPositionCorrect = 10;
-		// 	}
-
-		// // Add width and position properties to the element
-		// tabElement.style.width = `${tabWidth}px`;
-		// tabElement.style.position = 'fixed';
-		// tabElement.style.top = `${tabPositionCorrect}px`;
-		// tabElement.style.left = `${tabPosition.left}px`;
-
-
-
-		/* // если элементы не были зафиксированы сверху изначально, то при скроле исправим это
-		window.addEventListener('scroll', function() {
-			// Get the vertical scroll position of the page
-			var scrollPosition = window.scrollY || window.pageYOffset;
-
-			// Check if the scroll position is greater than or equal to 67 pixels
-			if (scrollPosition >= 20) {
-				tabElement.style.top = `10px`;
-				thead.style.top = `67px`;
-
-					
-				// Check if the element with id "registrations_table" exists
-				var registrationsTable = document.getElementById('registrations_table');
-
-				if (registrationsTable) {
-					// If the element exists, set its margin-top to 32px
-					registrationsTable.style.marginTop = '32px';
-				} 
-
-				var ecStatusDiv = document.getElementById('ec_status_div'); 
-				if (ecStatusDiv) {
-					ecStatusDiv.style.display = 'none';
-				}
-			}
-		}); */
-
-
-
-		// // Изменение положения фиксированного блока если сообщение закрывается:
-		// document.getElementById('ec_status_div').addEventListener('click', function (event) {
-		// 	// Check if the click occurred on an anchor element
-		// 	if (event.target.tagName === 'A') {
-		// 		// поднимаем фиксированные части и таблицу к верху окна
-		// 		tabElement.style.top = `10px`;
-		// 		thead.style.top = `67px`;
-		// 	}
-		// });
-
-
-
-
-		// открывание окна в зависимости от положения относительно экрана:
 		document.addEventListener('click', function(event) {
 			// Check if the clicked element has the class "multi_options_btn" and is a child of "#registrations_table_tbody"
 			if (event.target.classList.contains('multi_options_btn') && event.target.closest('#registrations_table_tbody')) {
@@ -2931,10 +2834,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
-
 	}
-
-
 
 });
 </script>
@@ -2952,6 +2852,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+	
+<script>
+	// Get the content of #user_local
+	var userLocalContent = $("#user_local").text().trim();
+
+	// Check if userLocalContent exists
+	if (userLocalContent) {
+		// Array of values to compare with
+		var ampmArray = ["USA", "Canada", "United Kingdom", "Australia", "India", "Pakistan", 
+		"Philippines", "Malaysia", "Singapore", "New Zealand", "Bangladesh", "Sri Lanka", "South Africa", 
+		"Egypt", "Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman", "Jordan", "Iraq"];
+
+		// Check if userLocalContent is in the ampmArray
+		if ($.inArray(userLocalContent, ampmArray) !== -1) {
+			$('.timepicker').timepicker({
+					timeFormat: 'HH:mm p',
+					interval: 15,
+					minTime: '10',
+					maxTime: '6:00pm',
+					defaultTime: '10',
+					startTime: '10:00',
+					dynamic: false,
+					dropdown: true,
+					scrollbar: true
+			});
+		} else {
+			$('.timepicker').timepicker({
+					timeFormat: 'HH:mm',
+					interval: 15,
+					minTime: '10',
+					maxTime: '6:00pm',
+					defaultTime: '10',
+					startTime: '10:00',
+					dynamic: false,
+					dropdown: true,
+					scrollbar: true
+			});
+		}
+	} else {
+		// Handle the case when userLocalContent does not exist
+		$('.timepicker').timepicker({
+					timeFormat: 'HH:mm p',
+					interval: 15,
+					minTime: '10',
+					maxTime: '6:00pm',
+					defaultTime: '10',
+					startTime: '10:00',
+					dynamic: false,
+					dropdown: true,
+					scrollbar: true
+			});
+	}
+</script>
 
 
 

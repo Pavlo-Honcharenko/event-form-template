@@ -1,0 +1,36 @@
+<div class="modal" id="view_reg_details_modal" style="display: block; z-index: 9999;">
+	<div class="modal__header">
+		<span style="display:block; float: right" ;=""><a style="text-decoration: none;" onclick="closeModalLayer('view_reg_details_modal');"><img src="https://scooper.gleeda.net/eventform/close-black-button.svg" alt="Close"></a>&nbsp;</span>
+		<strong style="font-size:20px">Registration Details</strong>
+		<br><br>
+		<hr style="width:100%;text-align:left;margin-left:0; margin: 0px 0;">
+		<br>
+	</div>
+
+	<div class="view_reg_details_table">
+
+		<div class="modal__table-header">
+			<div class="modal__col">Question</div>
+			<div class="modal__col">Response</div>
+		</div>
+
+		<div class="modal__table-body">
+			<table id="view_reg_details_table">
+				<tbody id="reg_details_tbody">
+					<tr><td>Full Name</td><td>Bob Bobster</td></tr>
+					<tr><td>Will you be playing?</td><td>1. Yes</td></tr>
+					<tr><td>Which town or neighborhood do you live in?</td><td>Traxton</td></tr>
+					<tr><td>What is your current skill level?</td><td>1</td></tr>
+					<tr><td>Which positions do you prefer playing most?</td><td>Point Guard</td></tr>
+					<tr><td>What size jersey do you wear?</td><td>L</td></tr>
+					<tr><td>Can we contact you about giving others a ride?</td><td>No</td></tr>
+					<tr><td>Anything you'd like us to know?</td><td>Yes, I would like apples and honey served with my hot lunch. Please also include one large spoon that I can dip into honey. Thank you.</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div id="close_button" style="float:right;position: sticky;right:5px;bottom:0;margin-top:5px;">
+		<button class="active" onclick="closeModalLayer('view_reg_details_modal');">Close</button>
+	</div>
+</div>
